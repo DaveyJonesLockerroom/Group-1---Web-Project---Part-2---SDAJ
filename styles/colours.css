@@ -1,0 +1,139 @@
+
+/* General styles start */
+
+        /* navigation bar start  */
+.navbar {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+
+    padding: 10px;/*changes the size of task bar*/
+
+    position: fixed; /* keeps the navbar in position so it doesnt move when you scoll*/
+    
+    /* These changes the position of nav bar so it fits the entire screen width wise */
+    top: 0; 
+    left: 0;
+    right: 0;
+    
+    /* changes position of the nav buttons to the right position  */
+    display: flex;
+    justify-content: space-between;     
+    
+    box-shadow: 1px 1px #ff0000; /* Adds a red shadow at the bottom of navbar */
+    background: linear-gradient(red, #0d0d0d, #1a1a1a); 
+}
+
+.logo img{
+    width: 5em;
+}
+
+.navtitle {
+    color:#ff4d4d;
+    text-decoration: none; /*getting rid of the underline*/
+    border: 2px solid #ff0000;
+    background-color: #1a1a1a;
+    border-radius: 4px; /* makes the border more round  */
+    padding:0.2em 0.6em; /*changes size of the border*/
+    font-size: large; 
+}
+
+/* when hovering on the navigation it will change colour*/
+.navtitle:hover {
+    color: black;
+    background-color: #ff0000;
+}
+        /* navigation bar end  */
+
+body {
+    background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+    color: #ff4d4d;
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.swords {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-image: url("../images/sword.png"), url("../images/sword.png");
+  background-repeat: repeat-y, repeat-y;      
+  background-position: left 0 top, right 0 top; 
+  background-size: 200px auto, 200px auto;  
+  background-repeat: no-repeat round, no-repeat round;
+}
+
+
+footer {
+    
+    background: black;
+    padding: 15px;/* changes the size of footer  */
+    border-top: double red;
+    text-align: center;
+    
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+}
+
+footer nav a:hover {
+    color: black;
+}
+
+/* General styles end  */
+
+
+
+/*index page start*/
+
+body{ 
+    background-image: radial-gradient(#ff0000, #0d0d0d); /* I applied a radial gradinet to background graphic*/
+}
+
+.index_navbar, .index_footer{
+    border-color: #cb9b51;
+    background: linear-gradient(to bottom, #0d0d0d, red);
+}
+
+.index_navbar a, .index_footer a{
+    color: #ff0000;
+    border: 0.15em solid #ff0000;
+    background-color: #0d0d0d;
+}
+
+
+/*menu bar hover*/
+.index_navbar a:hover, .index_footer a:hover{
+    background-color: #ff0000; 
+    color: #0d0d0d; 
+}
+
+
+.castle_image{
+    border-color: #cb9b51;
+}
+
+.image_text{
+    border-color: #ff0000;
+    border: 0.15em solid red;
+    background-color: #0d0d0d;  
+}
+
+
+
+/* index page end  */
+
+
+/* jobs page start  */
+
+/* jobs page end  */
+
+/*apply page start*/
+
+
+
+/* apply page end  */
+
+/* about page start  */
+/* about page end  */

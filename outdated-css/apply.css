@@ -1,0 +1,329 @@
+/*
+Silang SONG's Page
+A game development company expanding its tech team (G01)
+*/
+
+
+/* A non movable navigationbar */
+.navbar {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    
+
+    padding: 10px;/*changes the size of task bar*/
+
+
+    position: fixed; /* keeps the navbar in position so it doesnt move when you scoll*/
+    
+    /* These changes the position of nav bar so it fits the entire screen width wise */
+    top: 0; 
+    left: 0;
+    right: 0;
+    
+    
+
+    /* changes position of the nav buttons to the right position  */
+    display: flex;
+    justify-content: space-between;     
+    
+    box-shadow: 1px 1px #ff0000; /* Adds a red shadow at the bottom of navbar */
+    background: linear-gradient(red, #0d0d0d, #1a1a1a); 
+}
+
+/* changing the size of image  */
+.logo img{
+    width: 5em;
+}
+
+/* giving the navigation colour  */
+.navtitle {
+    color:#ff4d4d;
+    text-decoration: none; /*getting rid of the underline*/
+    border: 2px solid #ff0000;
+    background-color: #1a1a1a;
+    border-radius: 4px; /* makes the border more round  */
+    padding:0.2em 0.6em; /*changes size of the border*/
+    font-size: large; 
+}
+
+/* when hovering on the navigation it will change colour*/
+.navtitle:hover {
+    color: black;
+    background-color: #ff0000;
+}
+
+
+.top_page {
+    
+    font-size: 50px;
+    min-height: 100vh; /*view point height to fit the entire screen*/
+    
+    /* background-image: url('images/chatgpt_darkfantasy.png');
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+.top_page {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    color: white;
+    
+    /* putting text in the texts in the middle  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* puts the navigation to the center The "Apply Now"*/
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1% 10%;
+}
+
+/* Changing the style of the "Apply Now" navigation  */
+.content a {
+    font-size: 40px;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 5px solid gold;
+    color: white;
+    max-width: fit-content; /*changed the size of border*/
+    background: linear-gradient(red,black);    
+}
+
+/* Change color when hovering */
+.content a:hover{
+    color: gold;
+    border-color: black;
+    }
+
+
+
+
+body {
+    background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+    color: #ff4d4d;
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+
+form {
+    font-family: 'Courier New', Courier, monospace;
+
+    
+    margin: 2% 30%;/* pushes the things towards the middle */
+    
+    color: red;
+
+    
+}
+
+/* spaces things out  */
+form {
+    font-size: 20px;
+    display: grid;
+    gap: 1em; 
+
+}
+
+.form-textinput {
+    display: grid;  /* pushes the inputs to the buttom of the lable */
+}
+
+.form-textinput input
+ {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    border: 2px solid #ff0000;
+    background-color: #0d0d0d;
+    color: #ffcccc;
+    width: 25%; /* changing size/widths of inputs */
+    font-size: 20px;   
+}
+
+.form-textinput #email,
+.form-textinput #address
+ {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    border: 2px solid #ff0000;
+    background-color: #0d0d0d;
+    color: #ffcccc;
+    width: 50%; /* changing size/widths of inputs */
+    font-size: 20px;   
+}
+
+.form-textinput input:hover {
+    background-color: rgb(44, 44, 44);
+}
+
+header {
+    text-align: center;
+    color: red;
+    font-size: 1.6em;
+    margin: 2% 20%;
+}
+
+/* changing position and colour for p  */
+p {
+    text-align: center;
+    font-size: 30px;
+    color: #ffcccc;
+}
+
+p a {
+    text-decoration: none;
+    color: red;
+}
+
+p a:hover {
+    color: white;
+}
+
+/* changing the border in feildset to red and make it smaller*/
+fieldset {
+    border: 2px double red;
+    width: 50%;
+}
+
+/* changing label colour  */
+.form-gender label{
+    color: #ffcccc;
+}
+
+
+#state {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    border: 2px solid #ff0000;
+    background-color: #0d0d0d;
+    color: #ffcccc;
+    width: fit-content; /* making the text fit to the exact size of text box  */
+    font-size: 20px; 
+}
+
+/* changing colour of placeholder  */
+::placeholder {
+    color: #ffcccc;
+}
+
+/* creating a border for skills  */
+.form-skills {
+    border: double red;
+
+    
+}
+
+
+.form-skills h3{text-align: center;}
+
+
+
+
+.skills-selection {
+    margin: 2%;/* adjusting space around the selections   */
+    display: grid;
+    grid-template-rows: 1fr 1fr;/* 2 rows */
+    grid-template-columns: 40% 40% 40%; /* 3 columns */
+    color: #ffcccc;
+    
+}
+
+.skills-selection :hover{
+    color: red;
+}
+
+
+/* centralise otherskills  */
+.form-skills .otherskills {
+    text-align: center;
+    color: #ff4d4d;
+}
+
+/* centralise otherskills textarea*/
+.form-skills .otherskills textarea {
+    background-color: black;
+    border: double red;
+    color: #ffcccc;
+    width: 60%; /*minimizes the textarea */
+}
+
+.resume {
+    
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    
+    text-align: center;
+    border: solid red;
+    width: 50%;
+    height: 4em;
+    font-size: 1.8em;    
+}
+
+/* styling the file button  */
+input[type="file"]::file-selector-button {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    color: #ff4d4d;;
+    border: solid 2px red;
+    background-color: black;
+    font-size: 1em;
+    width: 100px;
+    height: 30px;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+/* end of styling file button  */
+
+
+.buttons {
+    text-align: center;
+}
+
+.submit,
+.reset {
+    font-family: 'Courier New', Courier, monospace; /* Pixel-style font */
+    background-color: red;
+    color: black;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    border: solid 5px #ff4d4d;;
+}
+
+.submit:hover,
+.reset:hover {
+    color: white;
+    background-color: brown;
+}
+
+
+footer {
+    
+    background: linear-gradient(to bottom, #0d0d0d, red);
+    padding: 15px;/* changes the size of footer  */
+    border-top: double red;
+    text-align: center;
+    
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+}
+
+footer nav a:hover {
+    color: black;
+}
+
+.swords {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-image: url("../images/sword.png"), url("../images/sword.png");
+  background-repeat: repeat-y, repeat-y;      
+  background-position: left 0 top, right 0 top; 
+  background-size: 200px auto, 200px auto;  
+  background-repeat: no-repeat round, no-repeat round;
+}
