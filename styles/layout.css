@@ -111,19 +111,19 @@ footer nav a:hover {
     display: flex; /*lines everything up in a row*/
     justify-content: center; /*aligns flex items to the center*/
     gap: 6vw; /*gap between the buttons*/
-    margin: 1% auto; /*makes everything align with castle image*/
+    margin: 1% auto; /*makes everything align with dragon image*/
     width: 90%;
     position: relative;
     padding: 1rem;
 }
 
-.castle_image{
+.dragon_image{
     text-align: center;
     border: 0.50em inset;
     border-radius: 0.3em; 
     display: flex; /*lines everything up in a row*/
     justify-content: center; /*aligns flex items to the center*/
-    margin: 2% auto; /*makes everything align with castle image*/
+    margin: 2% auto; /*makes everything align with dragon image*/
     width: 87%;
     position: relative;
 }
@@ -139,7 +139,7 @@ footer nav a:hover {
 }
 
 .index_container{ 
-    max-width: 100vw; /*same width for navbar, footer, castle*/
+    max-width: 100vw; /*same width for navbar, footer, dragon*/
 }
 
 
@@ -147,13 +147,13 @@ footer nav a:hover {
 How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https://www.bannerbear.com/blog/how-to-overlay-text-on-an-image-in-html-and-css/
 
 ‌text overlay on top of image */
-.castle_image_container{
+.dragon_image_container{
     position: relative; /*makes sure the container doesn't move, but text can overlay on it */  
 }
 
 
-/*castle image size*/
-.castle_image{
+/*dragon image size*/
+.dragon_image{
     height: auto; /* maintain aspect ratio */
     border-radius: 0.3em;
 }
@@ -167,7 +167,7 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
     border: 0.15em solid;
     border-radius: 0.3em;
     text-align: center;
-    position: absolute; /* positions text overlay above everything and fixed in place(.castle_container) */
+    position: absolute; /* positions text overlay above everything and fixed in place(.dragon_container) */
     top: 88%; /*centers the text overlay from vertical point*/
     left: 20%; /*centers the text overlay from the left*/
     right: 20%; /*centers the text overlay from the right*/
