@@ -2,5 +2,5 @@
     $host = "localhost";
     $user = "root";
     $pwd = "";
-    $sql_db = "XXXXXXX"
+    $sql_db = "group1_db"
 ?>
