@@ -1,7 +1,7 @@
 <header>
      <!-- The navigation bar and logo -->
     <nav class="navbar">
-        <a href="index.html" class="logo" target="_blank"><img src="images/company_logo.png" alt="companylogo"></a>
+        <a href="index.php" class="logo" target="_blank"><img src="images/company_logo.png" alt="companylogo"></a>
 
         <nav class="navigationbar">
             <a href="index.php" class="navtitle" >Home</a>

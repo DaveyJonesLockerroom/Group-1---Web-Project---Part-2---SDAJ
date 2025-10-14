@@ -45,7 +45,7 @@ test
         
      <header id="moreinfo">    
         <h1>Begin Your Journey With Us</h1>
-        <p>Before you begin click <a href="jobs.html" target="_blank"><strong>HERE</strong></a> to find out the right roles for you.</p>    
+        <p>Before you begin click <a href="jobs.php" target="_blank"><strong>HERE</strong></a> to find out the right roles for you.</p>    
     </header>
     
     
