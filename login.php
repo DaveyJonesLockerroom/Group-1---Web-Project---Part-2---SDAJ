@@ -24,6 +24,9 @@
                 echo '<div'.$_SESSION['error'].'</div>';
                 unset($_SESSION['error']);
             }
+
+
+            // ----- NEED TO USE HASH + SALT FOR LOGIN -----  ALSO NEED TO USE PREPARE STATEMENTS TO SANITISE INPUT ------//
         ?>
         <form action="process_login.php" method="POST">
             <label for="username">Username:</label>
