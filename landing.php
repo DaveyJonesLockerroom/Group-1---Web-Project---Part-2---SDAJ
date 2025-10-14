@@ -21,11 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
     <head>
         <title> Enter your name </title>
-        <link rel="stylesheet" href="layout.css">
+        <link rel="stylesheet" href="styles/layout.css">
     </head>
 
     <body>
-        <?php include 'header.php'; ?>
+        <?php include 'header.inc'; ?>
 
         <section id="main">
             <form action="landing.php" method="POST">
@@ -43,6 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         </section>
 
-        <?php include 'footer.php'; ?>
+        <?php include 'footer.inc'; ?>
     </body>
 </html>

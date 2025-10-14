@@ -11,11 +11,11 @@
     <meta name="keywords" content="login, user, authentication">
     <meta name="author" content="Ari Stein">
     <title>SDAJ Login Page</title>
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="styles/layout.css">
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'header.inc'; ?>
 
     <section id="login-main">
         <h1> Login to Your Account </h1>
@@ -39,6 +39,6 @@
         </form>
     </section>
 
-    <?php include 'footer.php'; ?>
+    <?php include 'footer.inc'; ?>
 </body>
 </html>

@@ -19,11 +19,11 @@ if (!$conn) {
     <meta name="keywords" content="manage, admin, control">
     <meta name="author" content="Ari Stein">
     <title>SDAJ Management Page</title>
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="styles/layout.css">
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'header.inc'; ?>
 
     <section id="manage-main">
         <?php
@@ -38,6 +38,6 @@ if (!$conn) {
         ?>
     </section>
 
-    <?php include 'footer.php'; ?>
+    <?php include 'footer.inc'; ?>
 </body>
 </html>
