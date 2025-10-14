@@ -8,6 +8,8 @@ if (!$conn) {
     die("Database Connection failed: " . mysqli_connect_error());
 }
 
+// ----- NEED TO USE HASH + SALT FOR LOGIN -----  ALSO NEED TO USE PREPARE STATEMENTS TO SANITISE INPUT ------//
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_username = trim($_POST['username']);
     $input_password = trim($_POST['password']);
