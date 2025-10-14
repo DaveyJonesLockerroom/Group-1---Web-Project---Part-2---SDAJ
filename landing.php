@@ -3,6 +3,7 @@ session_start();
 
 $error = '';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if(empty(trim($_POST['name']))) {
