@@ -21,7 +21,7 @@
         <h1> Login to Your Account </h1>
         <?php 
             if (isset($_SESSION['error'])) {
-                echo '<div'.$_SESSION['error'].'</div>';
+                echo '<div'. htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') .'</div>';
                 unset($_SESSION['error']);
             }
 
@@ -37,6 +37,8 @@
             <br>
             <input type="submit" value="Login">
         </form>
+        <p> Need an account? <a href="register.php">Register here</a>. </p>
+
     </section>
 
     <?php include 'footer.inc'; ?>

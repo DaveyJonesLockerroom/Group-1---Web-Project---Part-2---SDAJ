@@ -1,5 +1,5 @@
 <?php
-sessions_start();
+session_start();
 
 require_once ('settings.php');
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
@@ -13,22 +13,26 @@ if (!$conn) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_username = trim($_POST['username']);
     $input_password = trim($_POST['password']);
-
-    $query = "SELECT * FROM users WHERE username = '$input_username' AND password = '$input_password'";
-
-    $result = mysqli_query($conn, $query);
-
-    if ($user = mysqli_fetch_assoc($result)) {
-        $_SESSION['username'] = $user['username'];
-        
-        if ($user['username'] === 'admin') {
-            header('Location: manage.php');
-        } else {
-            header('Location: welcome.php');
-        }
+    if (password_verify($input_password, $hashed)) {
+        // Password is correct
     } else {
-        $_SESSION['error'] = 'Invalid username or password.';
+        // Invalid password
+    }
+
+    $stmt = $conn->prepare("SELECt username, password_hash FROM users WHERE username = ?");
+    $stmt->bind_param("s", $input_username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user && password_verify($input_password, $user['password_hash'])) {
+        $_SESSION['username'] = $user['username'];
+        header('Location: ' . ($user[username] === 'admin' ? 'manage.php' : 'index.php'));
+        exit();
+    } else {
+        $_SESSION['error'] = "Invalid username or password.";
         header('Location: login.php');
         exit();
     }
+
 }
