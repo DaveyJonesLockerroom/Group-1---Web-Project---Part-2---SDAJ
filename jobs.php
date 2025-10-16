@@ -1,3 +1,23 @@
+<?php 
+session_start();
+include_once __DIR__ .'/env.loader.php';
+
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+$db = getenv('DB_NAME');
+
+$conn = mysqli_connect($host, $user, $password, $db);
+
+if (!$conn) {#check the sytanx for this
+          echo "<p> Connection to database failed: " . mysqli_connect_error() . "</p>";
+}
+?>
+
+<!--Code structure referencing for above: 
+W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.com/php/php_mysql_connect.asp --->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +33,7 @@
 
     <main class="main-content">
         <!-- Page heading -->
-        <h1>JOB OPENINGS</h1>
+        <h1 class="main-title">JOB OPENINGS</h1>
 
         <!-- Intro paragraph -->
         <p id="intro">
@@ -53,38 +73,101 @@
                     <table id="job-listings">
                         <caption class="table-title">Available job openings at SDAJ</caption>
                         <tr>
-                            <th>Reference Number</th>
-                            <th>Job Title</th>
-                            <th>Description</th>
-                            <th>Salary</th>
-                            <th>Responsibilities & Requirements</th>
+                            <th class="ref-column">Reference Number</th>
+                            <th class="title-column">Job Title - Salary</th>
+                            <th class="desc-column">Description</th>
+                            <th class="resp-column">Responsibilities & Requirements</th>
                         </tr>
                         <tr>
-                            <td>SE032</td>
-                            <td>Software Engineer</td>
-                            <td>A head developer for our games, will most likely be in charge of a team.</td>
-                            <td>$120,000 - $150,000</td>
-                            <td>5+ years experience in software development, proficient in C++, Python and Java. You will
-                                be expected to be able to lead a team effectively and help us in our goal to push SDAJ even
-                                further in this space.</td>
+                            <td>LP032</td>
+                            <td>Lead Game Programmer - $120,000 - $150,000</td>
+                            <td>Oversees the programming team and ensures code quality and performance.
+                             <br> <br>
+                            <strong>Reports to:</strong> Game Director</td>
+
+                            <td>
+                                <h4>Responsibilities</h4>
+                                <ul>
+                                    <li>Develop ideas and gameplay systems that fit the overall design of projects.</li>
+                                    <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
+                                    <li>Work closely with programmers and artists to ensure the design vision is faithfully executed.</li>
+                                </ul>
+
+                                <h4>Essential Requirements</h4>
+                                <ul>
+                                    <li>5+ years experience in game design or interactive media.</li>
+                                    <li>Proficiency with mainstream design tools such as Illustrator.</li>
+                                    <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
+                                </ul>
+
+                                <h4>Preferable Skills</h4>
+                                <ul>
+                                    <li>Experience in tile-based level editors or retro game mechanics design.</li>
+                                    <li>Experience with leading a team and project management.</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD045</td>
-                            <td>Game Designer</td>
-                            <td>Responsible for designing the core mechanics of our games.</td>
-                            <td>$90,000 - $110,000</td>
-                            <td>3+ years experience in game design, proficient in Unity and Unreal Engine. You will be
-                                expected to work closely with the development team to ensure that the game mechanics are
-                                implemented correctly and effectively.</td>
+                            <td>Game Designer - $90,000 - $110,000</td>
+                            <td>Responsible for designing the core mechanics of our games.
+                                <br> <br>
+                            <strong>Reports to:</strong> Lead Game Designer.
+                            </td>
+                            <td>
+                                <h4>Responsibilities</h4>
+                                <ul>
+                                    <li>Conceptualize and prototype gameplay systems inspired by 80s and 90s arcade and console titles.</li>
+                                    <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
+                                    <li>Work closely with programmers and artists to ensure the design vision is faithfully executed.</li>
+                                    <li>Balance difficulty curves to evoke that “tough but fair” retro challenge.</li>
+                                </ul>
+
+                                <h4>Essential Requirements</h4>
+                                <ul>
+                                    <li>3+ years experience in game design or interactive media.</li>
+                                    <li>Proficiency with design tools such as Unity, Unreal Engine, or Godot.</li>
+                                    <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
+                                </ul>
+
+                                <h4>Preferable Skills</h4>
+                                <ul>
+                                    <li>Experience in tile-based level editors or retro game mechanics design.</li>
+                                    <li>Knowledge of classic game genres: platformers, beat ’em ups, and RPGs.</li>
+                                    <li>Appreciation for old-school game balance and reward systems.</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td>AR058</td>
-                            <td>2D Artist</td>
-                            <td>Create 2D models and animations for our games.</td>
-                            <td>$80,000 - $95,000</td>
-                            <td>2+ years experience in 2D art, proficient in Adobe Photoshop and Illustrator. You will be
-                                expected to create high-quality 2D assets. Experience in pixel art is a plus. You will work 
-                                closely with the design team to ensure the art matches their direction and vision</td>
+                            <td>2D Artist - $80,000 - $95,000</td>
+                            <td>Create 2D models and animations for our games.
+                                <br> <br>
+                            <strong>Reports to:</strong> Art Director.
+                            </td>
+                            <td>
+                                <h4>Responsibilities</h4>
+                                <ul>
+                                    <li>Conceptualize and prototype gameplay systems inspired by 80s and 90s arcade and console titles.</li>
+                                    <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
+                                    <li>Work closely with programmers and artists to ensure the design vision is faithfully executed.</li>
+                                    <li>Balance difficulty curves to evoke that “tough but fair” retro challenge.</li>
+                                </ul>
+
+                                <h4>Essential Requirements</h4>
+                                <ul>
+                                    <li>3+ years experience in game design or interactive media.</li>
+                                    <li>Proficiency with design tools such as Unity, Unreal Engine, or Godot.</li>
+                                    <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
+                                </ul>
+
+                                <h4>Preferable Skills</h4>
+                                <ul>
+                                    <li>Experience in tile-based level editors or retro game mechanics design.</li>
+                                    <li>Knowledge of classic game genres: platformers, beat ’em ups, and RPGs.</li>
+                                    <li>Appreciation for old-school game balance and reward systems.</li>
+                                </ul>
+                            </td>
                             
                             
                         </tr>
@@ -106,12 +189,13 @@
 
         <!-- Application link -->
         <div class="application">
-            <p><a href="apply.html" target="_blank">Apply Here</a></p>
+            <p><a href="apply.php" target="_blank">Apply Here</a></p>
         </div>
     </main>
 
     <!-- Footer -->
     <?php include 'footer.inc'; ?>
+    
     
 </body>
 </html>

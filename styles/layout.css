@@ -200,6 +200,11 @@ h1{
 -----------------------------------------------------------------------------------------------  */
 
 
+.main-title {
+  text-align: center;
+  font-size: 2.5rem; /* 40px */
+}
+
 /* ---------- Intro paragraph ---------- */
 #intro {
   display: flex;
@@ -232,6 +237,8 @@ h1{
 .benefits ul {
   margin: 0.625rem 1.25rem; /* 10px 20px */
   padding: 0 1.25rem; /* 20px */
+  list-style-position: inside;
+  text-align: center;
 }
 
 .benefits li {
@@ -269,8 +276,8 @@ h1{
   align-items: stretch;
   gap: 0.625rem; /* 10px */
   margin: 2.5rem auto; /* 40px */
-  width: 100%;
-  max-width: 75rem; /* 1200px */
+  width: 92.5%;
+  
 }
 
 .jobs-section {
@@ -286,6 +293,18 @@ table {
   border-collapse: collapse;
   background-color: #111;
   table-layout: fixed;
+}
+
+.ref-column {
+  width: 7.5%; /* Reference number column */
+}
+
+.title-column {
+  width: 15%; /* Job title column */
+}
+
+.desc-column {
+  width: 25%; /* Description column */
 }
 
 th, td {
@@ -310,10 +329,13 @@ th, td {
   margin: 0.625rem 1.25rem; /* 10px 20px */
   padding: 0 1.25rem; /* 20px */
   color: #ffcccc;
+  list-style-position: inside;
+  text-align: center;
 }
 
 .hiring-process li {
   margin: 0.5rem 0; /* 8px */
+  text-align: center;
 }
 
 /* ---------- Application link ---------- */

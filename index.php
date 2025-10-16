@@ -1,6 +1,15 @@
-<?php include 'home_header.inc'; ?>
-<?php include 'home_navbar.inc'; ?>
+
+<?php 
+session_start();
+include_once __DIR__ .'/env.loader.php';
+include_once __DIR__ .'/conn.php';
+
+include 'home_header.inc';
+
+include 'home_navbar.inc'; ?>
            
+
+
     <div class="index_container">
         <div class="index_content">
         
@@ -28,3 +37,6 @@
     </div>    
 </body>
 </html>
+
+<!--add session start to the top of each page (regardless of whether you need to access user input or not)-->
+<!--- think about putting .inc files into a folder and change the path for an php file line-->
