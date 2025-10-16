@@ -52,12 +52,13 @@ test
     <br>
 
 
-    <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post" id="form">
+    
+    <form action="process_eoi.php" method="post" id="form">
         
         <!--Job Reference Number-->
         <div class="form-textinput">
-        <label for="jobreferencenumber">Job Reference Number:</label>
-        <input type="text" pattern="[A-Za-z0-9]{5}" id="jobreferencenumber" maxlength="5" placeholder="e.g. AB123" required>
+        <label for="reference_number">Job Reference Number:</label>
+        <input type="text" pattern="[A-Za-z0-9]{5}" id="reference_number" name="reference_number" maxlength="5" placeholder="e.g. AB123" required>
         </div>
 
         <!--First and last name-->
@@ -93,7 +94,7 @@ test
             <input type="text" pattern="[A-Za-z0-9]+" id="address" name="address" maxlength="40" size="40" required>
             <br>
             <label for="suburb">Suburb</label>
-            <input type="text" pattern="[A-Za-z0-9]+" id="suburb" name="address" maxlength="40" size="40" required>
+            <input type="text" pattern="[A-Za-z0-9]+" id="suburb" name="suburb" maxlength="40" size="40" required>
             <br>
             <label for="state">State</label>
             <select name="state" id="state" required>
