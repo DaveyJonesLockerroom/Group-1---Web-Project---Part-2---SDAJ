@@ -80,31 +80,58 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
                             <th>Responsibilities & Requirements</th>
                         </tr>
                         <tr>
-                            <td>SE032</td>
-                            <td>Software Engineer</td>
-                            <td>A head developer for our games, will most likely be in charge of a team.</td>
+                            <td>LP032</td>
+                            <td>Lead Game Programmer</td>
+                            <td>Become a core part of SDAJ’s retro revival team, crafting the code that powers our pixel-perfect worlds. 
+                                <strong>Reports to:</strong> Lead Game Programmer.</td>
                             <td>$120,000 - $150,000</td>
-                            <td>5+ years experience in software development, proficient in C++, Python and Java. You will
-                                be expected to be able to lead a team effectively and help us in our goal to push SDAJ even
-                                further in this space.</td>
+                            <td>
+                                <h4>Responsibilities</h4>
+                                <ul>
+                                    <li>Conceptualize and prototype gameplay systems inspired by 80s and 90s arcade and console titles.</li>
+                                    <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
+                                    <li>Work closely with programmers and artists to ensure the design vision is faithfully executed.</li>
+                                    <li>Balance difficulty curves to evoke that “tough but fair” retro challenge.</li>
+                                </ul>
+
+                                <h4>Essential Requirements</h4>
+                                <ul>
+                                    <li>3+ years experience in game design or interactive media.</li>
+                                    <li>Proficiency with design tools such as Unity, Unreal Engine, or Godot.</li>
+                                    <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
+                                </ul>
+
+                                <h4>Preferable Skills</h4>
+                                <ul>
+                                    <li>Experience in tile-based level editors or retro game mechanics design.</li>
+                                    <li>Knowledge of classic game genres: platformers, beat ’em ups, and RPGs.</li>
+                                    <li>Appreciation for old-school game balance and reward systems.</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD045</td>
                             <td>Game Designer</td>
                             <td>Responsible for designing the core mechanics of our games.</td>
                             <td>$90,000 - $110,000</td>
-                            <td>3+ years experience in game design, proficient in Unity and Unreal Engine. You will be
-                                expected to work closely with the development team to ensure that the game mechanics are
-                                implemented correctly and effectively.</td>
+                            <td><ul> 
+                                    <li>Develop and optimize 2D game engines tailored for retro-style games.</li>
+                                    <li>Implement gameplay features and mechanics using C++ and Unity.</li>
+                                    <li>Debug and troubleshoot performance issues to ensure smooth gameplay.</li>
+                                    <li>Work closely with art and design teams to integrate assets and mechanics seamlessly.</li>
+                                </ul> </td>
                         </tr>
                         <tr>
                             <td>AR058</td>
                             <td>2D Artist</td>
                             <td>Create 2D models and animations for our games.</td>
                             <td>$80,000 - $95,000</td>
-                            <td>2+ years experience in 2D art, proficient in Adobe Photoshop and Illustrator. You will be
-                                expected to create high-quality 2D assets. Experience in pixel art is a plus. You will work 
-                                closely with the design team to ensure the art matches their direction and vision</td>
+                            <td><ul> 
+                                    <li>Develop and optimize 2D game engines tailored for retro-style games.</li>
+                                    <li>Implement gameplay features and mechanics using C++ and Unity.</li>
+                                    <li>Debug and troubleshoot performance issues to ensure smooth gameplay.</li>
+                                    <li>Work closely with art and design teams to integrate assets and mechanics seamlessly.</li>
+                                </ul> </td>
                             
                             
                         </tr>

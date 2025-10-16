@@ -269,8 +269,8 @@ h1{
   align-items: stretch;
   gap: 0.625rem; /* 10px */
   margin: 2.5rem auto; /* 40px */
-  width: 100%;
-  max-width: 75rem; /* 1200px */
+  width: 90%;
+  
 }
 
 .jobs-section {
