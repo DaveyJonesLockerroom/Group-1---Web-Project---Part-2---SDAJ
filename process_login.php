@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Invalid password
     }
 
-    $stmt = $conn->prepare("SELECt username, password_hash FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username, password_hash FROM users WHERE username = ?");
     $stmt->bind_param("s", $input_username);
     $stmt->execute();
     $result = $stmt->get_result();
