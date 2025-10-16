@@ -96,7 +96,7 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
                                 <h4>Essential Requirements</h4>
                                 <ul>
                                     <li>5+ years experience in game design or interactive media.</li>
-                                    <li>Proficiency with mainstream design tools such as Illustrator.</li>
+                                    <li>Proficiency with mainstream design tools such as Unity, Unreal Engine</li>
                                     <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
                                 </ul>
 
@@ -117,24 +117,21 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
                             <td>
                                 <h4>Responsibilities</h4>
                                 <ul>
-                                    <li>Conceptualize and prototype gameplay systems inspired by 80s and 90s arcade and console titles.</li>
                                     <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
-                                    <li>Work closely with programmers and artists to ensure the design vision is faithfully executed.</li>
-                                    <li>Balance difficulty curves to evoke that “tough but fair” retro challenge.</li>
+                                    <li>Develop ideas that keep the experience challening, while still fair.</li>
                                 </ul>
 
                                 <h4>Essential Requirements</h4>
                                 <ul>
-                                    <li>3+ years experience in game design or interactive media.</li>
+                                    <li>2+ years experience in game design</li>
                                     <li>Proficiency with design tools such as Unity, Unreal Engine, or Godot.</li>
-                                    <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
+                                    <li>Willing to work well with a team and take constructive criticism.</li>
                                 </ul>
 
                                 <h4>Preferable Skills</h4>
                                 <ul>
                                     <li>Experience in tile-based level editors or retro game mechanics design.</li>
                                     <li>Knowledge of classic game genres: platformers, beat ’em ups, and RPGs.</li>
-                                    <li>Appreciation for old-school game balance and reward systems.</li>
                                 </ul>
                             </td>
                         </tr>
@@ -148,24 +145,20 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
                             <td>
                                 <h4>Responsibilities</h4>
                                 <ul>
-                                    <li>Conceptualize and prototype gameplay systems inspired by 80s and 90s arcade and console titles.</li>
-                                    <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
-                                    <li>Work closely with programmers and artists to ensure the design vision is faithfully executed.</li>
-                                    <li>Balance difficulty curves to evoke that “tough but fair” retro challenge.</li>
+                                    <li>Create concept art and character designs that fit the game’s aesthetic.</li>
+                                    <li>Produce high-quality 2D assets including sprites, backgrounds, and UI elements.</li>
+                                    <li>Collaborate with designers and programmers to ensure art assets are implemented correctly.</li>
                                 </ul>
-
                                 <h4>Essential Requirements</h4>
                                 <ul>
-                                    <li>3+ years experience in game design or interactive media.</li>
-                                    <li>Proficiency with design tools such as Unity, Unreal Engine, or Godot.</li>
-                                    <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
+                                    <li>2+ years experience in 2D art and animation.</li>
+                                    <li>Proficiency with graphic design software such as Adobe Photoshop, Illustrator, or similar tools.</li>
                                 </ul>
 
                                 <h4>Preferable Skills</h4>
                                 <ul>
-                                    <li>Experience in tile-based level editors or retro game mechanics design.</li>
-                                    <li>Knowledge of classic game genres: platformers, beat ’em ups, and RPGs.</li>
-                                    <li>Appreciation for old-school game balance and reward systems.</li>
+                                    <li>Experience with pixel art and animation techniques.</li>
+                                    <li>Knowledge of game development pipelines and asset optimization.</li>
                                 </ul>
                             </td>
                             
