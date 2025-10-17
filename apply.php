@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include_once __DIR__ .'/env.loader.php';
+include_once '/env.loader.php';
 
 $host = getenv('DB_HOST');
 $user = getenv('DB_USER');

@@ -1,19 +1,25 @@
-
 <?php 
 
-session_start();
-include_once __DIR__ .'/env.loader.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$host = getenv('DB_HOST');
+session_start();
+include_once 'env_loader.php';
+
+$host = getenv('DB_HOST');       
 $user = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 $db = getenv('DB_NAME');
 
 $conn = mysqli_connect($host, $user, $password, $db);
 
+
 if (!$conn) {#check the sytanx for this
           echo "<p> Connection to database failed: " . mysqli_connect_error() . "</p>";
 }
+
+
 ?>
 
 <!--Code structure referencing for above: 
@@ -80,6 +86,40 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
           </li>
         </ul>
       </section>
+
+            <!-- Team contribution  SQL table -->
+      <section class="table_wrap">
+  <h3>Team Member Contributions</h3>
+
+  <?php
+  
+  $result = mysqli_query($conn, 'SELECT * FROM `about`');
+
+      if (mysqli_num_rows($result) > 0) {
+          echo "<table border='1' cellpadding='5'>";
+          echo "<thead>";
+          echo "<tr><th>Name</th><th>Project 1 Contributions</th><th>Project 2 Contributions</th></tr>";
+          echo "</thead><tbody>";
+
+          while ($row = mysqli_fetch_assoc($result)) {
+              echo "<tr>";
+              echo "<td>" . htmlspecialchars($row['member_name']) . "</td>";
+              echo "<td>" . htmlspecialchars($row['project_1_contributions']) . "</td>";
+              echo "<td>" . htmlspecialchars($row['project_2_contributions']) . "</td>";
+              echo "</tr>";
+          }
+
+          echo "</tbody></table>";
+        } else {
+            echo "<p>Database query could not be prepared.</p>";
+        }
+
+        mysqli_close($conn);
+        ?>
+      </section>
+
+      <br>
+      <br>
 
       <!-- Team photo card -->
       <section class="figure_card">

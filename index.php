@@ -1,8 +1,8 @@
 
 <?php 
 session_start();
-include_once __DIR__ .'/env.loader.php';
-include_once __DIR__ .'/conn.php';
+include_once '/env.loader.php';
+include_once '/conn.php';
 
 include 'home_header.inc';
 
