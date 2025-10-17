@@ -32,6 +32,8 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
                 background-size: cover;  
             }
         </style>
+        <title>Apply Now</title >
+        <meta name="description" content="Apply for your dream job with us today!">
 </head>
 
 <body>
@@ -66,7 +68,7 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
 
 
     
-    <form action="process_eoi.php" method="post" id="form">
+    <form action="process_eoi.php" method="POST" id="form">
         
         <!--Job Reference Number-->
         <div class="form-textinput">
@@ -144,17 +146,17 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
             <h3 style="color: red;">Select the set of Skills you understand</h3>
         <div class="skills-selection">
 
-            <label for="skill1"><input type="checkbox" id="skill1" name="C++/C#">C++/C#</label>
+            <label for="skill1"><input type="checkbox" id="skill1" name="skills" value="C++/C#">C++/C#</label>
             
-            <label for="skill2"><input type="checkbox" id="skill2" name="Java">Java</label>
+            <label for="skill2"><input type="checkbox" id="skill2" name="skills" value="Java">Java</label>
             
-            <label for="skill3"><input type="checkbox" id="skill3" name="Python">Python</label>
+            <label for="skill3"><input type="checkbox" id="skill3" name="skills" value="Python">Python</label>
             
-            <label for="skill4"><input type="checkbox" id="skill4" name="3D Model">3D Model</label>
+            <label for="skill4"><input type="checkbox" id="skill4" name="skills" value="3D Model">3D Model</label>
             
-            <label for="skill5"><input type="checkbox" id="skill5" name="2D Model">2D Model</label>
+            <label for="skill5"><input type="checkbox" id="skill5" name="skills" value="2D Model">2D Model</label>
             
-            <label for="skill6"><input type="checkbox" id="skill6" name="Roadmap">Roadmap</label>
+            <label for="skill6"><input type="checkbox" id="skill6" name="skills" value="Roadmap">Roadmap</label>
             
             
            
