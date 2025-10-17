@@ -1,5 +1,9 @@
 <?php 
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 include_once 'env_loader.php';
 
@@ -89,7 +93,7 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
 
   <?php
   
-  $result = mysqli_query($conn, "SELECT * FROM about_db");
+  $result = mysqli_query($conn, 'SELECT * FROM `about`');
 
       if (mysqli_num_rows($result) > 0) {
           echo "<table border='1' cellpadding='5'>";
