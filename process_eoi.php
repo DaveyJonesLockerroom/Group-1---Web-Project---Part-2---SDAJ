@@ -1,3 +1,5 @@
+
+
 <?php
     session_start();
     require_once('settings.php');
@@ -13,10 +15,7 @@
     if (!$dbcon) {
         echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
     }  
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        $query = "SELECT * FROM eoi";
-        $result = mysqli_query($dbcon, $query);
+    else if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $reference_number = sanitise_input($_POST["reference_number"]);     
         $firstname = sanitise_input($_POST["firstname"]);
@@ -32,74 +31,79 @@
         $email = sanitise_input($_POST["email"]);
         $phonenumber = sanitise_input($_POST["phonenumber"]); 
 
-        $skills = isset($_POST['skills']) ? $_POST['skills'] : []; // if more than one it will be an array else empty (is used for check boxes)
-        $other_skills = sanitise_input($_POST["other_skills"]);
         
+        
+        //$skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : ""; // if more than one it will be an array else empty (is used for check boxes)
+        $otherskill = sanitise_input($_POST["otherskill"]);
+
+       
+
         // ensure user filled in all required fields
-        if(empty($reference_number)) {
-            echo "<p>Please enter a valid Job Reference Number.</p>";
-        }
+        $errors = [];
+        if(empty($reference_number)) $errors[] = "Please enter the VALID Job Reference Number.";
+        if(empty($firstname)) $errors[] =  "Please enter your First Name.";
+        if(empty($lastname)) $errors[] =  "Please enter your Last Name.";
 
-        if(empty($firstname)) {
-            echo "<p>Please enter your First Name.</p>";
-        }
+        // ensure that this is the right format dd/mm/yyyy else error message
+        if(!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $dateofbirth)) $errors[] = "Please enter your Date of Birth in the correct format (dd/mm/yyyy).";
 
-        if(empty($lastname)) {
-            echo "<p>Please enter your Last Name.</p>";
-        }
+        if(empty($gender)) $errors[] =  "Please select your Gender.";
 
-        if(empty($dateofbirth)) {
-            echo "<p>Please enter your Date of Birth.</p>";
-        }
+        if(!preg_match("/[A-Za-z0-9]+/", $address)) $errors[] =  "Please enter your Street Address."; 
+        if(!preg_match("/[A-Za-z0-9]+/", $suburb)) $errors[] =  "Please enter your Suburb."; 
         
-        if(empty($gender)) {
-            echo "<p>Please select your Gender.</p>";
-        }
 
-        if(empty($address)) {
-            echo "<p>Please enter your Street Address.</p>";
-        }
+        if(empty($state)) $errors[] =  "Please select your State.";
 
-        if(empty($suburb)) {
-            echo "<p>Please enter your Suburb.</p>";
-        }
+        if(!preg_match("/^\d{4}$/", $postcode)) $errors[] =  "Please enter your Postcode.";
 
-        if(empty($state)) {
-            echo "<p>Please select your State.</p>";
-        }
+        if(!preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/", $email)) $errors[] =  "Please enter a VALID Email Address.";
 
-        if(empty($postcode)) {
-            echo "<p>Please enter your Postcode.</p>";
-        }
+        if(!preg_match("/^\d{8,12}$/", $phonenumber)) $errors[] =  "Please enter a VALID Phone Number.";
 
-        if(empty($email)) {
-            echo "<p>Please enter your Email.</p>";
-        }
+        //if(empty($skills)) $errors[] =  "Please select at least one Skill";
 
-        if(empty($phonenumber)) {
-            echo "<p>Please enter your Phone Number.</p>";
-        }
+        if(!empty($errors)) {
+            foreach($errors as $error) {
+                echo "<p>" . htmlspecialchars($error) . "</p>";
+            }
+                echo "<p>Please go back and correct the errors.</p>";
+                }
+        else {
+            
+            
+            $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber)
+               VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";        
+            
 
+            if(mysqli_query($dbcon, $insert_sql)) {
 
+                echo "<h2>Your submitted details are as follows:</h2>";
+                
+                $apply_num = mysqli_insert_id($dbcon);
+                echo "<p>Table: $apply_num</p>";
+                                
+                echo "<p>Job Reference Number: $reference_number</p>";
+                echo "<p>First Name: $firstname</p>";
+                echo "<p>Last Name: $lastname</p>";
+                echo "<p>Date of Birth: $dateofbirth</p>";
+                echo "<p>Gender: $gender</p>";
+                echo "<p>Address: $address</p>";
+                echo "<p>Suburb: $suburb</p>";
+                echo "<p>State: $state</p>";
+                echo "<p>Postcode: $postcode</p>";
+                echo "<p>Email: $email</p>";
+                echo "<p>Phone Number: $phonenumber</p>";
+                //echo "<p>Skills: $skills</p>";
+                echo "<p>Other Skills: $otherskill</p>";
+            } 
+            else {
+                echo "<p>Insertion failed: " . mysqli_error($dbcon) . "</p>";
 
-        $sql_table = "eoi";
-        $insert = "INSERT INTO $sql_table (reference_number, firstname, firstname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber) 
-                   VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";        
+            }
+
         
-        echo "<h2>Your submitted details are as follows:</h2>";
-        //echo "<p>Table: $apply_num</p>";
-        echo "<p>Job Reference Number: $reference_number</p>";
-        echo "<p>First Name: $firstname</p>";
-        echo "<p>Last Name: $lastname</p>";
-        echo "<p>Date of Birth: $dateofbirth</p>";
-        echo "<p>Gender: $gender</p>";
-        echo "<p>Address: $address</p>";
-        echo "<p>Suburb: $suburb</p>";
-        echo "<p>State: $state</p>";
-        echo "<p>Postcode: $postcode</p>";
-        echo "<p>Email: $email</p>";
-        echo "<p>Phone Number: $phonenumber</p>";
-
+        }
 
 
         

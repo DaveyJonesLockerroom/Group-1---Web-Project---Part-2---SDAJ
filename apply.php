@@ -1,6 +1,9 @@
 <?php 
+
+
 session_start();
-include_once '/env.loader.php';
+
+include_once 'env_loader.php';
 
 $host = getenv('DB_HOST');
 $user = getenv('DB_USER');
@@ -19,7 +22,6 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
 
 
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -95,11 +97,11 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
         <fieldset class="form-gender">
             <legend>Gender</legend>
                 <label>
-                <input type="radio" name="gender" id="male" >Male
+                <input type="radio" name="gender" id="male" value="male">Male
                 </label>
 
                 <label>
-                <input type="radio" name="gender" id="female" >Female
+                <input type="radio" name="gender" id="female" value="female">Female
                 </label>
         </fieldset>
 
@@ -164,7 +166,7 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
         <div class="otherskills">
             <label for="otherskill" style="color: red;">Other Skills</label>
             <br>
-            <textarea name="writetext" id="otherskill" rows="5" cols="100" placeholder="If you selected Other for your state please enter the state that you are in HERE, along with your other skills."></textarea>
+            <textarea name="otherskill" id="otherskill" rows="5" cols="100" placeholder="If you selected Other for your state please enter the state that you are in HERE, along with your other skills."></textarea>
         </div>
             
         </div>
