@@ -22,7 +22,7 @@ require_once ('settings.php');
 <?php
 // Database connection settings
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($host, $user, $pwd, $sql_db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
