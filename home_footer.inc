@@ -5,7 +5,7 @@
     <p><a href="https://github.com/DaveyJonesLockerroom/Group-1---Web-Project---SDAJ">Github Link</a></p>
 </footer>
 
-<p style="
+<p class= "index_footer_caption" style="
     text-align: center; 
     border: 0.2px solid gold; border-radius: 4px; 
     background-color: black; 

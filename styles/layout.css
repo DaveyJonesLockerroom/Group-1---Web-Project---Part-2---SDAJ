@@ -789,6 +789,11 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .dragon_image_container { max-width: 90%; margin: 0 auto; } /* keeps index page image aligned */
   .image_text { bottom: 12%; font-size: 1.6em; width: 80%; }
   .header-logo img { max-width: 13vw}
+  .index_navbar { padding: 0.75rem; gap: 0.5vw; }
+  .index_navbar a { font-size: 1.15rem; }
+  .index_footer { padding: 0.75rem; gap: 0.5vw; }
+  .index_footer a { font-size: 1.15rem; }
+  .index_footer_caption { padding: 0.75rem; gap: 0.5vw; }
 }
 
 /* 2) Tablet size layout*/
@@ -802,6 +807,11 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .dragon_image { width: 100%; height: auto; }
   .image_text { bottom: 10%; font-size: 1.3rem; width: 90%; text-align: center; left: 50%; transform: translateX(-50%);}
   .header-logo img {max-width: 10vw;}
+  .index_navbar { padding: 0.7rem; gap: 0.6vw; }
+  .index_navbar a { font-size: 1.05rem; }
+  .index_footer { padding: 0.7rem; gap: 0.6vw; }
+  .index_footer a { font-size: 1rem; }
+  .index_footer_caption { padding: 0.5rem; gap: 0.4vw; }
 }
 
 /* 3) Phones Layout */
@@ -812,6 +822,11 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .dragon_image_container { width: 100%;}
   .image_text { bottom: 9%; width: 90%; text-align: center; font-size: 1.5rem; padding: 0 2rem;}
   .header-logo img {max-width: 7vw}
+  .index_navbar { padding: 0.5rem; gap: 0.4vw; }
+  .index_navbar a { font-size: 0.9rem; }
+  .index_footer { padding: 0.5rem; gap: 0.4vw; }
+  .index_footer a { font-size: 0.85rem; }
+  .index_footer_caption { padding: 0.3rem; gap: 0.2vw; }
 }
 
 
