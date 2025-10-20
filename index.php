@@ -1,7 +1,6 @@
 
 <?php 
 session_start();
-include_once 'env.loader.php';
 include_once '.env';
 include_once 'conn.php';
 
