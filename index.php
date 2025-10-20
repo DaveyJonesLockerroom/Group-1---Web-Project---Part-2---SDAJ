@@ -1,7 +1,7 @@
 
 <?php 
 session_start();
-include_once '.env';
+include_once 'env_loader.php';
 include_once 'conn.php';
 
 include 'home_header.inc';
