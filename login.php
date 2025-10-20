@@ -15,7 +15,12 @@
 </head>
 
 <body>
-    <?php include 'header.inc'; ?>
+    
+    <?php include 'header.inc';
+
+    include 'navbar.inc';
+
+    include 'alert.inc'; ?>
 
     <section id="login-main">
         <h1> Login to Your Account </h1>

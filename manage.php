@@ -11,6 +11,31 @@ if (!$conn) {
 ?>
 
 <!DOCTYPE html>
+        <?php
+
+            // Redirect if not logged in
+            if (!isset($_SESSION['username'])) {
+                $_SESSION['error'] = "You must be logged in to access that page.";
+                header("Location: login.php");
+                exit();
+            }
+
+            // Redirect if not an admin
+            if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+                $_SESSION['error'] = "Access denied. Admins only.";
+                header("Location: index.php");
+                exit();
+            }
+            if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') {
+                echo '<h1> Welcome to the Management Page, Admin! </h1>';
+                echo '<p> Here you can manage the website content and user accounts. </p>';
+            }
+            else {
+                echo '<h1> Access Denied </h1>';
+                echo '<p> You do not have permission to access this page. Please log in as an administrator. </p>';
+                exit();
+            }
+        ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,20 +51,15 @@ if (!$conn) {
     <?php include 'header.inc'; ?>
 
     <section id="manage-main">
-        <?php
-            if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') {
-                echo '<h1> Welcome to the Management Page, Admin! </h1>';
-                echo '<p> Here you can manage the website content and user accounts. </p>';
-            }
-        ?>
+
 
                         <!--  Show All EOI Query  -->
 
-            <form action="manage.php" method="POST">
+            <form action="manage.php" method="POST" class="admin-form">
                 <?php if (!isset($_POST['show_eois'])): ?>
-                    <input type="submit" name="show_eois" value="Show All EOI's">
+                    <input type="submit" name="show_eois" value="Show All EOI's" class="show_button">
                 <?php else: ?>
-                    <input type="submit" name="hide_eois" value="Hide EOI's">
+                    <input type="submit" name="hide_eois" value="Hide EOI's" class="hide_button">
                 <?php endif; ?>
             </form>
               <?php
@@ -50,7 +70,7 @@ if (!$conn) {
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Index</th><th>Reference Number</th><th>Content</th></tr>';
+                    echo '<tr><th>Index</th><th>EOI Number</th><th>Content</th>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
                         echo '<td>' . htmlspecialchars($row['test_index'], ENT_QUOTES, 'UTF-8') . '</td>';
@@ -67,11 +87,11 @@ if (!$conn) {
 
                      <!-- List EOI's by Job Reference Number: -->
 
-            <form action="manage.php" method="POST">
+            <form action="manage.php" method="POST" class="admin-form">
                 <?php if (!isset($_POST['list_by_ref'])): ?>
-                    <input type="submit" name="list_by_ref" value="List EOI's by Job Reference Number">
+                    <input type="submit" name="list_by_ref" value="List EOI's by Job Reference Number" class="show_button">
                 <?php else: ?>
-                    <input type="submit" name="hide_list_by_ref" value="Hide EOI's by Job Reference Number">
+                    <input type="submit" name="hide_list_by_ref" value="Hide EOI's by Job Reference Number" class="hide_button">
                 <?php endif; ?>
             </form>
 
@@ -83,12 +103,25 @@ if (!$conn) {
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Index</th><th>Reference Number</th><th>Content</th></tr>';
+                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
+                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
+                    <th>Other Skills</th><th>Value</th></tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row['test_index'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_number'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_content'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['reference_number'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['firstname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['lastname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['dateofbirth'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['gender'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['address'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['suburb'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -101,11 +134,11 @@ if (!$conn) {
 
                     <!-- List by First Name -->
 
-            <form action="manage.php" method="POST">
+            <form action="manage.php" method="POST" class="admin-form">
                 <?php if (!isset($_POST['list_by_fname'])): ?>
-                    <input type="submit" name="list_by_fname" value="List EOI's by First Name">
+                    <input type="submit" name="list_by_fname" value="List EOI's by First Name" class="show_button">
                 <?php else: ?>
-                    <input type="submit" name="hide_list_by_fname" value="Hide EOI's by First Name">
+                    <input type="submit" name="hide_list_by_fname" value="Hide EOI's by First Name" class="hide_button">
                 <?php endif; ?>
             </form>
 
@@ -117,12 +150,25 @@ if (!$conn) {
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Index</th><th>Reference Number</th><th>Content</th></tr>';
+                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
+                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
+                    <th>Other Skills</th><th>Value</th></tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row['test_index'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_number'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_content'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['reference_number'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['firstname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['lastname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['dateofbirth'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['gender'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['address'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['suburb'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -134,11 +180,11 @@ if (!$conn) {
 
                     <!-- List by Last Name  -->
 
-            <form action="manage.php" method="POST">
+            <form action="manage.php" method="POST" class="admin-form">
                 <?php if (!isset($_POST['list_by_lname'])): ?>
-                    <input type="submit" name="list_by_lname" value="List EOI's by Last Name">
+                    <input type="submit" name="list_by_lname" value="List EOI's by Last Name" class="show_button">
                 <?php else: ?>
-                    <input type="submit" name="hide_list_by_lname" value="Hide EOI's by Last Name">
+                    <input type="submit" name="hide_list_by_lname" value="Hide EOI's by Last Name" clas="hide_button">
                 <?php endif; ?>
             </form>
 
@@ -150,12 +196,25 @@ if (!$conn) {
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Index</th><th>Reference Number</th><th>Content</th></tr>';
+                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
+                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
+                    <th>Other Skills</th><th>Value</th></tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row['test_index'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_number'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_content'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['reference_number'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['firstname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['lastname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['dateofbirth'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['gender'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['address'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['suburb'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -167,11 +226,11 @@ if (!$conn) {
 
                     <!-- List by Full Name  -->
 
-            <form action="manage.php" method="POST">
+            <form action="manage.php" method="POST" class="admin-form">
                 <?php if (!isset($_POST['list_by_fullname'])): ?>
-                    <input type="submit" name="list_by_fullname" value="List EOI's by Full Name">
+                    <input type="submit" name="list_by_fullname" value="List EOI's by Full Name" class="show_button">
                 <?php else: ?>
-                    <input type="submit" name="hide_list_by_fullname" value="Hide EOI's by Full Name">
+                    <input type="submit" name="hide_list_by_fullname" value="Hide EOI's by Full Name" class="hide_button">
                 <?php endif; ?>
             </form>
 
@@ -184,12 +243,25 @@ if (!$conn) {
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Index</th><th>Reference Number</th><th>Content</th></tr>';
+                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
+                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
+                    <th>Other Skills</th><th>Value</th></tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row['test_index'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_number'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_content'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['reference_number'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['firstname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['lastname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['dateofbirth'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['gender'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['address'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['suburb'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -199,11 +271,11 @@ if (!$conn) {
             }
             ?>
 
-                    Delete EOI by Reference
-            <form action="manage.php" method="POST">
+                    <!-- Delete EOI by Reference -->
+            <form action="manage.php" method="POST" class="admin-form">
                 <label for="delete_ref">Enter Reference Number to Delete:</label>
-                <input type="text" id="delete_ref" name="delete_ref" required>
-                <input type="submit" name="delete_eoi" value="Delete EOI">
+                <input type="text" id="delete_ref" name="delete_ref" required class="admin-textbox" placeholder="EG... LP032">
+                <input type="submit" name="delete_eoi" value="Delete EOI" class="delete_button">
             </form>
 
             <?php
@@ -221,12 +293,12 @@ if (!$conn) {
 
                     <!-- Change EOI Status -->
 
-            <form action="manage.php" method="POST">
+            <form action="manage.php" method="POST" class="admin-form">
                 <label for="status_ref">Enter Reference Number:</label>
-                <input type="text" id="status_ref" name="status_ref" required>
+                <input type="text" id="status_ref" name="status_ref" required class="admin-textbox" placeholder="EG... LP032">
                 <label for="new_status">New Status:</label>
-                <input type="text" id="new_status" name="new_status" required>
-                <input type="submit" name="change_status" value="Change Status">
+                <input type="text" id="new_status" name="new_status" required class="admin-textbox" placeholder="EG... Current">
+                <input type="submit" name="change_status" value="Change Status" class="update_button">
             </form>
 
             <?php
