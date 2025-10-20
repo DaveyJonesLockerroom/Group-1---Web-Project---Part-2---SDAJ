@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include_once '.env';
+include_once ('.env');
 require_once ('settings.php');
 
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
