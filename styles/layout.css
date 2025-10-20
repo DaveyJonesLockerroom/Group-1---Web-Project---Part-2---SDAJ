@@ -167,7 +167,18 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
     right: 20%; /*centers the text overlay from the right*/
     font-size: large;
     font-weight: bold;
+    opacity: 0; 
+    animation: fadeIn 2s ease-in forwards; /* animation */
 }
+
+/* animation learned from the following video - Kalman Web Design. (2024, March 21). 
+How to Create CSS Fade Animation with Keyframes | Step-by-step Tutorial. YouTube. https://www.youtube.com/watch?v=hEG_N-GLKFU */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 
 h1{
   font-size: 2rem;
@@ -176,6 +187,15 @@ h1{
 #company_description{
   font-size: 1rem;
   
+}
+
+.index_footer_caption {
+    text-align: center; 
+    border: 0.2px solid gold; border-radius: 4px; 
+    background-color: black; 
+    margin-top: 20px; max-width: 500px; 
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 
@@ -768,6 +788,30 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   image-rendering: pixelated; /* keep pixelated look */      
 }
 
+.contributions {
+  width: 90%;
+  margin: 2rem auto;
+  background-color: #111;
+  color: #ff0000;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace
+}
+
+.contributions th {
+  font-size: 1.5vw;
+  text-align: left;
+}
+
+.member_names, .project_1, .project_2 {
+  text-align: left;
+  vertical-align: top;
+}
+
+.member_names {
+  font-size: 1.5vw;
+}
+
 /* ABOUT PAGE END ---------------------------------------------------------------------
 -------------------------------------------------------------------------------------- */
 
@@ -789,11 +833,11 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .dragon_image_container { max-width: 90%; margin: 0 auto; } /* keeps index page image aligned */
   .image_text { bottom: 12%; font-size: 1.6em; width: 80%; }
   .header-logo img { max-width: 13vw}
-  .index_navbar { padding: 0.75rem; gap: 0.5vw; }
+  .index_navbar { padding: 0.75rem; gap: 0.9vw; }
   .index_navbar a { font-size: 1.15rem; }
-  .index_footer { padding: 0.75rem; gap: 0.5vw; }
+  .index_footer { padding: 0.75rem; gap: 0.9vw; }
   .index_footer a { font-size: 1.15rem; }
-  .index_footer_caption { padding: 0.75rem; gap: 0.5vw; }
+  .index_footer_caption { font-size: 0.9rem; padding: 0.75rem; gap: 0.5vw; }
 }
 
 /* 2) Tablet size layout*/
@@ -807,11 +851,11 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .dragon_image { width: 100%; height: auto; }
   .image_text { bottom: 10%; font-size: 1.3rem; width: 90%; text-align: center; left: 50%; transform: translateX(-50%);}
   .header-logo img {max-width: 10vw;}
-  .index_navbar { padding: 0.7rem; gap: 0.6vw; }
+  .index_navbar { padding: 0.7rem; gap: 0.7vw; }
   .index_navbar a { font-size: 1.05rem; }
-  .index_footer { padding: 0.7rem; gap: 0.6vw; }
+  .index_footer { padding: 0.7rem; gap: 0.7vw; }
   .index_footer a { font-size: 1rem; }
-  .index_footer_caption { padding: 0.5rem; gap: 0.4vw; }
+  .index_footer_caption { font-size: 0.8rem; padding: 0.5rem; gap: 0.4vw; }
 }
 
 /* 3) Phones Layout */
@@ -822,11 +866,11 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .dragon_image_container { width: 100%;}
   .image_text { bottom: 9%; width: 90%; text-align: center; font-size: 1.5rem; padding: 0 2rem;}
   .header-logo img {max-width: 7vw}
-  .index_navbar { padding: 0.5rem; gap: 0.4vw; }
+  .index_navbar { padding: 0.5rem; gap: 0.5vw; }
   .index_navbar a { font-size: 0.9rem; }
-  .index_footer { padding: 0.5rem; gap: 0.4vw; }
+  .index_footer { padding: 0.5rem; gap: 0.5vw; }
   .index_footer a { font-size: 0.85rem; }
-  .index_footer_caption { padding: 0.3rem; gap: 0.2vw; }
+  .index_footer_caption {font-size: 0.7rem; padding: 0.3rem; gap: 0.2vw; }
 }
 
 

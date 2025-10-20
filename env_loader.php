@@ -1,5 +1,5 @@
 <?php
-$filepath = '.env'; /*may need to change DB_NAMe to group1_DB */
+$filepath = '.env'; 
 
 if (!file_exists($filepath)) {
     die("Error: .env file not found."); 

@@ -108,9 +108,9 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
 
           while ($row = mysqli_fetch_assoc($result)) {
               echo "<tr>";
-              echo "<td>" . htmlspecialchars($row['member_name']) . "</td>";
-              echo "<td>" . htmlspecialchars($row['project_1_contributions']) . "</td>";
-              echo "<td>" . htmlspecialchars($row['project_2_contributions']) . "</td>";
+              echo "<td class='member_names'>" . htmlspecialchars($row['member_name']) . "</td>";
+              echo "<td class='project_1'>" . nl2br(htmlspecialchars($row['project_1_contributions'])) . "</td>";
+              echo "<td class='project_2'>" . nl2br(htmlspecialchars($row['project_2_contributions'])) . "</td>"; # nl2br = creates display separation 
               echo "</tr>";
           }
 
