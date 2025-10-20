@@ -1,4 +1,24 @@
 
+<!-- 
+$create_table_sql = "
+            CREATE TABLE IF NOT EXISTS eoi (
+                apply_num INT AUTO_INCREMENT PRIMARY KEY,
+                reference_number VARCHAR(5) NOT NULL,
+                firstname VARCHAR(50) NOT NULL,
+                lastname VARCHAR(50) NOT NULL,
+                dateofbirth VARCHAR(10) NOT NULL,
+                gender VARCHAR(10) NOT NULL,
+                address VARCHAR(100) NOT NULL,
+                suburb VARCHAR(50) NOT NULL,
+                state VARCHAR(30) NOT NULL,
+                postcode VARCHAR(10) NOT NULL,
+                email VARCHAR(100) NOT NULL,
+                phonenumber VARCHAR(15) NOT NULL,
+                otherskill VARCHAR(100)
+            );
+        "; -->
+
+
 
 <?php
     session_start();
@@ -33,10 +53,16 @@
 
         
         
-        //$skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : ""; // if more than one it will be an array else empty (is used for check boxes)
-        $otherskill = sanitise_input($_POST["otherskill"]);
+        $skills = isset($_POST["skills"]) ? $_POST["skills"] : []; // if more than one it will be an array else empty (is used for check boxes)
+        if(!is_array($skills)) {
+            $skills = [$skills]; // Convert to array if it's a single value
+        }
+        else {
+            $skills = [];
+        }
+        //$otherskill = sanitise_input($_POST["otherskill"]);
 
-       
+        
 
         // ensure user filled in all required fields
         $errors = [];
@@ -62,6 +88,7 @@
         if(!preg_match("/^\d{8,12}$/", $phonenumber)) $errors[] =  "Please enter a VALID Phone Number.";
 
         //if(empty($skills)) $errors[] =  "Please select at least one Skill";
+        // $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
         if(!empty($errors)) {
             foreach($errors as $error) {
@@ -72,30 +99,77 @@
         else {
             
             
+            // $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber)
+            //    VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";        
             $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber)
-               VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";        
-            
+                VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";
 
             if(mysqli_query($dbcon, $insert_sql)) {
+                $apply_num = mysqli_insert_id($dbcon); // Get foreign key
 
-                echo "<h2>Your submitted details are as follows:</h2>";
-                
-                $apply_num = mysqli_insert_id($dbcon);
-                echo "<p>Table: $apply_num</p>";
+                //1 is checked, 0 is not checked
+                $skill1 = in_array("skill1", $skills) ? 1 : 0;
+                $skill2 = in_array("skill2", $skills) ? 1 : 0;
+                $skill3 = in_array("skill3", $skills) ? 1 : 0;
+                $skill4 = in_array("skill4", $skills) ? 1 : 0;
+                $skill5 = in_array("skill5", $skills) ? 1 : 0;
+                $skill6 = in_array("skill6", $skills) ? 1 : 0;
+
+                $insert_skills_sql = "
+                    INSERT INTO skills (apply_num, skill1, skill2, skill3, skill4, skill5, skill6)
+                    VALUES ($apply_num, $skill1, $skill2, $skill3, $skill4, $skill5, $skill6)
+                ";
+
+                if(mysqli_query($dbcon, $insert_skills_sql)) {
+                    $apply_num = mysqli_insert_id($dbcon);
+                    echo "<h2>Your submitted details are as follows:</h2>";
+                    echo "<p>Table: $apply_num</p>";
                                 
-                echo "<p>Job Reference Number: $reference_number</p>";
-                echo "<p>First Name: $firstname</p>";
-                echo "<p>Last Name: $lastname</p>";
-                echo "<p>Date of Birth: $dateofbirth</p>";
-                echo "<p>Gender: $gender</p>";
-                echo "<p>Address: $address</p>";
-                echo "<p>Suburb: $suburb</p>";
-                echo "<p>State: $state</p>";
-                echo "<p>Postcode: $postcode</p>";
-                echo "<p>Email: $email</p>";
-                echo "<p>Phone Number: $phonenumber</p>";
-                //echo "<p>Skills: $skills</p>";
-                echo "<p>Other Skills: $otherskill</p>";
+                    echo "<p>Job Reference Number: $reference_number</p>";
+                    echo "<p>First Name: $firstname</p>";
+                    echo "<p>Last Name: $lastname</p>";
+                    echo "<p>Date of Birth: $dateofbirth</p>";
+                    echo "<p>Gender: $gender</p>";
+                    echo "<p>Address: $address</p>";
+                    echo "<p>Suburb: $suburb</p>";
+                    echo "<p>State: $state</p>";
+                    echo "<p>Postcode: $postcode</p>";
+                    echo "<p>Email: $email</p>";
+                    echo "<p>Phone Number: $phonenumber</p>";
+                    
+                    $skill_list = [];
+                    if($skill1) {
+                        $skill_list[] = "C++";
+                    }
+
+                    if($skill2) {
+                        $skill_list[] = "Java";
+                    }
+                    
+                    if($skill3) {
+                        $skill_list[] = "Python";
+                    }
+                    
+                    if($skill4) {
+                        $skill_list[] = "2D Modeling";
+                    }
+                   
+                    if($skill5) {
+                        $skill_list[] = "3D Modeling";
+                    }
+                    
+                    if($skill6) {
+                        $skill_list[] = "Roadmap";
+                    }
+                    
+                    echo "<p>Skills: " . (!empty($skill_list) ? implode(", ", $skill_list) : "None") . "</p>";
+                    
+                   
+
+                } else {
+                    echo "<p>Failed to insert skills: " . mysqli_error($dbcon) . "</p>";
+                }
+                
             } 
             else {
                 echo "<p>Insertion failed: " . mysqli_error($dbcon) . "</p>";
@@ -108,5 +182,6 @@
 
         
         mysqli_close($dbcon);
-    }
+    
 
+    }
