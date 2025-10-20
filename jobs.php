@@ -1,13 +1,9 @@
 <?php 
 session_start();
-include_once '/env.loader.php';
+include_once '.env';
+require_once ('settings.php');
 
-$host = getenv('DB_HOST');
-$user = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$db = getenv('DB_NAME');
-
-$conn = mysqli_connect($host, $user, $password, $db);
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {#check the sytanx for this
           echo "<p> Connection to database failed: " . mysqli_connect_error() . "</p>";
