@@ -79,6 +79,8 @@ footer nav a:hover {
     color: gold;
 }
 
+
+
 /* GENERAL STYLES END ------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------  */
 
@@ -774,6 +776,96 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
 
 
 
+
+/* MANAGE PAGE START ----------------------------------------------------------------
+--------------------------------------------------------------------------------------  */
+
+#manage-main {
+  max-width: 80%;
+  margin: 6rem auto 2rem; /* top margin to clear fixed navbar */
+  background-color: #1a1a1a;
+  border: 2px solid #ff0000;
+  border-radius: 0.375rem; /* 6px */
+  padding: 1.5rem;
+  color: #ffcccc;
+  text-align: center
+}
+
+#manage-main h1 {
+  color: #ff4d4d;
+  border-bottom: 2px dashed #ff0000;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem auto;
+  border: 2px dashed #ff0000;
+  border-radius: 0.3rem;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  width: 60%;
+}
+
+.admin-textbox {
+  width: 60%;
+  background-color: #0d0d0d;
+  border: 2px solid #ff0000;
+  color: #ffcccc;
+  padding: 0.4rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+.admin-textbox:focus {
+  outline: none;
+  border-color: #ff4d4d;
+  background-color: #1a1a1a;
+}
+
+.show_button, .hide_button, .update_button, .delete_button {
+  background-color: #ff0000;
+  color: black;
+  border: 2px solid #ff4d4d;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.show_button:hover, .hide_button:hover, .update_button:hover, .delete_button:hover {
+  background-color: #860303;
+  color: white;
+}
+
+#manage-main table {
+  margin: 2rem auto;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #111;
+}
+
+#manage-main th, #manage-main td {
+  padding: 0.75rem;
+  border: 2px dashed #ff0000;
+  color: #ffcccc;
+}
+
+#manage-main th {
+  background-color: #1a1a1a;
+  color: #ff4d4d;
+}
+
+#manage-main tr:nth-child(even) {
+  background-color: #0d0d0d;
+}
+
+
+/* MANAGE PAGE END ----------------------------------------------------------------
+--------------------------------------------------------------------------------------  */
 
 
 

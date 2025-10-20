@@ -7,6 +7,8 @@
             <a href="index.php" class="navtitle" >Home</a>
             <a href="jobs.php" class="navtitle" >Careers</a>
             <a href="about.php" class="navtitle" >About</a>
+            <a href="manage.php" class="navtitle" >Manage</a>
+            <a href="login.php" class="navtitle" >Login</a>
         </nav>
     </nav>
   </header>

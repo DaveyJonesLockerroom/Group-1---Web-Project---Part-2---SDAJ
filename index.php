@@ -1,14 +1,14 @@
 
 <?php 
 session_start();
-include_once '/env.loader.php';
-include_once '/conn.php';
+include_once '.env';
+include_once 'conn.php';
 
 include 'home_header.inc';
 
-include 'home_navbar.inc'; ?>
+include 'home_navbar.inc';
            
-
+include 'alert.php'; ?>
 
     <div class="index_container">
         
