@@ -8,11 +8,10 @@ include_once 'conn.php';
 
 
 if (!$conn) {
-          error_log("Database connection failed: " . mysqli_connect_error());
-          echo "<p> Connection to database failed: Please try again later. </p>";
-          exit;
+          die("<p> We are experiencing technical difficulties, please try again later</p>");
 }
 ?>
+
 
 <!--Code structure referencing for above: 
 W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.com/php/php_mysql_connect.asp --->

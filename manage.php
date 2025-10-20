@@ -6,11 +6,10 @@ include_once 'conn.php';
 
 
 if (!$conn) {
-          error_log("Database connection failed: " . mysqli_connect_error());
-          echo "<p> Connection to database failed: Please try again later. </p>";
-          exit;
+          die("<p> We are experiencing technical difficulties, please try again later</p>");
 }
 ?>
+
 
 <!DOCTYPE html>
         <?php

@@ -7,14 +7,10 @@ include_once 'conn.php';
 
 
 if (!$conn) {#check the sytanx for this
-          error_log("Database connection failed: " . mysqli_connect_error());
-          echo "<p> Connection to database failed: Please try again later. </p>";
-          exit;
+          die("<p> We are experiencing technical difficulties, please try again later</p>");
 }
 ?>
 
-<!--Code structure referencing for above: 
-W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.com/php/php_mysql_connect.asp --->
 
 
 <!DOCTYPE html>
@@ -89,7 +85,12 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
 
   <?php
   
-  $result = mysqli_query($conn, 'SELECT * FROM `about`');
+  $stmt = $conn->prepare('SELECT * FROM `about`'); /* preparing statments to prevent SQL injections or malicious data inputs */
+  /*$stmt->bind_param('s', $member_name); --why does this make the table disappear even when I put in parameters*/
+  $stmt->execute();
+  $result = $stmt->get_result(); /* code made with guidance from Mysqli SELECT query with prepared statements. 
+                                  (2025). Treating PHP Delusions. https://phpdelusions.net/mysqli_examples/prepared_select?utm_source=chatgpt.com */
+
 
       if (mysqli_num_rows($result) > 0) {
           echo "<table class='contributions' aria-label = 'Member contributions for project 1 and project 2'>"; #ARIA accessibility 
