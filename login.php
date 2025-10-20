@@ -20,7 +20,7 @@
 
     include 'navbar.inc';
 
-    include 'alert.php'; ?>
+    include 'alert.inc'; ?>
 
     <section id="login-main">
         <h1> Login to Your Account </h1>

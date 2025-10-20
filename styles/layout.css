@@ -79,7 +79,39 @@ footer nav a:hover {
     color: gold;
 }
 
+.alert {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff4d4d;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  max-width: 300px;
+  font-family: sans-serif;
+}
 
+/* Close button (label for checkbox) */
+.alert .close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Hide checkbox itself */
+#close-alert {
+  display: none;
+}
+
+/* When checkbox is checked, hide the alert */
+#close-alert:checked + .alert {
+  display: none;
+}
 
 /* GENERAL STYLES END ------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------  */

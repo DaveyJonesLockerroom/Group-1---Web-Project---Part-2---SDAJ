@@ -8,7 +8,7 @@ include 'home_header.inc';
 
 include 'home_navbar.inc';
            
-include 'alert.php'; ?>
+include 'alert.inc'; ?>
 
     <div class="index_container">
         
