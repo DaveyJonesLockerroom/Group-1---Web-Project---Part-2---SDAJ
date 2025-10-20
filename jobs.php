@@ -5,8 +5,10 @@ include_once 'env_loader.php';
 include_once 'conn.php';
 
 
-if (!$conn) {#check the sytanx for this
-          echo "<p> Connection to database failed: " . mysqli_connect_error() . "</p>";
+if (!$conn) {
+          error_log("Database connection failed: " . mysqli_connect_error());
+          echo "<p> Connection to database failed: Please try again later. </p>";
+          exit;
 }
 ?>
 

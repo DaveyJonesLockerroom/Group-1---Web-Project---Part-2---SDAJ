@@ -1,9 +1,5 @@
 <?php 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 
 include_once 'env_loader.php';
@@ -11,10 +7,10 @@ include_once 'conn.php';
 
 
 if (!$conn) {#check the sytanx for this
-          echo "<p> Connection to database failed: " . mysqli_connect_error() . "</p>";
+          error_log("Database connection failed: " . mysqli_connect_error());
+          echo "<p> Connection to database failed: Please try again later. </p>";
+          exit;
 }
-
-
 ?>
 
 <!--Code structure referencing for above: 

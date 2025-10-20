@@ -1,6 +1,6 @@
 
 <?php 
-session_start();
+session_start();                /* to store information to be used across multiple pages */
 include_once 'env_loader.php';
 include_once 'conn.php';
 

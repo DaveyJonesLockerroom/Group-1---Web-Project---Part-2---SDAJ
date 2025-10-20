@@ -6,7 +6,9 @@ include_once 'conn.php';
 
 
 if (!$conn) {
-    die("Database Connection failed: " . mysqli_connect_error());
+          error_log("Database connection failed: " . mysqli_connect_error());
+          echo "<p> Connection to database failed: Please try again later. </p>";
+          exit;
 }
 ?>
 
