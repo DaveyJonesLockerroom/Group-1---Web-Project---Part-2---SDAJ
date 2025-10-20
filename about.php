@@ -5,14 +5,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-include_once 'env_loader.php';  #get env variables from 'env_loader.php'
 
-$host = getenv('DB_HOST');       
-$user = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$db = getenv('DB_NAME');
-
-$conn = mysqli_connect($host, $user, $password, $db);
+include_once 'env_loader.php';
+include_once 'conn.php';
 
 
 if (!$conn) {#check the sytanx for this

@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-require_once ('settings.php');
+include_once 'env_loader.php';
+include_once 'conn.php';
 
-$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {
     die("Database Connection failed: " . mysqli_connect_error());
