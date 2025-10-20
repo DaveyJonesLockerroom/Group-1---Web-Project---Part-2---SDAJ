@@ -8,31 +8,36 @@ if (!$conn) {
     die("Database Connection failed: " . mysqli_connect_error());
 }
 
-// ----- NEED TO USE HASH + SALT FOR LOGIN -----  ALSO NEED TO USE PREPARE STATEMENTS TO SANITISE INPUT ------//
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_username = trim($_POST['username']);
     $input_password = trim($_POST['password']);
-    if (password_verify($input_password, $hashed)) {
-        // Password is correct
-    } else {
-        // Invalid password
+
+
+    $stmt = $conn->prepare("SELECT username, password, user_status FROM users WHERE username = ?");
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
     }
 
-    $stmt = $conn->prepare("SELECT username, password_hash FROM users WHERE username = ?");
     $stmt->bind_param("s", $input_username);
     $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+    $stmt->bind_result($db_username, $db_password, $db_user_status);
 
-    if ($user && password_verify($input_password, $user['password_hash'])) {
-        $_SESSION['username'] = $user['username'];
-        header('Location: ' . ($user[username] === 'admin' ? 'manage.php' : 'index.php'));
-        exit();
+    if ($stmt->fetch()) {
+        if (password_verify($input_password, $db_password )) {
+            $_SESSION['username'] = $db_username;
+            $stmt->close();
+            $conn->close();
+            header('Location: ' . ($db_user_status === 'Admin' ? 'manage.php' : 'index.php'));
+            exit();
+        } else {
+            $_SESSION['error'] = "Invalid username or password.";
+            header('Location: login.php');
+            exit();
+        }
     } else {
         $_SESSION['error'] = "Invalid username or password.";
         header('Location: login.php');
         exit();
     }
-
 }

@@ -35,9 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Basic validation
     if (empty($user) || empty($pass)) {
         $error = "Username and password are required.";
+    } elseif (strlen($user) < 3  || strlen($user) > 35) {
+        $error = "Username must be between 3 and 35 characters.";
+    } elseif (strlen($pass) < 4 || strlen($pass) > 255) {
+        $error = "Password must be at least 4 characters long.";
     } else {
         // Check if username already exists
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
         $stmt->bind_param("s", $user);
         $stmt->execute();
         $stmt->store_result();
@@ -49,15 +53,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
 
             // Insert new user
-            $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+            $stmt = $conn->prepare("INSERT INTO users (username, password, user_status) VALUES (?, ?, 'User')");
             $stmt->bind_param("ss", $user, $hashed_password);
             if ($stmt->execute()) {
-                $success = "Registration successful!";
+                $_SESSION['success'] = "Registration successful! You can now log in.";
+                header("Location: login.php");
+                exit();
             } else {
                 $error = "Error registering user.";
             }
         }
+        if (isset($stmt)) {
         $stmt->close();
+         }   
     }
 }
 $conn->close();
@@ -65,9 +73,6 @@ $conn->close();
         <?php
             if (isset($error)) {
                 echo '<div class="error">'.htmlspecialchars($error, ENT_QUOTES, 'UTF-8').'</div>';
-            }
-            if (isset($success)) {
-                echo '<div class="success">'.htmlspecialchars($success, ENT_QUOTES, 'UTF-8').'</div>';
             }
         ?>
         <form method="POST">

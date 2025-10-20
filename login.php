@@ -20,13 +20,17 @@
     <section id="login-main">
         <h1> Login to Your Account </h1>
         <?php 
+            
+            if (isset($_SESSION['success'])) {
+                echo '<div class="success">' . htmlspecialchars($_SESSION['success'], ENT_QUOTES, 'UTF-8') . '</div>';
+                unset($_SESSION['success']);
+            }
             if (isset($_SESSION['error'])) {
-                echo '<div'. htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') .'</div>';
+                echo '<div class="error">'. htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') .'</div>';
                 unset($_SESSION['error']);
             }
 
 
-            // ----- NEED TO USE HASH + SALT FOR LOGIN -----  ALSO NEED TO USE PREPARE STATEMENTS TO SANITISE INPUT ------//
         ?>
         <form action="process_login.php" method="POST">
             <label for="username">Username:</label>
