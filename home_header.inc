@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="Game Development Company">
         <meta name="keywords" content="company logo, name, slogan, description, image, menu, footer with Jira & Github link, email link">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SDAJ Webpage</title>
         <link rel="stylesheet" href="styles/layout.css">
         <link rel="stylesheet" href="styles/colours.css">
@@ -26,6 +26,6 @@
     <body>
 
          <header class="header-logo"> <!--Company logo in header-->
-                <img src="images/company_logo.png" alt="company logo"> <!--logo reference - https://cooltext.com/Logo-Design-Fantasy-->
+                <img src="images/SDAJ_logo.png" alt="company logo" style="width: 200px; height: auto;"> <!--logo reference - https://cooltext.com/Logo-Design-Fantasy-->
          </header>
     

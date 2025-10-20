@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-include_once 'env_loader.php';
+include_once 'env_loader.php';  #get env variables from 'env_loader.php'
 
 $host = getenv('DB_HOST');       
 $user = getenv('DB_USER');
@@ -31,6 +31,11 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
 
 <head>
   <?php include 'header.inc'; ?>
+  <style>
+  body {
+    background-color: hotpink !important;
+  }
+</style>
 </head>
 
 <body>
@@ -74,7 +79,7 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
           <li id="Silang" class="profile">
             <h3 class="sub_head">Silang Song</h3> <h4 class = "sub_head3">104548960</h4>
             <img src="images/Silang_profile.JPG" alt="Silang Song">
-            <h4 class = "sub_head3">Apply Page, Orgainsing Meetings</h4>
+            <h4 class = "sub_head3">Apply Page, Organising Meetings</h4>
             <p><strong>Quote:</strong>"识时务者为俊杰" <br> <strong>Translation:</strong>"A wise man adapts to changing circumstances" Kong Ming </p>
           </li>
 
@@ -96,7 +101,7 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
   $result = mysqli_query($conn, 'SELECT * FROM `about`');
 
       if (mysqli_num_rows($result) > 0) {
-          echo "<table border='1' cellpadding='5'>";
+          echo "<table class='contributions' aria-label = 'Member contributions for project 1 and project 2'>"; #ARIA accessibility 
           echo "<thead>";
           echo "<tr><th>Name</th><th>Project 1 Contributions</th><th>Project 2 Contributions</th></tr>";
           echo "</thead><tbody>";
