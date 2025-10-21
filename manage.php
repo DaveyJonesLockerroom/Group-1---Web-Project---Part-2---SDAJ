@@ -31,7 +31,7 @@ include_once 'conn.php';
         ?>
 <html lang="en">
 <head>
-    <?php include 'header.inc'; ?>
+    <?php include 'inc_files/header.inc'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Management Page">
@@ -43,7 +43,7 @@ include_once 'conn.php';
 
 <body>
 
-    <?php include 'navbar.inc'; ?>
+    <?php include 'inc_files/navbar.inc'; ?>
 
     <section id="manage-main">
 
@@ -314,6 +314,6 @@ include_once 'conn.php';
 
     </section>
 
-    <?php include 'footer.inc'; ?>
+    <?php include 'inc_files/footer.inc'; ?>
 </body>
 </html>

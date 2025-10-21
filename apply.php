@@ -17,7 +17,7 @@ if (!$conn) {
 <html lang="en">
 
 <head>
-    <?php include 'header.inc'; ?>
+    <?php include 'inc_files\header.inc'; ?>
         <style>
             .top_page { 
                 /* reference https://deepai.org/machine-learning-model/text2img */
@@ -33,7 +33,7 @@ if (!$conn) {
 <body>
     
     <!-- The navigation bar and logo -->
-    <?php include 'navbar.inc'; ?>
+    <?php include 'inc_files/navbar.inc'; ?>
     
     <!-- The image and aplliance option -->
      <section class="top_page">
@@ -186,7 +186,7 @@ if (!$conn) {
     </div>
     
     <!-- Footer -->
-    <?php include 'footer.inc'; ?>
+    <?php include 'inc_files/footer.inc'; ?>
 
 </body>
 </html>
