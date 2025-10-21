@@ -148,17 +148,17 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
             <h3 style="color: red;">Select the set of Skills you understand</h3>
         <div class="skills-selection">
 
-            <label for="skill1"><input type="checkbox" id="skill1" name="skills" value="skill1">C++/C#</label>
+            <label for="skill1"><input type="checkbox" id="skill1" name="skills[]" value="skill1">C++/C#</label>
             
-            <label for="skill2"><input type="checkbox" id="skill2" name="skills" value="skill2">Java</label>
+            <label for="skill2"><input type="checkbox" id="skill2" name="skills[]" value="skill2">Java</label>
             
-            <label for="skill3"><input type="checkbox" id="skill3" name="skills" value="skill3">Python</label>
+            <label for="skill3"><input type="checkbox" id="skill3" name="skills[]" value="skill3">Python</label>
             
-            <label for="skill4"><input type="checkbox" id="skill4" name="skills" value="skill4">3D Model</label>
+            <label for="skill4"><input type="checkbox" id="skill4" name="skills[]" value="skill4">3D Model</label>
             
-            <label for="skill5"><input type="checkbox" id="skill5" name="skills" value="skill5">2D Model</label>
+            <label for="skill5"><input type="checkbox" id="skill5" name="skills[]" value="skill5">2D Model</label>
             
-            <label for="skill6"><input type="checkbox" id="skill6" name="skills" value="skill6">Roadmap</label>
+            <label for="skill6"><input type="checkbox" id="skill6" name="skills[]" value="skill6">Roadmap</label>
             
             
            
