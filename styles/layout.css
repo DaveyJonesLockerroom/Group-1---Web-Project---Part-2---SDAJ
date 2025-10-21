@@ -910,6 +910,8 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   border-radius: 0.3rem;
   padding: 0.5rem 1rem;
   font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .show_button:hover, .hide_button:hover, .update_button:hover, .delete_button:hover {
@@ -939,6 +941,20 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   background-color: #0d0d0d;
 }
 
+
+.manage-heading {
+  margin-top: 5rem;
+  font-size: 2rem;
+  color: #ff4d4d;
+  border-bottom: 2px dashed #ff0000;
+  text-align: center;
+}
+
+.manage-p {
+  text-align:center;
+  margin-top: 4rem;
+  font-size: 1.2rem;
+}
 
 /* MANAGE PAGE END ----------------------------------------------------------------
 --------------------------------------------------------------------------------------  */

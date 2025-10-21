@@ -3,13 +3,7 @@ session_start();
 
 include_once 'env_loader.php';
 include_once 'conn.php';
-
-
-if (!$conn) {
-          die("<p> We are experiencing technical difficulties, please try again later</p>");
-}
 ?>
-
 
 <!DOCTYPE html>
         <?php
@@ -21,15 +15,15 @@ if (!$conn) {
                 exit();
             }
 
-            // Redirect if not an admin
-            if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-                $_SESSION['error'] = "Access denied. Admins only.";
-                header("Location: index.php");
-                exit();
-            }
+            // // Redirect if not an admin
+            // if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+            //     $_SESSION['error'] = "Access denied. Admins only.";
+            //     header("Location: index.php");
+            //     exit();
+            // }
             if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') {
-                echo '<h1> Welcome to the Management Page, Admin! </h1>';
-                echo '<p> Here you can manage the website content and user accounts. </p>';
+                echo '<h1 class="manage-heading"> Welcome to the Management Page, Admin! </h1>';
+                echo '<p class="manage-p"> Here you can manage the website content and user accounts. </p>';
             }
             else {
                 echo '<h1> Access Denied </h1>';
@@ -39,6 +33,7 @@ if (!$conn) {
         ?>
 <html lang="en">
 <head>
+    <?php include 'header.inc'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Management Page">
@@ -49,7 +44,8 @@ if (!$conn) {
 </head>
 
 <body>
-    <?php include 'header.inc'; ?>
+
+    <?php include 'navbar.inc'; ?>
 
     <section id="manage-main">
 
