@@ -6,7 +6,7 @@ include_once 'env_loader.php';
 include_once 'conn.php';
 
 
-if (!$conn) {#check the sytanx for this
+if (!$conn) {
           die("<p> We are experiencing technical difficulties, please try again later</p>");
 }
 ?>

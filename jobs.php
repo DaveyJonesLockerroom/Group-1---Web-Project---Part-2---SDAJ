@@ -5,14 +5,10 @@ include_once 'env_loader.php';
 include_once 'conn.php';
 
 
-if (!$conn) {#check the sytanx for this
+if (!$conn) {
           die("<p> We are experiencing technical difficulties, please try again later</p>");
 }
 ?>
-
-
-<!--Code structure referencing for above: 
-W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.com/php/php_mysql_connect.asp --->
 
 
 <!DOCTYPE html>

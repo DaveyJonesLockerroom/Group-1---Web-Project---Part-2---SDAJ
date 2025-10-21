@@ -183,7 +183,7 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
 
 ‌text overlay on top of image */
 .dragon_image_container{
-    position: relative; /*makes sure the container doesn't move, but text can overlay on it */  
+    position: relative; 
 }
 
 
@@ -195,11 +195,11 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
     border: 0.15em solid;
     border-radius: 0.3em;
     text-align: center;
-    position: absolute; /* positions text overlay above everything and fixed in place(.dragon_container) */
-    top: 88%; /*centers the text overlay from vertical point*/
-    left: 20%; /*centers the text overlay from the left*/
-    right: 20%; /*centers the text overlay from the right*/
-    font-size: large;
+    position: absolute; /* maybe it's this that's affecting it? */
+    top: 88%; 
+    left: 20%; 
+    right: 20%; 
+    font-size: 4vw;
     font-weight: bold;
     opacity: 0; 
     animation: fadeIn 2s ease-in forwards; /* animation */
@@ -211,7 +211,6 @@ How to Create CSS Fade Animation with Keyframes | Step-by-step Tutorial. YouTube
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
 
 
 h1{
