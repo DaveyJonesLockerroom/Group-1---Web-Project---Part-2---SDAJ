@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->fetch()) {
         if (password_verify($input_password, $db_password )) {
             $_SESSION['username'] = $db_username;
+            $_SESSION['user_status'] = $db_user_status;
             $stmt->close();
             $conn->close();
             header('Location: ' . ($db_user_status === 'Admin' ? 'manage.php' : 'index.php'));

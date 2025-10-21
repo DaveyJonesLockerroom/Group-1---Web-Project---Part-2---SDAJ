@@ -15,21 +15,15 @@ include_once 'conn.php';
                 exit();
             }
 
-            // // Redirect if not an admin
-            // if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-            //     $_SESSION['error'] = "Access denied. Admins only.";
-            //     header("Location: index.php");
-            //     exit();
-            // }
-            if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') {
-                echo '<h1 class="manage-heading"> Welcome to the Management Page, Admin! </h1>';
+            // Redirect if not an admin
+             if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+                 $_SESSION['error'] = "Access denied. Admins only.";
+                 header("Location: index.php");
+                 exit();
+            }
+                echo '<h1 class="manage-heading"> Welcome to the Management Page, ' 
+                . htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'). '!</h1>';
                 echo '<p class="manage-p"> Here you can manage the website content and user accounts. </p>';
-            }
-            else {
-                echo '<h1> Access Denied </h1>';
-                echo '<p> You do not have permission to access this page. Please log in as an administrator. </p>';
-                exit();
-            }
         ?>
 <html lang="en">
 <head>
