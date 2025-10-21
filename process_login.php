@@ -4,6 +4,9 @@ session_start();
 include_once 'env_loader.php';
 include_once 'conn.php';
 
+// <!-------------------------------------------------------------------------------------
+// ------------------   ADD LOTS OF COMMENTS SO YOU CAN EXPLAIN THE CODE   ---------------
+// -------------------------------------------------------------------------------------->
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_username = trim($_POST['username']);
@@ -20,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_result($db_username, $db_password, $db_user_status);
 
     if ($stmt->fetch()) {
-        if (password_verify($input_password, $db_password )) {
+        if (password_verify($input_password, $db_password )) { //password_verify matches hashes
             $_SESSION['username'] = $db_username;
             $_SESSION['user_status'] = $db_user_status;
             $stmt->close();

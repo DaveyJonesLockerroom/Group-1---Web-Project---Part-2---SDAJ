@@ -5,6 +5,10 @@ include_once 'env_loader.php';
 include_once 'conn.php';
 ?>
 
+<!-------------------------------------------------------------------------------------
+------------------   ADD LOTS OF COMMENTS SO YOU CAN EXPLAIN THE CODE   ---------------
+-------------------------------------------------------------------------------------->
+
 <!DOCTYPE html>
         <?php
 
@@ -135,7 +139,7 @@ include_once 'conn.php';
 
             <?php
             if(isset($_POST['list_by_fname'])) {
-                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY eoi_content->>'$.first_name' ASC");
+                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY firstname ASC");
                 $stmt->execute();
                 $result = $stmt->get_result();
 
@@ -181,7 +185,7 @@ include_once 'conn.php';
 
             <?php
             if(isset($_POST['list_by_lname'])) {
-                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY eoi_content->>'$.last_name' ASC");
+                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY lastname ASC");
                 $stmt->execute();
                 $result = $stmt->get_result();
 
