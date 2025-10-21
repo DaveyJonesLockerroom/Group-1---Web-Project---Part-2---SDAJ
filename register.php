@@ -16,7 +16,7 @@ require_once ('settings.php');
 </head>
 
 <body>
-    <?php include 'header.inc'; ?>
+    <?php include 'inc_files/header.inc'; ?>
     <section id="register-main">
         <h1> Register a New Account </h1>
 <?php
@@ -86,7 +86,7 @@ $conn->close();
         </form>
         <p>Already have an account? <a href="login.php">Login here</a></p>
     </section>
-    <?php include 'footer.inc'; ?>
+    <?php include 'inc_files/footer.inc'; ?>
 
 </body>
 </html>

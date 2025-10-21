@@ -22,11 +22,11 @@
 
 <body>
     
-    <?php include 'header.inc';
+    <?php include 'inc_files/header.inc';
 
-    include 'navbar.inc';
+    include 'inc_files/navbar.inc';
 
-    include 'alert.inc'; ?>
+    include 'inc_files/alert.inc'; ?>
 
     <section id="login-main">
         <h1> Login to Your Account </h1>
@@ -58,6 +58,6 @@
 
     </section>
 
-    <?php include 'footer.inc'; ?>
+    <?php include 'inc_files/footer.inc'; ?>
 </body>
 </html>

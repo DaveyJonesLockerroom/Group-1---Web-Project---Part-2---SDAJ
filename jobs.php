@@ -20,14 +20,14 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
 <html lang="en">
 
 <head>
-    <?php include 'header.inc'; ?>
+    <?php include 'inc_files/header.inc'; ?>
     <!-- Preload logo image -->
     <link rel="preload" as="image" href="images/company_logo.png">
 </head>
 
 <body>
     <!-- Navigation bar -->
-    <?php include 'navbar.inc'; ?>
+    <?php include 'inc_files/navbar.inc'; ?>
 
     <main class="main-content">
         <!-- Page heading -->
@@ -185,7 +185,7 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
     </main>
 
     <!-- Footer -->
-    <?php include 'footer.inc'; ?>
+    <?php include 'inc_files/footer.inc'; ?>
     
     
 </body>
