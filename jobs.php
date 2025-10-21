@@ -1,13 +1,15 @@
 <?php 
 session_start();
-include_once ('.env');
-require_once ('settings.php');
 
-$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+include_once 'env_loader.php';
+include_once 'conn.php';
 
-if (!$conn) {#check the sytanx for this
-          echo "<p> Connection to database failed: " . mysqli_connect_error() . "</p>";
+
+if (!$conn) {
+          die("<p> We are experiencing technical difficulties, please try again later</p>");
 }
+?>
+
 ?>
 
 <!--Code structure referencing for above: 

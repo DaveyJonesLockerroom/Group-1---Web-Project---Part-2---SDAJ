@@ -1,6 +1,6 @@
 
 <?php 
-session_start();
+session_start();                /* to store information to be used across multiple pages */
 include_once 'env_loader.php';
 include_once 'conn.php';
 
@@ -16,18 +16,16 @@ include 'alert.inc'; ?>
         <main>  <!--middle dragon image licensed from Adobe Stock images: 
                 https://as2.ftcdn.net/v2/jpg/07/23/38/53/1000_F_723385360_rEzKTrIuBEx9qu5PBJhgFH6wqlb3j4Pl.jpg-->
     <div class="dragon_image_container">
-        <img src="images/dragon_RPG.jpeg" alt="graphic_of_dragon_background"  class="dragon_image">    
+        <img src="images/dragon_RPG.jpeg" alt="graphic_of_dragon_background"  class="dragon_image">               
     </div>
-            <div class="image_text">
+        <div class="image_text">
                 <h1>Timeless Classics, Forged in Darkness...</h1>
                     <p id="company_description">
                         With humble beginnings in Melbourne, Australia, SDAJ is a game development company that 
                         creates new and innovative games with nostalgia at heart. From PC to mobile platforms, our games showcase our infinite imagination   
                         that continues to delight players around the world.
                     </p>
-            </div>
-        
-         
+            </div>         
 </main>
                     
             <?php include 'home_footer.inc';?>
