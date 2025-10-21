@@ -17,7 +17,7 @@ if (!$conn) {
 <html lang="en">
 
 <head>
-  <?php include 'inc_files/header.inc'; ?>
+  <?php include 'header.inc'; ?>
   <style>
   body {
     background-color: hotpink !important;
@@ -30,7 +30,7 @@ if (!$conn) {
   <header>
     
      <!-- The navigation bar and logo -->
-    <?php include 'inc_files/navbar.inc'; ?>
+    <?php include 'navbar.inc'; ?>
 
   </header>
 
@@ -178,7 +178,7 @@ if (!$conn) {
     </div>
 
   <!-- Footer -->
-    <?php include 'inc_files/footer.inc'; ?>
+    <?php include 'footer.inc'; ?>
 
 </body>
 
