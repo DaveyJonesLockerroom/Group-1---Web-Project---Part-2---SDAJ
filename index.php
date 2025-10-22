@@ -4,11 +4,11 @@ session_start();                /* to store information to be used across multip
 include_once 'env_loader.php';
 include_once 'conn.php';
 
-include 'home_header.inc';
+include 'inc_files/home_header.inc';
 
-include 'home_navbar.inc';
+include 'inc_files/home_navbar.inc';
            
-include 'alert.inc'; ?>
+include 'inc_files/error_alert.inc'; ?>
 
     <div class="index_container">
         
@@ -29,7 +29,7 @@ include 'alert.inc'; ?>
                 
 </main>
                     
-            <?php include 'home_footer.inc';?>
+            <?php include 'inc_files/home_footer.inc';?>
 
          
     </div>    
