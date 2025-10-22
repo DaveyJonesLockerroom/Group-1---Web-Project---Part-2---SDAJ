@@ -105,8 +105,8 @@ $create_table_sql = "
 
             if(mysqli_query($dbcon, $insert_sql)) {
                 $apply_num = mysqli_insert_id($dbcon) ; // Get foreign key returns the auto generated apply_num by inserting or updating a table
-                $stmt = $dbcon->prepare("INSERT INTO skills (apply_num, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                
+                $stmt = $dbcon->prepare("INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                    
 
                 if(!is_array($skills)) {
                     $skills = [$skills]; // Convert to array if it's a single value
@@ -116,52 +116,18 @@ $create_table_sql = "
                 //in_array to check if skill is in the array of skills selected
                 
 
-                //skill1 is the value searching for and $skills is the array to search in
-
-                
-
-                // if(in_array("skill1", $skills)) {
-                //     $skill1 = 1;
-                // } else {
-                //     $skill1 = 0;
-                // }
-                // if(in_array("skill2", $skills)) {
-                //     $skill2 = 1;
-                // } else {
-                //     $skill2 = 0;
-                // }
-                // if(in_array("skill3", $skills)) {
-                //     $skill3 = 1;
-                // } else {
-                //     $skill3 = 0;
-                // }
-                // if(in_array("skill4", $skills)) {
-                //     $skill4 = 1;
-                // } else {
-                //     $skill4 = 0;
-                // }
-                // if(in_array("skill5", $skills)) {
-                //     $skill5 = 1;
-                // } else {
-                //     $skill5 = 0;
-                // }
-                // if(in_array("skill6", $skills)) {
-                //     $skill6 = 1;
-                // } else {
-                //     $skill6 = 0;
-                // }
-                
-                $skill1 = in_array("skill1", $skills) ? 1 : 0;
-                $skill2 = in_array("skill2", $skills) ? 1 : 0;
-                $skill3 = in_array("skill3", $skills) ? 1 : 0;
-                $skill4 = in_array("skill4", $skills) ? 1 : 0;
-                $skill5 = in_array("skill5", $skills) ? 1 : 0;
-                $skill6 = in_array("skill6", $skills) ? 1 : 0;
+                //skill1 is the value searching for and $skills is the array to search in                
+                $cpp = in_array("cpp", $skills) ? 1 : 0;
+                $java = in_array("java", $skills) ? 1 : 0;
+                $python = in_array("python", $skills) ? 1 : 0;
+                $three_d = in_array("three_d", $skills) ? 1 : 0;
+                $two_d = in_array("two_d", $skills) ? 1 : 0;
+                $roadmap = in_array("roadmap", $skills) ? 1 : 0;
                 
 
 
-                $insert_skills_sql = "INSERT INTO skills (apply_num, skill1, skill2, skill3, skill4, skill5, skill6)
-                                    VALUES ('$apply_num', '$skill1', '$skill2', '$skill3', '$skill4', '$skill5', '$skill6')";
+                $insert_skills_sql = "INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap)
+                                    VALUES ('$apply_num', '$cpp', '$java', '$python', '$three_d', '$two_d', '$roadmap')";
 
                 if(mysqli_query($dbcon, $insert_skills_sql)) { //executes an sql query on the database
                     //$apply_num = mysqli_insert_id($dbcon); // Gets the foreign key
@@ -184,7 +150,7 @@ $create_table_sql = "
                    
                     echo "<p><strong>Your Skill Selections:</strong></p>";
                     $skill_list = [];
-                    if($skill1) {
+                    if($cpp) {
                         $skill_list[] = "C++";
                         echo "<p>C++</p>";
                     }
@@ -192,7 +158,7 @@ $create_table_sql = "
                         $skill_list[] = "";
                     }
 
-                    if($skill2) {
+                    if($java) {
                         $skill_list[] = "Java";
                         echo "<p>Java</p>";
                     }
@@ -200,7 +166,7 @@ $create_table_sql = "
                         $skill_list[] = "";
                     }
                     
-                    if($skill3) {
+                    if($python) {
                         $skill_list[] = "Python";
                         echo "<p>Python</p>";
                     }
@@ -208,7 +174,7 @@ $create_table_sql = "
                         $skill_list[] = "";
                     }
                     
-                    if($skill4) {
+                    if($three_d) {
                         $skill_list[] = "3D Modeling";
                         echo "<p>3D Modeling</p>";
                     }
@@ -216,7 +182,7 @@ $create_table_sql = "
                         $skill_list[] = "";
                     }
                    
-                    if($skill5) {
+                    if($two_d) {
                         $skill_list[] = "2D Modeling";
                         echo "<p>2D Modeling</p>";
                     }
@@ -224,7 +190,7 @@ $create_table_sql = "
                         $skill_list[] = "";
                     }
                     
-                    if($skill6) {
+                    if($roadmap) {
                         $skill_list[] = "Roadmap";
                         echo "<p>Roadmap</p>";
                         
