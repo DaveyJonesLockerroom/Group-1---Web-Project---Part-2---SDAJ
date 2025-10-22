@@ -62,7 +62,12 @@ $create_table_sql = "
 
         // ensure user filled in all required fields
         $errors = [];
-        if(empty($reference_number)) $errors[] = "Please enter the VALID Job Reference Number.";
+        //if(empty($reference_number)) $errors[] = "Please enter the VALID Job Reference Number.";
+
+        if(!in_array($reference_number, ["LP032", "GD045", "AR058"])) {
+            $errors[] = "Please enter a VALID Job Reference Number (e.g. LP032).";
+        }
+
         if(empty($firstname)) $errors[] =  "Please enter your First Name.";
         if(empty($lastname)) $errors[] =  "Please enter your Last Name.";
 

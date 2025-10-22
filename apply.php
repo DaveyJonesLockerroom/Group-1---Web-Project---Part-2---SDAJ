@@ -65,9 +65,10 @@ if (!$conn) {
     <form action="process_eoi.php" method="POST" id="form">
         
         <!--Job Reference Number-->
+        <!-- https://www.w3schools.com/tags/tag_datalist.asp -->
         <div class="form-textinput">
         <label for="reference_number">Job Reference Number:</label>
-        <input type="text" pattern="[A-Za-z0-9]{5}" id="reference_number" name="reference_number" maxlength="5" placeholder="e.g. AB123" list="reference" required>
+        <input type="text" pattern="[A-Za-z0-9]{5}" id="reference_number" name="reference_number" maxlength="5" placeholder="e.g. LP032" list="reference" required>
         <datalist id="reference">
             <option value="LP032"></option>
             <option value="GD045"></option>
