@@ -215,8 +215,8 @@ $create_table_sql = "
         }
 
 
-        
+        session_unset();
+        session_destroy();
         mysqli_close($dbcon);
-    
 
     }
