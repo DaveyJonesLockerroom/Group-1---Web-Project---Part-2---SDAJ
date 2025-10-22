@@ -1,6 +1,6 @@
 <?php if (isset($_SESSION['error'])): ?>
 <input type="checkbox" id="close-alert">
-<div class="alert">
+<div class="error_alert">
   <label for="close-alert" class="close">&times;</label>
   <p><?= htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') ?></p>
 </div>
