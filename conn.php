@@ -8,7 +8,7 @@ $sql_db = getenv('DB_NAME');
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {
-          error_log("Database connection failed: " . mysqli_connect_error());
+          error_log("Database connection failed: " . mysqli_connect_error()); /* logs error message to server log for debugging */
           echo "<p> Connection to database failed: Please try again later. </p>";
           exit;
 }

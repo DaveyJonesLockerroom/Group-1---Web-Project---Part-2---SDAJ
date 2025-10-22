@@ -192,7 +192,7 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
 
 ‌text overlay on top of image */
 .image_text{
-    border: 0.15em solid;
+    border: 0.1em solid;
     border-radius: 0.3em;
     text-align: center;
     position: absolute; /* maybe it's this that's affecting it? */

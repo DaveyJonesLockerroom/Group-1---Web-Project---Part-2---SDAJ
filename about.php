@@ -3,11 +3,11 @@
 session_start();
 
 include_once 'env_loader.php';
-include_once 'conn.php';
+include_once 'conn.php'; 
 
 
 if (!$conn) {
-          die("<p> We are experiencing technical difficulties, please try again later</p>");
+          die("<p> We are experiencing technical difficulties, please try again later</p>"); /* stops database connection if there is an error with a generic comment */
 }
 ?>
 
@@ -86,21 +86,19 @@ if (!$conn) {
   <?php
   
   $stmt = $conn->prepare('SELECT * FROM `about`'); /* preparing statments to prevent SQL injections or malicious data inputs */
-  /*$stmt->bind_param('s', $member_name); --why does this make the table disappear even when I put in parameters*/
   $stmt->execute();
-  $result = $stmt->get_result(); /* code made with guidance from Mysqli SELECT query with prepared statements. 
-                                  (2025). Treating PHP Delusions. https://phpdelusions.net/mysqli_examples/prepared_select?utm_source=chatgpt.com */
+  $result = $stmt->get_result(); /* getting results from the executed statement */
+  
 
-
-      if (mysqli_num_rows($result) > 0) {
+      if (mysqli_num_rows($result) > 0) { /* checks if there are results from the quiery */
           echo "<table class='contributions' aria-label = 'Member contributions for project 1 and project 2'>"; #ARIA accessibility 
           echo "<thead>";
           echo "<tr><th>Name</th><th>Project 1 Contributions</th><th>Project 2 Contributions</th></tr>";
           echo "</thead><tbody>";
 
-          while ($row = mysqli_fetch_assoc($result)) {
+          while ($row = mysqli_fetch_assoc($result)) { /* fetches associated  array */
               echo "<tr>";
-              echo "<td class='member_names'>" . htmlspecialchars($row['member_name']) . "</td>";
+              echo "<td class='member_names'>" . htmlspecialchars($row['member_name']) . "</td>"; /* htmlspecialchars to prevent XSS attacks */
               echo "<td class='project_1'>" . nl2br(htmlspecialchars($row['project_1_contributions'])) . "</td>";
               echo "<td class='project_2'>" . nl2br(htmlspecialchars($row['project_2_contributions'])) . "</td>"; # nl2br = creates display separation 
               echo "</tr>";
