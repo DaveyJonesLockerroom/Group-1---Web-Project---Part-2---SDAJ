@@ -29,19 +29,19 @@
     include 'inc_files/alert.inc'; ?>
 
     <section id="login-main">
-        <h1> Login to Your Account </h1>
+        <h1 class="register-heading"> Log in to your account </h1>
 
-        <form action="process_login.php" method="POST">
+        <form action="process_login.php" class="login-form" method="POST">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="text" class="login-textbox" id="username" name="username" placeholder="Username" required>
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" class="login-textbox" id="password" name="password" placeholder="Password" required>
             <br>
-            <input type="submit" value="Login">
+            <input type="submit" class="login_button" value="Login">
         </form>
 
-        <!-- <?php 
+        <?php 
             
             if (isset($_SESSION['success'])) {
                 echo '<div class="success">' . htmlspecialchars($_SESSION['success'], ENT_QUOTES, 'UTF-8') . '</div>';
@@ -53,8 +53,8 @@
             }
 
 
-        ?>         -->
-        <p> Need an account? <a href="register.php">Register here</a>. </p>
+        ?> 
+        <a href="register.php" class="register-link">Need an account? <span class="highlight-link">Register here</span></a>
 
     </section>
 

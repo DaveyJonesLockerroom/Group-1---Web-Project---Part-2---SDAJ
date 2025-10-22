@@ -17,8 +17,9 @@ require_once ('settings.php');
 
 <body>
     <?php include 'inc_files/header.inc'; ?>
+    <?php include 'inc_files/navbar.inc'; ?>
     <section id="register-main">
-        <h1> Register a New Account </h1>
+        <h1 class="register-heading"> Register a New Account </h1>
 <?php
 // Database connection settings
 
@@ -75,16 +76,16 @@ $conn->close();
                 echo '<div class="error">'.htmlspecialchars($error, ENT_QUOTES, 'UTF-8').'</div>';
             }
         ?>
-        <form method="POST">
+        <form method="POST" class="login-form">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter username" required>
+            <input type="text" class="login-textbox" id="username" name="username" placeholder="Enter username" required>
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" required>
+            <input type="password" class="login-textbox" id="password" name="password" placeholder="Enter password" required>
             <br>
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" class="login_button">
         </form>
-        <p>Already have an account? <a href="login.php">Login here</a></p>
+        <a href="login.php" class="register-link">Already have an account? <span class="highlight-link">Login here</span></a>
     </section>
     <?php include 'inc_files/footer.inc'; ?>
 

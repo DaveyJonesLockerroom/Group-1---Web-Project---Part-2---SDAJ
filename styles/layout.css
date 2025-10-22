@@ -962,6 +962,84 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
 
 
 
+/* LOGIN/REGISTER PAGE START ----------------------------------------------------------------
+--------------------------------------------------------------------------------------  */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem auto;
+  border: 2px dashed #ff0000;
+  border-radius: 0.3rem;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  width: 40%;
+}
+
+.login_button {
+  background-color: #ff0000;
+  color: black;
+  border: 2px solid #ff4d4d;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 95%;
+}
+
+.login_button:hover {
+  background-color: #860303;
+  color: white;
+}
+
+.login-textbox {
+  width: 95%;
+  background-color: #0d0d0d;
+  border: 2px solid #ff0000;
+  color: #ffcccc;
+  padding: 0.4rem;
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 0.4rem;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  color: #ff4d4d;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+}
+.highlight-link {
+  margin-left: 0.5rem;
+  color: gold;
+  font-weight: bold;
+}
+
+.register-heading {
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 2rem;
+  color: #ff4d4d;
+  border-bottom: 2px dashed #ff0000;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+/* LOGIN/REGISTER PAGE END ----------------------------------------------------------------
+--------------------------------------------------------------------------------------  */
+
+
+
+
+
 
 /* RESPONSIVE LAYOUTS START ----------------------------------------------------------------
 --------------------------------------------------------------------------------------  */
