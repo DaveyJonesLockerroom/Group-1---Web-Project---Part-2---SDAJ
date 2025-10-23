@@ -382,6 +382,8 @@ th, td {
   text-align: center;
 }
 
+
+
 /* ---------- Hiring process ---------- */
 .hiring-process {
   max-width: 50rem; /* 800px */
@@ -426,6 +428,25 @@ th, td {
   background-color: #860303;
   color: #ffffff;
 }
+
+
+/* NEW SECTION FOR SQL TABLE */
+
+.jobs_listings {
+  width: 90%;
+  margin: 2rem auto;
+  background-color: #111;
+  color: #ff0000;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace
+}
+
+.jobs_listings th {
+   font-size: 1.5vw;
+  text-align: left;
+}
+
 
 
 

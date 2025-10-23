@@ -142,3 +142,80 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+/*--------------------------------------------------------------*/
+/* Jobs.php SQL table data */
+/*--------------------------------------------------------------*/
+
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Oct 23, 2025 at 08:02 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `group1_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` int(11) NOT NULL,
+  `reference_number` varchar(10) NOT NULL,
+  `Job Title/Salary` varchar(100) NOT NULL,
+  `Description` text NOT NULL,
+  `Responsibilities & Requirements` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `reference_number`, `Job Title/Salary`, `Description`, `Responsibilities & Requirements`) VALUES
+(1, 'LP032', 'Lead Game Programmer - $120,000 - $150,000', 'Oversees the programming team and ensures code quality and performance. Reports to: Game Director.', 'Responsibilities: Develop ideas and gameplay systems that fit the overall design of projects. \r\n  Create engaging level designs, puzzles, and mechanics for 2D environments. \r\n  Work closely with programmers and artists to ensure the design vision is faithfully executed. \r\n  Essential Requirements: 5+ years experience in game design or interactive media. \r\n  Proficiency with mainstream design tools such as Unity, Unreal Engine. \r\n  Strong understanding of gameplay flow, pacing, and player engagement. \r\n  Preferable Skills: Experience in tile-based level editors or retro game mechanics design. \r\n  Experience with leading a team and project management.'),
+(2, 'GD045', 'Game Designer - $90,000 - $110,000', 'Responsible for designing the core mechanics of our games. Reports to: Lead Game Designer.', 'Responsibilities: Create engaging level designs, puzzles, and mechanics for 2D environments. \r\n  Develop ideas that keep the experience challenging, while still fair. \r\n  Essential Requirements: 2+ years experience in game design. \r\n  Proficiency with design tools such as Unity, Unreal Engine, or Godot. \r\n  Willing to work well with a team and take constructive criticism. \r\n  Preferable Skills: Experience in tile-based level editors or retro game mechanics design. \r\n  Knowledge of classic game genres: platformers, beat ’em ups, and RPGs.'),
+(3, 'AR058', '2D Artist - $80,000 - $95,000', 'Create 2D models and animations for our games. Reports to: Art Director.', 'Responsibilities: Create concept art and character designs that fit the game’s aesthetic. \r\n  Produce high-quality 2D assets including sprites, backgrounds, and UI elements. \r\n  Collaborate with designers and programmers to ensure art assets are implemented correctly. \r\n  Essential Requirements: 2+ years experience in 2D art and animation. \r\n  Proficiency with graphic design software such as Adobe Photoshop, Illustrator, or similar tools. \r\n  Preferable Skills: Experience with pixel art and animation techniques. \r\n  Knowledge of game development pipelines and asset optimization.');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

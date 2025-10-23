@@ -67,103 +67,36 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
         <!-- Table  -->
         <section aria-labelledby="jobs-title" class="jobs-section">
             <h2 id="jobs-title" class="table-title">Job Listings</h2>
-            <div class="table-wrap">
-                    <table id="job-listings">
-                        <caption class="table-title">Available job openings at SDAJ</caption>
-                        <tr>
-                            <th class="ref-column">Reference Number</th>
-                            <th class="title-column">Job Title - Salary</th>
-                            <th class="desc-column">Description</th>
-                            <th class="resp-column">Responsibilities & Requirements</th>
-                        </tr>
-                        <tr>
-                            <td>LP032</td>
-                            <td>Lead Game Programmer - $120,000 - $150,000</td>
-                            <td>Oversees the programming team and ensures code quality and performance.
-                             <br> <br>
-                            <strong>Reports to:</strong> Game Director</td>
+        
+            <?php 
 
-                            <td>
-                                <h4>Responsibilities</h4>
-                                <ul>
-                                    <li>Develop ideas and gameplay systems that fit the overall design of projects.</li>
-                                    <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
-                                    <li>Work closely with programmers and artists to ensure the design vision is faithfully executed.</li>
-                                </ul>
+                $stmt = $conn->prepare('SELECT * FROM `jobs`'); 
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-                                <h4>Essential Requirements</h4>
-                                <ul>
-                                    <li>5+ years experience in game design or interactive media.</li>
-                                    <li>Proficiency with mainstream design tools such as Unity, Unreal Engine</li>
-                                    <li>Strong understanding of gameplay flow, pacing, and player engagement.</li>
-                                </ul>
+                if (mysqli_num_rows($result) > 0) { /* checks if there are results from the quiery */
+                    echo "<table class='jobs_listings' aria-label = 'jobs listing for gaming development company'>"; #ARIA accessibility 
+                    echo "<thead>";
+                    echo "<tr><th>Reference Number</th><th>Job Title/Salary</th><th>Description</th><th>Responsibilites & Requirements</th></tr>";
+                    echo "</thead><tbody>";
 
-                                <h4>Preferable Skills</h4>
-                                <ul>
-                                    <li>Experience in tile-based level editors or retro game mechanics design.</li>
-                                    <li>Experience with leading a team and project management.</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>GD045</td>
-                            <td>Game Designer - $90,000 - $110,000</td>
-                            <td>Responsible for designing the core mechanics of our games.
-                                <br> <br>
-                            <strong>Reports to:</strong> Lead Game Designer.
-                            </td>
-                            <td>
-                                <h4>Responsibilities</h4>
-                                <ul>
-                                    <li>Create engaging level designs, puzzles, and mechanics for 2D environments.</li>
-                                    <li>Develop ideas that keep the experience challening, while still fair.</li>
-                                </ul>
+                    while ($row = mysqli_fetch_assoc($result)) { /* fetches associated  array */
+                        echo "<tr>";
+                        echo "<td class='ref_number'>" . htmlspecialchars($row['reference_number']) . "</td>"; /* htmlspecialchars to prevent XSS attacks */
+                        echo "<td class='job_title'>" . nl2br(htmlspecialchars($row['Job Title/Salary'])) . "</td>";
+                        echo "<td class='description'>" . nl2br(htmlspecialchars($row['Description'])) . "</td>"; # nl2br = creates display separation 
+                        echo "<td class='duties'>" . nl2br(htmlspecialchars($row['Responsibilities & Requirements'])) . "</td>";
+                        echo "</tr>";
+                    }
 
-                                <h4>Essential Requirements</h4>
-                                <ul>
-                                    <li>2+ years experience in game design</li>
-                                    <li>Proficiency with design tools such as Unity, Unreal Engine, or Godot.</li>
-                                    <li>Willing to work well with a team and take constructive criticism.</li>
-                                </ul>
+                    echo "</tbody></table>";
+                } else {
+                    echo "<p>Database query could not be prepared.</p>";
+                }
 
-                                <h4>Preferable Skills</h4>
-                                <ul>
-                                    <li>Experience in tile-based level editors or retro game mechanics design.</li>
-                                    <li>Knowledge of classic game genres: platformers, beat ’em ups, and RPGs.</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>AR058</td>
-                            <td>2D Artist - $80,000 - $95,000</td>
-                            <td>Create 2D models and animations for our games.
-                                <br> <br>
-                            <strong>Reports to:</strong> Art Director.
-                            </td>
-                            <td>
-                                <h4>Responsibilities</h4>
-                                <ul>
-                                    <li>Create concept art and character designs that fit the game’s aesthetic.</li>
-                                    <li>Produce high-quality 2D assets including sprites, backgrounds, and UI elements.</li>
-                                    <li>Collaborate with designers and programmers to ensure art assets are implemented correctly.</li>
-                                </ul>
-                                <h4>Essential Requirements</h4>
-                                <ul>
-                                    <li>2+ years experience in 2D art and animation.</li>
-                                    <li>Proficiency with graphic design software such as Adobe Photoshop, Illustrator, or similar tools.</li>
-                                </ul>
+                mysqli_close($conn);
 
-                                <h4>Preferable Skills</h4>
-                                <ul>
-                                    <li>Experience with pixel art and animation techniques.</li>
-                                    <li>Knowledge of game development pipelines and asset optimization.</li>
-                                </ul>
-                            </td>
-                            
-                            
-                        </tr>
-                    </table>
-            </div>
+            ?>
         </section>
 
         <!-- Ordered list: Hiring process -->
