@@ -23,6 +23,13 @@ $create_table_sql = "
 <?php
     session_start();
     require_once('settings.php');
+    $redirect = "index.php";
+    $required_fields = ["reference_number", "firstname", "lastname", "dateofbirth", "gender", "address", "suburb", "state", "postcode", "email", "phonenumber"];
+    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+        header("Location: $redirect");
+        exit();
+        }
+
 
     function sanitise_input($data) {
         $data = trim($data);
