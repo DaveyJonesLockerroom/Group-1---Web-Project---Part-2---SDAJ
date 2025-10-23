@@ -29,7 +29,12 @@ $create_table_sql = "
         header("Location: $redirect");
         exit();
         }
-
+    foreach ($required_fields as $field) {
+        if (empty($_POST[$field])) {
+            header("Location: $redirect");
+            exit();
+        }
+    }
 
     function sanitise_input($data) {
         $data = trim($data);
