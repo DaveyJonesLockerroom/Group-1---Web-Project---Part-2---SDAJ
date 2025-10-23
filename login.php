@@ -46,8 +46,7 @@
             if (isset($_SESSION['success'])) {
                 echo '<div class="success">' . htmlspecialchars($_SESSION['success'], ENT_QUOTES, 'UTF-8') . '</div>';
                 unset($_SESSION['success']);
-                session_regenerate_id(true);
-                $_SESSION['username'] = $user['username'];
+
             }
             if (isset($_SESSION['error'])) {
                 echo '<div class="error">'. htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') .'</div>';

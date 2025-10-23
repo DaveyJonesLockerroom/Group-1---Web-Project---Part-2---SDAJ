@@ -26,6 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($input_password, $db_password )) { //password_verify matches hashes
             $_SESSION['username'] = $db_username;
             $_SESSION['user_status'] = $db_user_status;
+            session_regenerate_id(true);
+            $_SESSION['username'] = $user['username'];
             $stmt->close();
             $conn->close();
             header('Location: ' . ($db_user_status === 'Admin' ? 'manage.php' : 'index.php'));
