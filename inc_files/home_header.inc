@@ -20,12 +20,18 @@
                 color: #0d0d0d; 
             }
 
+            .image_text:hover h1,
+            .image_text:hover p {
+                color: #0d0d0d; 
+                transition: color 0.4s ease-in-out; /* reference the wesbite where you learned this */
+            }
+
         </style>
     </head>
     
     <body>
 
          <header class="header-logo"> <!--Company logo in header-->
-                <img src="images/SDAJ_logo.png" alt="company logo" style="width: 200px; height: auto;"> <!--logo reference - https://cooltext.com/Logo-Design-Fantasy-->
+                <img src="images/SDAJ_logo.png" alt="company logo" style="width: 100px; height: auto;"> <!--logo reference - https://cooltext.com/Logo-Design-Fantasy-->
          </header>
     

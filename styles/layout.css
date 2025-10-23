@@ -165,15 +165,11 @@ footer nav a:hover {
 }
 
 .dragon_image{
-    text-align: center;
-    border: 0.50em inset;
-    border-radius: 0.3em; 
-    display: flex; /*lines everything up in a row*/
-    justify-content: center; /*aligns flex items to the center*/
-    margin: 2% auto; /*makes everything align with dragon image*/
     width: 87%;
-    position: relative;
-    height: auto; /* maintain aspect ratio */
+    height: auto;
+    display: block;
+    margin: 2% auto;
+    border: 0.5em inset;
     border-radius: 0.3em;
 }
 
@@ -198,25 +194,28 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
 ‌text overlay on top of image */
 .dragon_image_container{
     position: relative; 
+    text-align: center;
 }
 
 
-/*This line of code was referenced from: 
-How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https://www.bannerbear.com/blog/how-to-overlay-text-on-an-image-in-html-and-css/
 
-‌text overlay on top of image */
-.image_text{
-    border: 0.1em solid;
-    border-radius: 0.3em;
-    text-align: center;
-    position: absolute; /* maybe it's this that's affecting it? */
-    top: 88%; 
-    left: 20%; 
-    right: 20%; 
-    font-size: 4vw;
-    font-weight: bold;
-    opacity: 0; 
-    animation: fadeIn 2s ease-in forwards; /* animation */
+/*‌text overlay on top of image */
+/* Overlay text styling */
+
+.image_text {
+  position: absolute;
+  bottom: 10%; /* Positions text near the bottom of the dragon image */
+  left: 50%;
+  transform: translateX(-50%); /* 23/10/2025 - this command was learned from Chatgpt (Prompt = "How to align element with animation") and W3Schools.com. (2025). W3schools.com. https://www.w3schools.com/cssref/func_translatex.php */
+  width: 70%;
+  text-align: center;
+  border: 0.15em solid red;
+  border-radius: 0.3em;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #ff4d4d;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0.1em;
+  animation: fadeIn 2s ease-in forwards;
 }
 
 /* animation learned from the following video - Kalman Web Design. (2024, March 21). 
@@ -226,15 +225,21 @@ How to Create CSS Fade Animation with Keyframes | Step-by-step Tutorial. YouTube
   100% { opacity: 1; }
 }
 
-
-h1{
-  font-size: 2rem;
+/* merge h1 and paragragh into one element to make it more consistant */
+.image_text h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.1em;
+  color: #ff4d4d;
 }
 
-#company_description{
+.image_text p {
   font-size: 1rem;
-  
+  color: #ff4d4d;
+  line-height: 1.5;
+  margin: 0;
 }
+
+
 
 .index_footer_caption {
     text-align: center; 
