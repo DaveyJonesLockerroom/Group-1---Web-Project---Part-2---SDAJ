@@ -1,28 +1,44 @@
 
-<!-- 
-$create_table_sql = "
-            CREATE TABLE IF NOT EXISTS eoi (
-                apply_num INT AUTO_INCREMENT PRIMARY KEY,
-                reference_number VARCHAR(5) NOT NULL,
-                firstname TEXT NOT NULL,
-                lastname TEXT NOT NULL,
-                dateofbirth DATE NOT NULL,
-                gender VARCHAR(10) NOT NULL,
-                address VARCHAR(100) NOT NULL,
-                suburb VARCHAR(50) NOT NULL,
-                state VARCHAR(30) NOT NULL,
-                postcode VARCHAR(10) NOT NULL,
-                email VARCHAR(100) NOT NULL,
-                phonenumber VARCHAR(15) NOT NULL,
-                otherskill VARCHAR(100)
-            );
-        "; -->
-
-
 
 <?php
     session_start();
     require_once('settings.php');
+
+    //CREATE EOI table
+    $create_table_sql = "CREATE TABLE IF NOT EXISTS eoi (
+        apply_num INT AUTO_INCREMENT PRIMARY KEY,
+        reference_number ENUM('LP032', 'GD045', 'AR058') NOT NULL,
+        firstname TEXT NOT NULL,
+        lastname TEXT NOT NULL,
+        dateofbirth DATE NOT NULL,
+        gender SET('Male', 'Female') NOT NULL,
+        address VARCHAR(100) NOT NULL,
+        suburb VARCHAR(100) NOT NULL,
+        state VARCHAR(100) NOT NULL,
+        postcode INT(4) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        phonenumber BIGINT(15) NOT NULL,
+        otherskill VARCHAR(100)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    ";
+
+    // Create Skills table
+    $create_table_skill = "CREATE TABLE IF NOT EXISTS skills (
+        skill_id INT AUTO_INCREMENT PRIMARY KEY,
+        apply_num INT NOT NULL,
+        cpp TINYINT(1) DEFAULT 0,
+        java TINYINT(1) DEFAULT 0,
+        python TINYINT(1) DEFAULT 0,
+        three_d TINYINT(1) DEFAULT 0,
+        two_d TINYINT(1) DEFAULT 0,
+        roadmap TINYINT(1) DEFAULT 0,
+        FOREIGN KEY (apply_num) REFERENCES eoi(apply_num)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    ";
+
+    // this prevents direct access to process_eoi.php without going through apply.php
     $redirect = "index.php";
     $required_fields = ["reference_number", "firstname", "lastname", "dateofbirth", "gender", "address", "suburb", "state", "postcode", "email", "phonenumber"];
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -63,12 +79,9 @@ $create_table_sql = "
         $email = sanitise_input($_POST["email"]);
         $phonenumber = sanitise_input($_POST["phonenumber"]); 
 
-        
-        
         $skills = isset($_POST["skills"]) ? $_POST["skills"] : []; // if more than one it will be an array else empty (is used for check boxes)
         
-        
-        //$otherskill = sanitise_input($_POST["otherskill"]);
+        $otherskills = isset($_POST["otherskills"]) ? sanitise_input($_POST["otherskills"]) : ''; //if the fiekd is not set assign empty string
 
         
 
@@ -117,8 +130,8 @@ $create_table_sql = "
         
             // $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber)
             //    VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";        
-            $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber)
-                VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";
+            $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber, otherskills)
+                VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber', '$otherskills')";
 
             if(mysqli_query($dbcon, $insert_sql)) {
                 $apply_num = mysqli_insert_id($dbcon) ; // Get foreign key returns the auto generated apply_num by inserting or updating a table
@@ -215,15 +228,14 @@ $create_table_sql = "
                     else {
                         $skill_list[] = "";
                     }
-
+                    
+                    echo "<p>Other Skills: $otherskills</p>";
                 }
                 
             } 
             else {
                 echo "<p>Insertion failed: " . mysqli_error($dbcon) . "</p>";
             }
-
-        
         }
 
 

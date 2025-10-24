@@ -162,9 +162,9 @@ if (!$conn) {
            
         </div>
         <div class="otherskills">
-            <label for="otherskill" style="color: red;">Other Skills</label>
+            <label for="otherskills" style="color: red;">Other Skills</label>
             <br>
-            <textarea name="otherskill" id="otherskill" rows="5" cols="100" placeholder="If you selected Other for your state please enter the state that you are in HERE, along with your other skills."></textarea>
+            <textarea name="otherskills" id="otherskills" rows="5" cols="100" placeholder="If you selected Other for your state please enter the state that you are in HERE, along with your other skills."></textarea>
         </div>
             
         </div>
