@@ -65,23 +65,23 @@
     }  
     else if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $reference_number = sanitise_input($_POST["reference_number"]);     
-        $firstname = sanitise_input($_POST["firstname"]);
-        $lastname = sanitise_input($_POST["lastname"]);
-        $dateofbirth = sanitise_input($_POST["dateofbirth"]);  
+        $reference_number = $_POST["reference_number"];     
+        $firstname = $_POST["firstname"];
+        $lastname = $_POST["lastname"];
+        $dateofbirth = $_POST["dateofbirth"];  
 
-        $gender = sanitise_input($_POST["gender"]);
+        $gender = $_POST["gender"];
 
-        $address = sanitise_input($_POST["address"]);   
-        $suburb = sanitise_input($_POST["suburb"]);    
-        $state = sanitise_input($_POST["state"]);
-        $postcode = sanitise_input($_POST["postcode"]);
-        $email = sanitise_input($_POST["email"]);
-        $phonenumber = sanitise_input($_POST["phonenumber"]); 
+        $address = $_POST["address"];   
+        $suburb = $_POST["suburb"];    
+        $state = $_POST["state"];
+        $postcode = $_POST["postcode"];
+        $email = $_POST["email"];
+        $phonenumber = $_POST["phonenumber"]; 
 
         $skills = isset($_POST["skills"]) ? $_POST["skills"] : []; // if more than one it will be an array else empty (is used for check boxes)
         
-        $otherskills = isset($_POST["otherskills"]) ? sanitise_input($_POST["otherskills"]) : ''; //if the fiekd is not set assign empty string
+        $otherskills = isset($_POST["otherskills"]) ? $_POST["otherskills"] : ''; //if the fiekd is not set assign empty string
 
         
 
