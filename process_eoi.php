@@ -39,19 +39,12 @@
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
 
-    // this prevents direct access to process_eoi.php without going through apply.php
-    $redirect = "index.php";
-    $required_fields = ["reference_number", "firstname", "lastname", "dateofbirth", "gender", "address", "suburb", "state", "postcode", "email", "phonenumber"];
+    // this prevents direct access to process_eoi.php without going through apply.php 
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header("Location: $redirect");
+        header("Location: apply.php");
         exit();
         }
-    foreach ($required_fields as $field) {
-        if (empty($_POST[$field])) {
-            header("Location: $redirect");
-            exit();
-        }
-    }
+   
 
     function sanitise_input($data) {
         $data = trim($data);
@@ -71,7 +64,8 @@
         $lastname = sanitise_input($_POST["lastname"]);
         $dateofbirth = sanitise_input($_POST["dateofbirth"]);  
 
-        $gender = sanitise_input($_POST["gender"]);
+        //$gender = sanitise_input($_POST["gender"]);
+        $gender = isset($_POST["gender"]) ? sanitise_input($_POST["gender"]) : '';
 
         $address = sanitise_input($_POST["address"]);   
         $suburb = sanitise_input($_POST["suburb"]);    
@@ -98,7 +92,14 @@
         if(empty($lastname)) $errors[] =  "Please enter your Last Name.";
 
         // ensure that this is the right format dd/mm/yyyy else error message
-        if(!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $dateofbirth)) $errors[] = "Please enter your Date of Birth in the correct format (dd/mm/yyyy).";
+        if(!preg_match("/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/", $dateofbirth)) {
+            $errors[] = "Please enter your Date of Birth in the correct format (dd-mm-yyyy).";
+        }
+         else {
+            // Converts dd-mm-yyyy to yyyy-mm-dd for MySQL as SQL uses yyyy-mm-dd format
+            $date_parts = explode('-', $dateofbirth); //splits this string into an array and sepreates by "-" thus date_parts[0] is dd, date_parts[1] is mm, date_parts[2] is yyyy
+            $dateofbirth = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0];
+            }
 
         if(empty($gender)) $errors[] =  "Please select your Gender.";
 
@@ -117,15 +118,20 @@
         if(empty($skills)) {
                     $skills = []; // Ensure it's an array even if no skills are selected
                 }
-        //if(empty($skills)) $errors[] =  "Please select at least one Skill";
-        // $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
+        
+        
+        if(empty($skills)) $errors[] =  "Please select at least one Skill";
+        $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
         if(!empty($errors)) {
             foreach($errors as $error) {//loop through errors array and display each error
                 echo "<p>" . htmlspecialchars($error) . "</p>";
             }
                 echo "<p>Please go back and correct the errors.</p>";
+                // https://www.w3schools.com/jsref/met_his_back.asp
+                echo '<button type="button" onclick="history.back()">Go Back</button>'; //goesback to the previous page without deleting everything
                 }
+        
         else {
             
         

@@ -12,12 +12,12 @@ if (!$conn) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php include 'inc_files\header.inc'; ?>
+    
         <style>
             .top_page { 
                 /* reference https://deepai.org/machine-learning-model/text2img */
@@ -88,7 +88,7 @@ if (!$conn) {
         <!--Birthday-->
         <div class="form-textinput">
             <label for="dateofbirth">Date of Birth</label>
-            <input type="text" name= "dateofbirth" id="dateofbirth" pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}" placeholder="dd/mm/yyyy" required>
+            <input type="text" name= "dateofbirth" id="dateofbirth" pattern="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-\d{4}" placeholder="dd-mm-yyyy" required>
         </div>
 
         <!--Gender-->
