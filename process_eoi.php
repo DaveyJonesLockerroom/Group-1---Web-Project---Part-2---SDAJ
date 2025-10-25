@@ -53,6 +53,56 @@
         return $data;
     }
 
+    echo '<DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <title>Apply Now</title >
+                        <meta charset="UTF-8">
+                        <meta name="eoipage" content="eoi page">
+                        <style>
+                            
+                            body {
+                                font-family: Courier New, Courier, monospace;
+                                text-align: center;
+                                justofy-content: center;
+                                margin: 10%;
+                                padding: 0;
+                                background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+                                color: #ffcccc;
+                                font-size: 1.2em;
+                                
+                            }
+                            h2 {
+                                color:#ff4d4d;
+                            }
+                            p {
+                                font-size: 20px;
+                                color: #ffcccc;
+                            }
+                            a {
+                                color: red;
+                                text-decoration: none;
+                            }
+                            a:hover {
+                                color: white;
+                            }
+                            .back_button {
+                                background-color: red;
+                                color: white;
+                                padding: 10px 20px;
+                                border: solid 1px gold;
+                                border-radius: 2px;
+                                cursor: pointer;
+                            }
+                            .back_button:hover {
+                                background-color: #ffcccc;
+                                color: black;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                    <div class="container">';
+
     $dbcon = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$dbcon) {
         echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
@@ -127,9 +177,9 @@
             foreach($errors as $error) {//loop through errors array and display each error
                 echo "<p>" . htmlspecialchars($error) . "</p>";
             }
-                echo "<p>Please go back and correct the errors.</p>";
+                echo "<p style='color:red;'>Please go back and correct the errors.</p>";
                 // https://www.w3schools.com/jsref/met_his_back.asp
-                echo '<button type="button" onclick="history.back()">Go Back</button>'; //goesback to the previous page without deleting everything
+                echo '<button type="button" class="back_button" onclick="history.back()">Go Back</button>'; //goesback to the previous page without deleting everything
                 }
         
         else {
@@ -168,75 +218,82 @@
 
                 if(mysqli_query($dbcon, $insert_skills_sql)) { //executes an sql query on the database
                     //$apply_num = mysqli_insert_id($dbcon); // Gets the foreign key
+                    
 
-                    echo "<h2>Your submitted details are as follows:</h2>";
-                    echo "<p>Table: $apply_num</p>";
+                    
+
+
+
+                    echo "<h2>Your form is submmitted successfully</h2>";
+                    echo "<p>You will recieve an email confirmation shortly.</p>";
+                    echo "Press Here to return to the <a href='index.php'>Home Page</a>.";
+                    // echo "<p>Table: $apply_num</p>";
                                 
-                    echo "<p>Job Reference Number: $reference_number</p>";
-                    echo "<p>First Name: $firstname</p>";
-                    echo "<p>Last Name: $lastname</p>";
-                    echo "<p>Date of Birth: $dateofbirth</p>";
-                    echo "<p>Gender: $gender</p>";
-                    echo "<p>Address: $address</p>";
-                    echo "<p>Suburb: $suburb</p>";
-                    echo "<p>State: $state</p>";
-                    echo "<p>Postcode: $postcode</p>";
-                    echo "<p>Email: $email</p>";
-                    echo "<p>Phone Number: $phonenumber</p>";
+                    // echo "<p>Job Reference Number: $reference_number</p>";
+                    // echo "<p>First Name: $firstname</p>";
+                    // echo "<p>Last Name: $lastname</p>";
+                    // echo "<p>Date of Birth: $dateofbirth</p>";
+                    // echo "<p>Gender: $gender</p>";
+                    // echo "<p>Address: $address</p>";
+                    // echo "<p>Suburb: $suburb</p>";
+                    // echo "<p>State: $state</p>";
+                    // echo "<p>Postcode: $postcode</p>";
+                    // echo "<p>Email: $email</p>";
+                    // echo "<p>Phone Number: $phonenumber</p>";
                     
                    
-                    echo "<p><strong>Your Skill Selections:</strong></p>";
-                    $skill_list = [];
-                    if($cpp) {
-                        $skill_list[] = "C++";
-                        echo "<p>C++</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
+                    // echo "<p><strong>Your Skill Selections:</strong></p>";
+                    // $skill_list = [];
+                    // if($cpp) {
+                    //     $skill_list[] = "C++";
+                    //     echo "<p>C++</p>";
+                    // }
+                    // else {
+                    //     $skill_list[] = "";
+                    // }
 
-                    if($java) {
-                        $skill_list[] = "Java";
-                        echo "<p>Java</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
+                    // if($java) {
+                    //     $skill_list[] = "Java";
+                    //     echo "<p>Java</p>";
+                    // }
+                    // else {
+                    //     $skill_list[] = "";
+                    // }
                     
-                    if($python) {
-                        $skill_list[] = "Python";
-                        echo "<p>Python</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
+                    // if($python) {
+                    //     $skill_list[] = "Python";
+                    //     echo "<p>Python</p>";
+                    // }
+                    // else {
+                    //     $skill_list[] = "";
+                    // }
                     
-                    if($three_d) {
-                        $skill_list[] = "3D Modeling";
-                        echo "<p>3D Modeling</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
+                    // if($three_d) {
+                    //     $skill_list[] = "3D Modeling";
+                    //     echo "<p>3D Modeling</p>";
+                    // }
+                    // else {
+                    //     $skill_list[] = "";
+                    // }
                    
-                    if($two_d) {
-                        $skill_list[] = "2D Modeling";
-                        echo "<p>2D Modeling</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
+                    // if($two_d) {
+                    //     $skill_list[] = "2D Modeling";
+                    //     echo "<p>2D Modeling</p>";
+                    // }
+                    // else {
+                    //     $skill_list[] = "";
+                    // }
                     
-                    if($roadmap) {
-                        $skill_list[] = "Roadmap";
-                        echo "<p>Roadmap</p>";
+                    // if($roadmap) {
+                    //     $skill_list[] = "Roadmap";
+                    //     echo "<p>Roadmap</p>";
                         
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
+                    // }
+                    // else {
+                    //     $skill_list[] = "";
+                    // }
                     
-                    echo "<p>Other Skills: $otherskills</p>";
+                    // echo "<p>Other Skills: $otherskills</p>";
                 }
                 
             } 
