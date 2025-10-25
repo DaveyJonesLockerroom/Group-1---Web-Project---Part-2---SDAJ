@@ -18,7 +18,8 @@
         postcode INT(4) NOT NULL,
         email VARCHAR(100) NOT NULL,
         phonenumber BIGINT(15) NOT NULL,
-        otherskill VARCHAR(100)
+        otherskill VARCHAR(100),
+        value ENUM('New', 'Current', 'Final')
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
 
