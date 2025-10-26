@@ -33,7 +33,7 @@
         three_d TINYINT(1) NOT NULL,
         two_d TINYINT(1) NOT NULL,
         roadmap TINYINT(1) NOT NULL,
-        FOREIGN KEY (apply_num) REFERENCES eoi(apply_num)
+        ADD CONSTRAINT `test` FOREIGN KEY (`apply_num`) REFERENCES `eoi` (`apply_num`)
             ON DELETE CASCADE
             ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
