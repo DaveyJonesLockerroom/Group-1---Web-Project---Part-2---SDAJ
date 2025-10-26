@@ -25,9 +25,6 @@ include_once 'conn.php';
                  header("Location: index.php");
                  exit();
             }
-                echo '<h1 class="manage-heading"> Welcome to the Management Page, ' 
-                . htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'). '!</h1>';
-                echo '<p class="manage-p"> Here you can manage the website content and user accounts. </p>';
         ?>
 <html lang="en">
 <head>
@@ -46,7 +43,11 @@ include_once 'conn.php';
     <?php include 'inc_files/navbar.inc'; ?>
 
     <section id="manage-main">
-
+                <?php
+                echo '<h1 class="manage-heading"> Welcome to the Management Page, ' 
+                . htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'). '!</h1>';
+                echo '<p class="manage-p"> Here you can manage the website content and user accounts. </p>';
+                ?>
 
                         <!--  Show All EOI Query  -->
 
@@ -59,18 +60,72 @@ include_once 'conn.php';
             </form>
               <?php
                if(isset($_POST['show_eois'])) {
-                $stmt = $conn->prepare("SELECT * FROM eoi");
+                  $stmt = $conn->prepare(
+                "SELECT 
+                e.apply_num,
+                e.reference_number,
+                e.firstname,
+                e.lastname,
+                e.dateofbirth,
+                e.gender,
+                e.address,
+                e.suburb,
+                e.state,
+                e.postcode,
+                e.email,
+                e.phonenumber,
+                e.otherskill,
+                e.value,
+                CONCAT_WS(', ',
+                    CASE WHEN s.cpp = 1 THEN 'C++' END,
+                    CASE WHEN s.java = 1 THEN 'Java' END,
+                    CASE WHEN s.python = 1 THEN 'Python' END,
+                    CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
+                    CASE WHEN s.two_d = 1 THEN '2D Design' END,
+                    CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
+                    e.otherskill
+                ) AS skills_list
+                FROM eoi e
+                LEFT JOIN skills s ON e.apply_num = s.apply_num
+                ");
+
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Index</th><th>EOI Number</th><th>Content</th>';
+                    echo '<tr>
+                        <th>Application Number</th>
+                        <th>Reference Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Suburb</th>
+                        <th>State</th>
+                        <th>Postcode</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Other Skills</th>
+                        <th>Value</th>
+                        </tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row['test_index'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_number'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['eoi_content'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['reference_number'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['firstname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['lastname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['dateofbirth'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['gender'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['address'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['suburb'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['skills_list'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -92,15 +147,57 @@ include_once 'conn.php';
 
             <?php
             if(isset($_POST['list_by_ref'])) {
-                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY eoi_number ASC");
+                $stmt = $conn->prepare(
+                "SELECT 
+                e.apply_num,
+                e.reference_number,
+                e.firstname,
+                e.lastname,
+                e.dateofbirth,
+                e.gender,
+                e.address,
+                e.suburb,
+                e.state,
+                e.postcode,
+                e.email,
+                e.phonenumber,
+                e.otherskill,
+                e.value,
+                CONCAT_WS(', ',
+                    CASE WHEN s.cpp = 1 THEN 'C++' END,
+                    CASE WHEN s.java = 1 THEN 'Java' END,
+                    CASE WHEN s.python = 1 THEN 'Python' END,
+                    CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
+                    CASE WHEN s.two_d = 1 THEN '2D Design' END,
+                    CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
+                    e.otherskill
+                ) AS skills_list
+                FROM eoi e
+                LEFT JOIN skills s ON e.apply_num = s.apply_num
+                ORDER BY e.apply_num Asc
+                ");
+
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
-                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
-                    <th>Other Skills</th><th>Value</th></tr>';
+                    echo '<tr>
+                        <th>Application Number</th>
+                        <th>Reference Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Suburb</th>
+                        <th>State</th>
+                        <th>Postcode</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Other Skills</th>
+                        <th>Value</th>
+                        </tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
                         echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
@@ -115,7 +212,7 @@ include_once 'conn.php';
                         echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['skills_list'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
@@ -139,15 +236,57 @@ include_once 'conn.php';
 
             <?php
             if(isset($_POST['list_by_fname'])) {
-                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY firstname ASC");
+                $stmt = $conn->prepare(
+                "SELECT 
+                e.apply_num,
+                e.reference_number,
+                e.firstname,
+                e.lastname,
+                e.dateofbirth,
+                e.gender,
+                e.address,
+                e.suburb,
+                e.state,
+                e.postcode,
+                e.email,
+                e.phonenumber,
+                e.otherskill,
+                e.value,
+                CONCAT_WS(', ',
+                    CASE WHEN s.cpp = 1 THEN 'C++' END,
+                    CASE WHEN s.java = 1 THEN 'Java' END,
+                    CASE WHEN s.python = 1 THEN 'Python' END,
+                    CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
+                    CASE WHEN s.two_d = 1 THEN '2D Design' END,
+                    CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
+                    e.otherskill
+                ) AS skills_list
+                FROM eoi e
+                LEFT JOIN skills s ON e.apply_num = s.apply_num
+                ORDER BY e.firstname Asc
+                ");
+
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
-                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
-                    <th>Other Skills</th><th>Value</th></tr>';
+                    echo '<tr>
+                        <th>Application Number</th>
+                        <th>Reference Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Suburb</th>
+                        <th>State</th>
+                        <th>Postcode</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Other Skills</th>
+                        <th>Value</th>
+                        </tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
                         echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
@@ -162,7 +301,7 @@ include_once 'conn.php';
                         echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['skills_list'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
@@ -179,21 +318,63 @@ include_once 'conn.php';
                 <?php if (!isset($_POST['list_by_lname'])): ?>
                     <input type="submit" name="list_by_lname" value="List EOI's by Last Name" class="show_button">
                 <?php else: ?>
-                    <input type="submit" name="hide_list_by_lname" value="Hide EOI's by Last Name" clas="hide_button">
+                    <input type="submit" name="hide_list_by_lname" value="Hide EOI's by Last Name" class="hide_button">
                 <?php endif; ?>
             </form>
 
             <?php
             if(isset($_POST['list_by_lname'])) {
-                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY lastname ASC");
+                $stmt = $conn->prepare(
+                "SELECT 
+                e.apply_num,
+                e.reference_number,
+                e.firstname,
+                e.lastname,
+                e.dateofbirth,
+                e.gender,
+                e.address,
+                e.suburb,
+                e.state,
+                e.postcode,
+                e.email,
+                e.phonenumber,
+                e.otherskill,
+                e.value,
+                CONCAT_WS(', ',
+                    CASE WHEN s.cpp = 1 THEN 'C++' END,
+                    CASE WHEN s.java = 1 THEN 'Java' END,
+                    CASE WHEN s.python = 1 THEN 'Python' END,
+                    CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
+                    CASE WHEN s.two_d = 1 THEN '2D Design' END,
+                    CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
+                    e.otherskill
+                ) AS skills_list
+                FROM eoi e
+                LEFT JOIN skills s ON e.apply_num = s.apply_num
+                ORDER BY e.lastname Asc
+                ");
+
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
-                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
-                    <th>Other Skills</th><th>Value</th></tr>';
+                    echo '<tr>
+                        <th>Application Number</th>
+                        <th>Reference Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Suburb</th>
+                        <th>State</th>
+                        <th>Postcode</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Other Skills</th>
+                        <th>Value</th>
+                        </tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
                         echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
@@ -208,7 +389,7 @@ include_once 'conn.php';
                         echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['skills_list'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
@@ -231,16 +412,57 @@ include_once 'conn.php';
 
             <?php
             if(isset($_POST['list_by_fullname'])) {
-                $stmt = $conn->prepare("SELECT * FROM eoi ORDER BY 
-                    CONCAT(eoi_content->>'$.first_name', ' ', eoi_content->>'$.last_name') ASC");
+                $stmt = $conn->prepare(
+                "SELECT 
+                e.apply_num,
+                e.reference_number,
+                e.firstname,
+                e.lastname,
+                e.dateofbirth,
+                e.gender,
+                e.address,
+                e.suburb,
+                e.state,
+                e.postcode,
+                e.email,
+                e.phonenumber,
+                e.otherskill,
+                e.value,
+                CONCAT_WS(', ',
+                    CASE WHEN s.cpp = 1 THEN 'C++' END,
+                    CASE WHEN s.java = 1 THEN 'Java' END,
+                    CASE WHEN s.python = 1 THEN 'Python' END,
+                    CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
+                    CASE WHEN s.two_d = 1 THEN '2D Design' END,
+                    CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
+                    e.otherskill
+                ) AS skills_list
+                FROM eoi e
+                LEFT JOIN skills s ON e.apply_num = s.apply_num
+                ORDER BY CONCAT(e.firstname, ' ', e.lastname) Asc
+                ");
+
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
                     echo '<table>';
-                    echo '<tr><th>Application Number</th><th>Reference Number</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
-                    <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>Postcode</th><th>Email</th><th>Phone Number</th>
-                    <th>Other Skills</th><th>Value</th></tr>';
+                    echo '<tr>
+                        <th>Application Number</th>
+                        <th>Reference Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Suburb</th>
+                        <th>State</th>
+                        <th>Postcode</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Other Skills</th>
+                        <th>Value</th>
+                        </tr>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
                         echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
@@ -255,7 +477,7 @@ include_once 'conn.php';
                         echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($row['otherskills'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($row['skills_list'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
                         echo '</tr>';
                     }
@@ -267,6 +489,7 @@ include_once 'conn.php';
             ?>
 
                     <!-- Delete EOI by Reference -->
+
             <form action="manage.php" method="POST" class="admin-form">
                 <label for="delete_ref">Enter Reference Number to Delete:</label>
                 <input type="text" id="delete_ref" name="delete_ref" required class="admin-textbox" placeholder="EG... LP032">
@@ -276,9 +499,15 @@ include_once 'conn.php';
             <?php
             if (isset($_POST['delete_eoi'])) {
                 $delete_ref = trim($_POST['delete_ref']);
-                $stmt = $conn->prepare("DELETE FROM eoi WHERE eoi_number = ?");
+                $stmt = $conn->prepare("DELETE FROM skills WHERE apply_num IN (SELECT apply_num FROM eoi WHERE reference_number = ?)");
                 $stmt->bind_param("s", $delete_ref);
-                if ($stmt->execute()) {
+                $stmt->execute();
+                
+                $stmt = $conn->prepare("DELETE FROM eoi WHERE reference_number = ?");    
+                $stmt->bind_param("s", $delete_ref);
+
+                if ($stmt->execute())
+                    {
                     echo '<p>EOI with Reference Number ' . htmlspecialchars($delete_ref, ENT_QUOTES, 'UTF-8') . ' deleted successfully.</p>';
                 } else {
                     echo '<p>Error deleting EOI.</p>';
@@ -300,7 +529,7 @@ include_once 'conn.php';
             if (isset($_POST['change_status'])) {
                 $status_ref = trim($_POST['status_ref']);
                 $new_status = trim($_POST['new_status']);
-                $stmt = $conn->prepare("UPDATE eoi SET eoi_content = JSON_SET(eoi_content, '$.status', ?) WHERE eoi_number = ?");
+                $stmt = $conn->prepare("UPDATE eoi SET value = ? WHERE reference_number = ?");
                 $stmt->bind_param("ss", $new_status, $status_ref);
                 if ($stmt->execute()) {
                     echo '<p>Status of EOI with Reference Number ' . htmlspecialchars($status_ref, ENT_QUOTES, 'UTF-8') . ' changed to ' . htmlspecialchars($new_status, ENT_QUOTES, 'UTF-8') . ' successfully.</p>';
