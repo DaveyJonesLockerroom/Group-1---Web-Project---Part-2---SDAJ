@@ -1022,19 +1022,51 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   font-size: 1.2rem;
 }
 
-.manage-table {
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  align-items: stretch;
-  gap: 0.625rem; /* 10px */
-  margin: 2.5rem auto; /* 40px */
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #111;
-  table-layout: fixed;
-  font-size: 50%;
+.manage-table-container {
+  width: 95%;
+  overflow-x: auto;
+  margin: 2rem auto;
+  border-radius: 6px;
+  border: 1px solid #ff0000;
+  box-shadow: 0 0 15px rgba(255,0,0,0.25);
+  padding: 0.5rem;
 }
+
+.manage-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 2rem 0;
+ background-color: #111;
+ color: #ffcccc;
+ font-family: 'Courier New', monospace;
+ font-size: 0.5rem;
+ table-layout: fixed;
+ border: 2px solid #ff0000;
+ box-shadow: 0 0 20px rgba(255,0,0,0.3);
+}
+
+.manage-table th {
+  background-color: #1a1a1a;
+  color: #ff4d4d;
+  text-transform: uppercase;
+  border: 1px dashed #ff0000;
+  padding: 0.75rem;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.manage-table td {
+  border: 1px solid #550000;
+  padding: 0.75rem;
+  word-wrap: break-word;
+  white-space: normal;
+  vertical-align: top;
+}
+
+.manage-table tr:nth-child(even) {
+  background-color: #0d0d0d;
+}
+
 
 /* MANAGE PAGE END ----------------------------------------------------------------
 --------------------------------------------------------------------------------------  */
