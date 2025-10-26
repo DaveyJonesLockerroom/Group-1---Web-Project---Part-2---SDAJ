@@ -124,7 +124,7 @@
     }
 
 
-    else if($_SERVER["REQUEST_METHOD"] == "POST") {
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $reference_number = sanitise_input($_POST["reference_number"]);     
         $firstname = sanitise_input($_POST["firstname"]);
