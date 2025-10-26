@@ -26,13 +26,13 @@
     // Create Skills table
     $create_table_skill = "CREATE TABLE IF NOT EXISTS skills (
         skill_id INT AUTO_INCREMENT PRIMARY KEY,
-        apply_num INT DEFAULT NULL,
-        cpp TINYINT(1) DEFAULT NULL,
-        java TINYINT(1) DEFAULT NULL,
-        python TINYINT(1) DEFAULT NULL,
-        three_d TINYINT(1) DEFAULT NULL,
-        two_d TINYINT(1) DEFAULT NULL,
-        roadmap TINYINT(1) DEFAULT NULL,
+        apply_num INT NOT NULL,
+        cpp TINYINT(1) NOT NULL,
+        java TINYINT(1) NOT NULL,
+        python TINYINT(1) NOT NULL,
+        three_d TINYINT(1) NOT NULL,
+        two_d TINYINT(1) NOT NULL,
+        roadmap TINYINT(1) NOT NULL,
         FOREIGN KEY (apply_num) REFERENCES eoi(apply_num)
             ON DELETE CASCADE
             ON UPDATE CASCADE
@@ -188,7 +188,7 @@
         
         
         if(empty($skills)) $errors[] =  "Please select at least one Skill";
-        $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
+        //$skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
         if(!empty($errors)) {
             foreach($errors as $error) {//loop through errors array and display each error
@@ -209,8 +209,9 @@
 
             if(mysqli_query($dbcon, $insert_sql)) {
                 $apply_num = mysqli_insert_id($dbcon) ; // Get foreign key returns the auto generated apply_num by inserting or updating a table
-                $stmt = $dbcon->prepare("INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute();
+                 $stmt = $dbcon->prepare("INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                 
+                
                 
 
                 if(!is_array($skills)) {
