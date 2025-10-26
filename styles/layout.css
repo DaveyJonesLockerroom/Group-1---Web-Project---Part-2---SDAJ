@@ -79,11 +79,15 @@ footer nav a:hover {
     color: gold;
 }
 
-.error_alert {
+.alert-wrapper input[type="checkbox"] {
+  display: none; /* hide the checkbox */
+}
+
+.error_alert{
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #2e9602;
+  background-color: #ff0000;
   color: white;
   padding: 16px 20px;
   border-radius: 8px;
@@ -91,13 +95,14 @@ footer nav a:hover {
   z-index: 9999;
   max-width: 300px;
   font-family: sans-serif;
+  bottom: 70px;
 }
 
-.error_alert {
+.alert {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #ff4d4d;
+  background-color: #058507;
   color: white;
   padding: 16px 20px;
   border-radius: 8px;
@@ -108,6 +113,7 @@ footer nav a:hover {
 }
 
 /* Close button (label for checkbox) */
+.error_alert .close, 
 .alert .close {
   position: absolute;
   top: 6px;
@@ -123,7 +129,8 @@ footer nav a:hover {
 }
 
 /* When checkbox is checked, hide the alert */
-#close-alert:checked + .alert {
+#close-alert:checked + .alert,
+#close-error-alert:checked + .error_alert {
   display: none;
 }
 
