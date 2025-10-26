@@ -8,7 +8,12 @@
             <a href="jobs.php" class="navtitle" >Careers</a>
             <a href="about.php" class="navtitle" >About</a>
             <a href="manage.php" class="navtitle" >Manage</a>
+            <?php if(isset($_SESSION['username'])): ?>
+            <a href="signout.php" class="navtitle" >Sign Out</a>
+            <?php else: ?>
             <a href="login.php" class="navtitle" >Login</a>
+            <?php endif; ?>
+            
         </nav>
     </nav>
   </header>

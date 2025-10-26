@@ -11,7 +11,7 @@
 
         <style> /*Embedded CSS for image text hover*/
             .image_text:hover{
-                background-color: #ff0000; 
+                background-color: rgba(200, 0, 0, 0.8);
                 color: #0d0d0d;
             }
 
@@ -32,6 +32,6 @@
     <body>
 
          <header class="header-logo"> <!--Company logo in header-->
-                <img src="images/SDAJ_logo.png" alt="company logo" style="width: 100px; height: auto;"> <!--logo reference - https://cooltext.com/Logo-Design-Fantasy-->
+                <img src="images/companylogo2.png" alt="company logo" style="width: 200px; height: auto;"> <!--logo reference - Logo created using OpenAI’s ChatGPT (GPT-5) image generation tool. OpenAI. (2025). SDAJ logo [Logo]. Created using ChatGPT (GPT-5). https://chat.openai.com/-->
          </header>
     

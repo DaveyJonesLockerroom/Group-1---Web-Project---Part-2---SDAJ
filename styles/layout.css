@@ -79,11 +79,15 @@ footer nav a:hover {
     color: gold;
 }
 
-.error_alert {
+.alert-wrapper input[type="checkbox"] {
+  display: none; /* hide the checkbox */
+}
+
+.error_alert{
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #2e9602;
+  background-color: #ff0000;
   color: white;
   padding: 16px 20px;
   border-radius: 8px;
@@ -91,13 +95,14 @@ footer nav a:hover {
   z-index: 9999;
   max-width: 300px;
   font-family: sans-serif;
+  bottom: 70px;
 }
 
-.error_alert {
+.alert {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #ff4d4d;
+  background-color: #058507;
   color: white;
   padding: 16px 20px;
   border-radius: 8px;
@@ -108,6 +113,7 @@ footer nav a:hover {
 }
 
 /* Close button (label for checkbox) */
+.error_alert .close, 
 .alert .close {
   position: absolute;
   top: 6px;
@@ -123,7 +129,8 @@ footer nav a:hover {
 }
 
 /* When checkbox is checked, hide the alert */
-#close-alert:checked + .alert {
+#close-alert:checked + .alert,
+#close-error-alert:checked + .error_alert {
   display: none;
 }
 
@@ -164,13 +171,28 @@ footer nav a:hover {
     padding: 1rem;
 }
 
+
+/* animation created with reference to animation. (n.d.). CSS-Tricks. https://css-tricks.com/almanac/properties/a/animation/ */
 .dragon_image{
     width: 87%;
     height: auto;
     display: block;
     margin: 2% auto;
-    border: 0.5em inset;
+    border: 0.5em inset transparent;
     border-radius: 0.3em;
+    animation: shimmer 3s infinite alternate ease-in-out;
+}
+
+@keyframes shimmer {
+    0% {
+        box-shadow: 0 0 5px red, 0 0 5px gold;
+    }
+    50% {
+        box-shadow: 0 0 15px red, 0 0 5px gold;
+    }
+    100% {
+        box-shadow: 0 0 5px red, 0 0 5px gold;
+    }
 }
 
 
@@ -204,7 +226,7 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
 
 .image_text {
   position: absolute;
-  bottom: 10%; /* Positions text near the bottom of the dragon image */
+  bottom: 20%; /* Positions text near the bottom of the dragon image */
   left: 50%;
   transform: translateX(-50%); /* 23/10/2025 - this command was learned from Chatgpt (Prompt = "How to align element with animation") and W3Schools.com. (2025). W3schools.com. https://www.w3schools.com/cssref/func_translatex.php */
   width: 70%;
@@ -215,7 +237,7 @@ How to Overlay Text on an Image in HTML and CSS. (2023). Bannerbear.com. https:/
   color: #ff4d4d;
   font-family: 'Courier New', Courier, monospace;
   padding: 0.1em;
-  animation: fadeIn 2s ease-in forwards;
+  animation: fadeIn 5s ease-in forwards;
 }
 
 /* animation learned from the following video - Kalman Web Design. (2024, March 21). 
@@ -233,6 +255,7 @@ How to Create CSS Fade Animation with Keyframes | Step-by-step Tutorial. YouTube
 }
 
 .image_text p {
+  font-weight: bold;
   font-size: 1rem;
   color: #ff4d4d;
   line-height: 1.5;
@@ -447,6 +470,11 @@ th, td {
   text-align: left;
 }
 
+.ref_number, .job_title, .description, .duties {
+  text-align: left;
+  vertical-align: top;
+}
+
 
 
 
@@ -472,10 +500,9 @@ th, td {
     
     font-size: 50px;
     min-height: 100vh; /*view point height to fit the entire screen*/
-    
-    /* background-image: url('images/chatgpt_darkfantasy.png');
+    background-image: url('images/chatgpt_darkfantasy.png');
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: cover;
 }
 
 .top_page {

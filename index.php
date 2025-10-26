@@ -8,7 +8,9 @@ include 'inc_files/home_header.inc';
 
 include 'inc_files/home_navbar.inc';
            
-include 'inc_files/error_alert.inc'; ?>
+include 'inc_files/error_alert.inc'; 
+
+include 'inc_files/alert.inc'   ?>
 
     <div class="index_container">
         
