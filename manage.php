@@ -74,7 +74,7 @@ include_once 'conn.php';
                 e.postcode,
                 e.email,
                 e.phonenumber,
-                e.otherskill,
+                e.otherskills,
                 e.value,
                 CONCAT_WS(', ',
                     CASE WHEN s.cpp = 1 THEN 'C++' END,
@@ -83,17 +83,16 @@ include_once 'conn.php';
                     CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
                     CASE WHEN s.two_d = 1 THEN '2D Design' END,
                     CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
-                    e.otherskill
+                    e.otherskills
                 ) AS skills_list
                 FROM eoi e
                 LEFT JOIN skills s ON e.apply_num = s.apply_num
                 ");
-
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
-                    echo '<table>';
+                    echo '<table class="manage-table">';
                     echo '<tr>
                         <th>Application Number</th>
                         <th>Reference Number</th>
@@ -161,7 +160,7 @@ include_once 'conn.php';
                 e.postcode,
                 e.email,
                 e.phonenumber,
-                e.otherskill,
+                e.otherskills,
                 e.value,
                 CONCAT_WS(', ',
                     CASE WHEN s.cpp = 1 THEN 'C++' END,
@@ -170,7 +169,7 @@ include_once 'conn.php';
                     CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
                     CASE WHEN s.two_d = 1 THEN '2D Design' END,
                     CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
-                    e.otherskill
+                    e.otherskills
                 ) AS skills_list
                 FROM eoi e
                 LEFT JOIN skills s ON e.apply_num = s.apply_num
@@ -250,7 +249,7 @@ include_once 'conn.php';
                 e.postcode,
                 e.email,
                 e.phonenumber,
-                e.otherskill,
+                e.otherskills,
                 e.value,
                 CONCAT_WS(', ',
                     CASE WHEN s.cpp = 1 THEN 'C++' END,
@@ -259,7 +258,7 @@ include_once 'conn.php';
                     CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
                     CASE WHEN s.two_d = 1 THEN '2D Design' END,
                     CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
-                    e.otherskill
+                    e.otherskills
                 ) AS skills_list
                 FROM eoi e
                 LEFT JOIN skills s ON e.apply_num = s.apply_num
@@ -338,7 +337,7 @@ include_once 'conn.php';
                 e.postcode,
                 e.email,
                 e.phonenumber,
-                e.otherskill,
+                e.otherskills,
                 e.value,
                 CONCAT_WS(', ',
                     CASE WHEN s.cpp = 1 THEN 'C++' END,
@@ -347,7 +346,7 @@ include_once 'conn.php';
                     CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
                     CASE WHEN s.two_d = 1 THEN '2D Design' END,
                     CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
-                    e.otherskill
+                    e.otherskills
                 ) AS skills_list
                 FROM eoi e
                 LEFT JOIN skills s ON e.apply_num = s.apply_num
@@ -426,7 +425,7 @@ include_once 'conn.php';
                 e.postcode,
                 e.email,
                 e.phonenumber,
-                e.otherskill,
+                e.otherskills,
                 e.value,
                 CONCAT_WS(', ',
                     CASE WHEN s.cpp = 1 THEN 'C++' END,
@@ -435,7 +434,7 @@ include_once 'conn.php';
                     CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
                     CASE WHEN s.two_d = 1 THEN '2D Design' END,
                     CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
-                    e.otherskill
+                    e.otherskills
                 ) AS skills_list
                 FROM eoi e
                 LEFT JOIN skills s ON e.apply_num = s.apply_num

@@ -1022,6 +1022,20 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   font-size: 1.2rem;
 }
 
+.manage-table {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: stretch;
+  gap: 0.625rem; /* 10px */
+  margin: 2.5rem auto; /* 40px */
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #111;
+  table-layout: fixed;
+  font-size: 50%;
+}
+
 /* MANAGE PAGE END ----------------------------------------------------------------
 --------------------------------------------------------------------------------------  */
 
