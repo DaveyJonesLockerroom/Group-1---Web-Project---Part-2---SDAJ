@@ -16,8 +16,7 @@ if (!$conn) {
 <html lang="en">
 
 <head>
-    <?php include 'inc_files\header.inc'; ?>
-    
+    <?php include 'inc_files/header.inc'; ?>
         <style>
             .top_page { 
                 /* reference https://deepai.org/machine-learning-model/text2img */
