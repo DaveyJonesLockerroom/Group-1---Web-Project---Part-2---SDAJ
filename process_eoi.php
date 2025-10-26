@@ -210,6 +210,7 @@
             if(mysqli_query($dbcon, $insert_sql)) {
                 $apply_num = mysqli_insert_id($dbcon) ; // Get foreign key returns the auto generated apply_num by inserting or updating a table
                 $stmt = $dbcon->prepare("INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute();
                 
 
                 if(!is_array($skills)) {
