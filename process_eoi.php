@@ -6,34 +6,34 @@
 
     //CREATE EOI table
     $create_table_sql = "CREATE TABLE IF NOT EXISTS eoi (
-        'apply_num' INT AUTO_INCREMENT PRIMARY KEY,
-        'reference_number' ENUM('LP032', 'GD045', 'AR058') NOT NULL,
-        'firstname' TEXT NOT NULL,
-        'lastname' TEXT NOT NULL,
-        'dateofbirth' DATE NOT NULL,
-        'gender' SET('Male', 'Female') NOT NULL,
-        'address' VARCHAR(100) NOT NULL,
-        'suburb' VARCHAR(100) NOT NULL,
-        'state' VARCHAR(100) NOT NULL,
-        'postcode' INT(4) NOT NULL,
-        'email' VARCHAR(100) NOT NULL,
-        'phonenumber' BIGINT(15) NOT NULL,
-        'otherskills' VARCHAR(100),
+        apply_num INT AUTO_INCREMENT PRIMARY KEY,
+        reference_number ENUM('LP032', 'GD045', 'AR058') NOT NULL,
+        firstname TEXT NOT NULL,
+        lastname TEXT NOT NULL,
+        dateofbirth DATE NOT NULL,
+        gender SET('Male', 'Female') NOT NULL,
+        address VARCHAR(100) NOT NULL,
+        suburb VARCHAR(100) NOT NULL,
+        state VARCHAR(100) NOT NULL,
+        postcode INT(4) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        phonenumber BIGINT(15) NOT NULL,
+        otherskills VARCHAR(100),
         value ENUM('New', 'Current', 'Final') DEFAULT 'New'
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
 
     // Create Skills table
     $create_table_skill = "CREATE TABLE IF NOT EXISTS skills (
-        'skill_id' INT AUTO_INCREMENT PRIMARY KEY,
-        'apply_num' INT NOT NULL,
-        'cpp' TINYINT(1) NOT NULL,
-        'java' TINYINT(1) NOT NULL,
-        'python' TINYINT(1) NOT NULL,
-        'three_d' TINYINT(1) NOT NULL,
-        'two_d' TINYINT(1) NOT NULL,
-        'roadmap' TINYINT(1) NOT NULL,
-        FOREIGN KEY ('apply_num') REFERENCES eoi('apply_num')
+        skill_id INT AUTO_INCREMENT PRIMARY KEY,
+        apply_num INT DEFAULT NULL,
+        cpp TINYINT(1) DEFAULT NULL,
+        java TINYINT(1) DEFAULT NULL,
+        python TINYINT(1) DEFAULT NULL,
+        three_d TINYINT(1) DEFAULT NULL,
+        two_d TINYINT(1) DEFAULT NULL,
+        roadmap TINYINT(1) DEFAULT NULL,
+        FOREIGN KEY (apply_num) REFERENCES eoi(apply_num)
             ON DELETE CASCADE
             ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
