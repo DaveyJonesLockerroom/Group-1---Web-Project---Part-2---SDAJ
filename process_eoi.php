@@ -220,7 +220,8 @@
                 //in_array to check if skill is in the array of skills selected
                 
 
-                //skill1 is the value searching for and $skills is the array to search in                
+                //skill1 is the value searching for and $skills is the array to search in   
+                //https://www.w3schools.com/php/func_array_in_array.asp             
                 $cpp = in_array("cpp", $skills) ? 1 : 0;
                 $java = in_array("java", $skills) ? 1 : 0;
                 $python = in_array("python", $skills) ? 1 : 0;
@@ -260,55 +261,55 @@
                     
                    
                     // echo "<p><strong>Your Skill Selections:</strong></p>";
-                    // $skill_list = [];
-                    // if($cpp) {
-                    //     $skill_list[] = "C++";
-                    //     echo "<p>C++</p>";
-                    // }
-                    // else {
-                    //     $skill_list[] = "";
-                    // }
+                    $skill_list = [];
+                    if($cpp) {
+                        $skill_list[] = "C++";
+                       // echo "<p>C++</p>";
+                    }
+                    else {
+                        $skill_list[] = "";
+                    }
 
-                    // if($java) {
-                    //     $skill_list[] = "Java";
-                    //     echo "<p>Java</p>";
-                    // }
-                    // else {
-                    //     $skill_list[] = "";
-                    // }
+                    if($java) {
+                        $skill_list[] = "Java";
+                       // echo "<p>Java</p>";
+                    }
+                    else {
+                        $skill_list[] = "";
+                    }
                     
-                    // if($python) {
-                    //     $skill_list[] = "Python";
-                    //     echo "<p>Python</p>";
-                    // }
-                    // else {
-                    //     $skill_list[] = "";
-                    // }
+                    if($python) {
+                        $skill_list[] = "Python";
+                        //echo "<p>Python</p>";
+                    }
+                    else {
+                        $skill_list[] = "";
+                    }
                     
-                    // if($three_d) {
-                    //     $skill_list[] = "3D Modeling";
-                    //     echo "<p>3D Modeling</p>";
-                    // }
-                    // else {
-                    //     $skill_list[] = "";
-                    // }
+                    if($three_d) {
+                        $skill_list[] = "3D Modeling";
+                       // echo "<p>3D Modeling</p>";
+                    }
+                    else {
+                        $skill_list[] = "";
+                    }
                    
-                    // if($two_d) {
-                    //     $skill_list[] = "2D Modeling";
-                    //     echo "<p>2D Modeling</p>";
-                    // }
-                    // else {
-                    //     $skill_list[] = "";
-                    // }
+                    if($two_d) {
+                        $skill_list[] = "2D Modeling";
+                       // echo "<p>2D Modeling</p>";
+                    }
+                    else {
+                        $skill_list[] = "";
+                    }
                     
-                    // if($roadmap) {
-                    //     $skill_list[] = "Roadmap";
-                    //     echo "<p>Roadmap</p>";
+                    if($roadmap) {
+                        $skill_list[] = "Roadmap";
+                        //echo "<p>Roadmap</p>";
                         
-                    // }
-                    // else {
-                    //     $skill_list[] = "";
-                    // }
+                    }
+                    else {
+                        $skill_list[] = "";
+                    }
                     
                     // echo "<p>Other Skills: $otherskills</p>";
                 }
