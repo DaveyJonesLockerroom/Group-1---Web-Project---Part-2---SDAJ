@@ -170,8 +170,8 @@
 
         if(empty($gender)) $errors[] =  "Please select your Gender.";
 
-        if(!preg_match("/[A-Za-z0-9]+/", $address)) $errors[] =  "Please enter your Street Address."; 
-        if(!preg_match("/[A-Za-z0-9]+/", $suburb)) $errors[] =  "Please enter your Suburb."; 
+        if(!preg_match("/^[^'\"]+$/", $address)) $errors[] =  "Please enter your Street Address."; 
+        if(!preg_match("/^[^'\"]+$/", $suburb)) $errors[] =  "Please enter your Suburb."; 
         
 
         if(empty($state)) $errors[] =  "Please select your State.";

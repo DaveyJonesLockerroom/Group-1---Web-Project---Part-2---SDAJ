@@ -105,10 +105,10 @@ if (!$conn) {
         <!--Address-->
         <div class="form-textinput">
             <label for="address">Street Address</label>
-            <input type="text" pattern="[A-Za-z0-9]+" id="address" name="address" maxlength="40" size="40" required>
+            <input type="text" pattern="[^'\x22]+" id="address" name="address" maxlength="40" size="40" required>
             <br>
             <label for="suburb">Suburb</label>
-            <input type="text" pattern="[A-Za-z0-9]+" id="suburb" name="suburb" maxlength="40" size="40" required>
+            <input type="text" pattern="[^'\x22]+" id="suburb" name="suburb" maxlength="40" size="40" required>
             <br>
             <label for="state">State</label>
             <select name="state" id="state" required>
