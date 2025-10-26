@@ -10,7 +10,6 @@ if (!$conn) {
 }
 ?>
 
-?>
 
 <!--Code structure referencing for above: 
 W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.com/php/php_mysql_connect.asp --->
