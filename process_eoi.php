@@ -27,12 +27,12 @@
     $create_table_skill = "CREATE TABLE IF NOT EXISTS skills (
         skill_id INT AUTO_INCREMENT PRIMARY KEY,
         apply_num INT NOT NULL,
-        cpp TINYINT(1) DEFAULT 0,
-        java TINYINT(1) DEFAULT 0,
-        python TINYINT(1) DEFAULT 0,
-        three_d TINYINT(1) DEFAULT 0,
-        two_d TINYINT(1) DEFAULT 0,
-        roadmap TINYINT(1) DEFAULT 0,
+        cpp TINYINT(1) NOT NULL,
+        java TINYINT(1) NOT NULL,
+        python TINYINT(1) NOT NULL,
+        three_d TINYINT(1) NOT NULL,
+        two_d TINYINT(1) NOT NULL,
+        roadmap TINYINT(1) NOT NULL,
         FOREIGN KEY (apply_num) REFERENCES eoi(apply_num)
             ON DELETE CASCADE
             ON UPDATE CASCADE
