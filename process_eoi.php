@@ -107,6 +107,23 @@
     if (!$dbcon) {
         echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
     }  
+    else {
+        if(mysqli_query($dbcon, $create_table_sql)) {
+            //Created EOI table successfully
+        }
+        else {
+            echo "<p>Error creating EOI table: " . mysqli_error($dbcon) . "</p>";
+        }
+        if(mysqli_query($dbcon, $create_table_skill)) {
+            //Created Skills table successfully
+        }
+        else {
+            echo "<p>Error creating Skills table: " . mysqli_error($dbcon) . "</p>";
+
+        }
+    }
+
+
     else if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $reference_number = sanitise_input($_POST["reference_number"]);     
