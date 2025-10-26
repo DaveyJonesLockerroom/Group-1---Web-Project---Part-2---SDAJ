@@ -92,6 +92,7 @@ include_once 'conn.php';
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
+                    echo '<div class="manage-table-container">';
                     echo '<table class="manage-table">';
                     echo '<tr>
                         <th>Application Number</th>
@@ -128,6 +129,7 @@ include_once 'conn.php';
                         echo '</tr>';
                     }
                     echo '</table>';
+                    echo '</div>';
                 } else {
                     echo '<p>No entries found.</p>';
                 }
