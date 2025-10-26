@@ -453,7 +453,6 @@ th, td {
   margin: 2rem auto;
   background-color: #111;
   color: #ff0000;
-  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
   border-radius: 4px;
   font-family: 'Courier New', Courier, monospace
 }
@@ -886,7 +885,6 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   margin: 2rem auto;
   background-color: #111;
   color: #ff0000;
-  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
   border-radius: 4px;
   font-family: 'Courier New', Courier, monospace
 }
