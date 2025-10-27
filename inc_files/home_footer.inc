@@ -5,7 +5,6 @@
     <p><a href="https://github.com/DaveyJonesLockerroom/Group-1---Web-Project---SDAJ">Github Link</a></p>
 </footer>
 
-<p class= "index_footer_caption" 
-">
+<p class= "index_footer_caption" >
     &copy; 2025 Swinburne University of Technology 
 </p>

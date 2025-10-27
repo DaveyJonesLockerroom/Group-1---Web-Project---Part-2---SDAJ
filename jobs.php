@@ -12,7 +12,7 @@ if (!$conn) {
 
 
 <!--Code structure referencing for above: 
-W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.com/php/php_mysql_connect.asp --->
+W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.com/php/php_mysql_connect.asp-->
 
 
 <!DOCTYPE html>
@@ -82,9 +82,9 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
                     while ($row = mysqli_fetch_assoc($result)) { /* fetches associated  array */
                         echo "<tr>";
                         echo "<td class='ref_number'>" . htmlspecialchars($row['reference_number']) . "</td>"; /* htmlspecialchars to prevent XSS attacks */
-                        echo "<td class='job_title'>" . nl2br(htmlspecialchars($row['Job Title/Salary'])) . "</td>";
-                        echo "<td class='description'>" . nl2br(htmlspecialchars($row['Description'])) . "</td>"; # nl2br = creates display separation 
-                        echo "<td class='duties'>" . nl2br(htmlspecialchars($row['Responsibilities & Requirements'])) . "</td>";
+                        echo "<td class='job_title'>" . nl2br(htmlspecialchars($row['Job Title/Salary']),false) . "</td>";
+                        echo "<td class='description'>" . nl2br(htmlspecialchars($row['Description']),false) . "</td>"; # nl2br = creates display separation, ",false" - https://www.w3schools.com/php/func_string_nl2br.asp */
+                        echo "<td class='duties'>" . nl2br(htmlspecialchars($row['Responsibilities & Requirements']),false) . "</td>";
                         echo "</tr>";
                     }
 

@@ -10,7 +10,7 @@ include 'inc_files/home_navbar.inc';
            
 include 'inc_files/error_alert.inc'; 
 
-include 'inc_files/alert.inc'   ?>
+include 'inc_files/alert.inc';   ?>
 
     <div class="index_container">
         
@@ -40,4 +40,4 @@ include 'inc_files/alert.inc'   ?>
 </html>
 
 <!--add session start to the top of each page (regardless of whether you need to access user input or not)-->
-<!--- think about putting .inc files into a folder and change the path for an php file line-->
+<!-- think about putting .inc files into a folder and change the path for an php file line-->
