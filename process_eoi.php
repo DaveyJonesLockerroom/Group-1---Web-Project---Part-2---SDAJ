@@ -164,6 +164,7 @@
         }
          else {
             // Converts dd-mm-yyyy to yyyy-mm-dd for MySQL as SQL uses yyyy-mm-dd format
+            //https://www.w3schools.com/php/func_string_explode.asp
             $date_parts = explode('-', $dateofbirth); //splits this string into an array and sepreates by "-" thus date_parts[0] is dd, date_parts[1] is mm, date_parts[2] is yyyy
             $dateofbirth = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0];
             }
