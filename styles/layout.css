@@ -188,7 +188,7 @@ footer nav a:hover {
         box-shadow: 0 0 5px red, 0 0 5px gold;
     }
     50% {
-        box-shadow: 0 0 15px red, 0 0 5px gold;
+        box-shadow: 0 0 30px red, 0 0 25px gold;
     }
     100% {
         box-shadow: 0 0 5px red, 0 0 5px gold;
@@ -1180,6 +1180,8 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .page { padding-left: 10vw; padding-right: 10vw; }
   .dragon_image { width: 100%; height: auto; }
   .image_text { bottom: 10%; font-size: 1.3rem; width: 90%; text-align: center; left: 50%; transform: translateX(-50%);}
+  .image_text h1 {font-size: 1.2rem;}
+  .image_text p { font-size: 0.9rem;}
   .header-logo img {max-width: 10vw;}
   .index_navbar { padding: 0.7rem; gap: 0.7vw; }
   .index_navbar a { font-size: 1.05rem; }
@@ -1195,6 +1197,8 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   .navbar a { margin: 0 .5rem; padding: .4rem .6rem; }
   .dragon_image_container { width: 100%;}
   .image_text { bottom: 9%; width: 90%; text-align: center; font-size: 1.5rem; padding: 0 2rem;}
+  .image_text h1 {font-size: 1.1rem;}
+  .image_text p { font-size: 0.8rem;}
   .header-logo img {max-width: 7vw}
   .index_navbar { padding: 0.5rem; gap: 0.5vw; }
   .index_navbar a { font-size: 0.9rem; }

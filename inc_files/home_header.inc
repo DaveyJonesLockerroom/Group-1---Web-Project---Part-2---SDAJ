@@ -32,6 +32,6 @@
     <body>
 
          <header class="header-logo"> <!--Company logo in header-->
-                <img src="images/companylogo2.png" alt="company logo" style="width: 200px; height: auto;"> <!--logo reference - Logo created using OpenAI’s ChatGPT (GPT-5) image generation tool. OpenAI. (2025). SDAJ logo [Logo]. Created using ChatGPT (GPT-5). https://chat.openai.com/-->
+                <img src="images/SDAJ_logo_outlined_gap.png" alt="company logo" style="width: 150px; height: auto;"> <!--logo reference - Logo created using OpenAI’s ChatGPT (GPT-5) image generation tool. OpenAI. (2025). SDAJ logo [Logo]. Created using ChatGPT (GPT-5). https://chat.openai.com/-->
          </header>
     
