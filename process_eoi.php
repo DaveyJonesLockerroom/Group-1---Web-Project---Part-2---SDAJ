@@ -246,8 +246,9 @@
 
                     echo "<h2>Your form is submmitted successfully</h2>";
                     echo "<p>You will recieve an email confirmation shortly.</p>";
+                    echo "<p>Your Application ID: $apply_num</p>";
                     echo "Press Here to return to the <a href='index.php'>Home Page</a>.";
-                    // echo "<p>Table: $apply_num</p>";
+                    
                                 
                     // echo "<p>Job Reference Number: $reference_number</p>";
                     // echo "<p>First Name: $firstname</p>";
