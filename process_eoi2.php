@@ -39,7 +39,7 @@
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
 
-    if($_SESSION['username'] == 'admin') {
+    if($_SESSION['username'] == 'admin' && $_SESSION['password'] == 'admin') {
         //only allow admin to access this page
     }
     else {
