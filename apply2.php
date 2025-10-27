@@ -25,8 +25,6 @@ if (!$conn) {
                 background-size: cover;  
             }
         </style>
-        <title>Apply Now</title >
-        <meta name="description" content="Apply for your dream job with us today!">
 </head>
 
 <body>
