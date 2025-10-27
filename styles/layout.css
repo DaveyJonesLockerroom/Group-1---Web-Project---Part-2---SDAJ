@@ -7,6 +7,8 @@
 
     padding: 10px;/*changes the size of task bar*/
 
+    height: 80px;
+
     position: fixed; /* keeps the navbar in position so it doesnt move when you scoll*/
     
     /* These changes the position of nav bar so it fits the entire screen width wise */
@@ -20,7 +22,11 @@
     
     box-shadow: 1px 1px #ff0000; /* Adds a red shadow at the bottom of navbar */
     background: linear-gradient(red, #0d0d0d, #1a1a1a); 
+    align-items: center; /* makes sure that other elements don't stretch navbar height */
 }
+
+
+
 
 .logo img{
     width: 6em;
@@ -153,6 +159,7 @@ footer nav a:hover {
 .header-logo{
     display: flex; 
     justify-content: center; /*makes the logo be in the center*/
+    padding-top: 10px;
 }
 
 
@@ -289,6 +296,9 @@ How to Create CSS Fade Animation with Keyframes | Step-by-step Tutorial. YouTube
 /* JOBS PAGE START----------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------  */
 
+.main-content {
+  padding-top: 80px;
+}
 
 .main-title {
   text-align: center;
@@ -1138,6 +1148,7 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   font-size: 2rem;
   color: #ff4d4d;
   border-bottom: 2px dashed #ff0000;
+  padding-top: 2rem;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -1211,6 +1222,4 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
 
 /* RESPONSIVE LAYOUTS END ----------------------------------------------------------------
 --------------------------------------------------------------------------------------  */
-
-
 

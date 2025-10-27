@@ -79,7 +79,7 @@ include_once 'conn.php';
                 CONCAT_WS(', ',
                     CASE WHEN s.cpp = 1 THEN 'C++' END,
                     CASE WHEN s.java = 1 THEN 'Java' END,
-                    CASE WHEN s.python = 1 THEN 'Python' END,
+                    CASE WHEN s.python = 1 THEN 'Python' END, 
                     CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
                     CASE WHEN s.two_d = 1 THEN '2D Design' END,
                     CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
