@@ -52,7 +52,7 @@ include_once 'conn.php';
             </form>
               <?php
                if(isset($_POST['show_eois'])) {
-                  $stmt = $conn->prepare( // preparing SQL statement to display.
+                  $stmt = $conn->prepare( // preparing and sanitizing the SQL statement
                 "SELECT 
                 e.apply_num,
                 e.reference_number,
@@ -80,6 +80,7 @@ include_once 'conn.php';
                 ) AS skills_list
                 FROM eoi e
                 LEFT JOIN skills s ON e.apply_num = s.apply_num
+                -- LEFT JOIN will match rows when possible between eoi and skills table --
                 ");
                 $stmt->execute();
                 $result = $stmt->get_result();
