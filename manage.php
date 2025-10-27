@@ -38,6 +38,7 @@ include_once 'conn.php';
                 <?php
                 echo '<h1 class="manage-heading"> Welcome to the Management Page, ' 
                 . htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'). '!</h1>';
+                // htmlspecialchars turns special html characters into safe characters to ensure security
                 echo '<p class="manage-p"> Here you can manage the website content and user accounts. </p>';
                 ?>
 
