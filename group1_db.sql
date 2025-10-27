@@ -227,3 +227,57 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+/* ABOUT table */
+
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Oct 27, 2025 at 10:13 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `group1_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about`
+--
+
+CREATE TABLE IF NOT EXISTS`about` (
+  `user_id` int(11) NOT NULL,
+  `member_name` varchar(100) NOT NULL,
+  `project_1_contributions` text NOT NULL,
+  `project_2_contributions` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`user_id`, `member_name`, `project_1_contributions`, `project_2_contributions`) VALUES
+(0, 'Ari Stein', 'Designed Jobs page (jobs.html)\nValidating website code', 'Pages created:\r\n- login.php\r\n- manage.php\r\n- process_eoi.php\r\n- process_login.php\r\n- jobs.php\r\n\r\nOther contributions:\r\n- Created user login table that authenticates username and password\r\n- Developed user manage page\r\n- Implemented database-driven table for jobs.php\r\n- Styling for jobs page\r\n- Table layouts used across pages.'),
+(0, 'David Shi', 'Designed Home page (index.html)\nSubmitting team assignment', 'Pages created:\r\n- settings.php\r\n- env_loader.php\r\n- conn.php\r\n- Shared HTML \".inc\" files\r\n\r\nOther contributions:\r\n- Moved shared HTML into \".inc\" files and converted to PHP\r\n- Created database connection (env_loader.php, conn.php)\r\n- Implemented session handling\r\n- Styled responsive index page'),
+(0, 'Silong Song', 'Designed Apply page (apply.html)\nTime keeping and organising weekly team meetings', ''),
+(0, 'Jack Rosewarne', 'Designed About Page (about.html)\nOrganised and managed Jira checkpoints', '');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
