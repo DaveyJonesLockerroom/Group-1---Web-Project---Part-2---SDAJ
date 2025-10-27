@@ -32,10 +32,10 @@
         <h1 class="register-heading"> Log in to your account </h1>
 
         <form action="process_login.php" class="login-form" method="POST">
-            <label for="username">Username:</label>
+            <label for="username" class="login-text-title">Username:</label>
             <input type="text" class="login-textbox" id="username" name="username" placeholder="Username" required>
             <br>
-            <label for="password">Password:</label>
+            <label for="password" class="login-text-title">Password:</label>
             <input type="password" class="login-textbox" id="password" name="password" placeholder="Password" required>
             <br>
             <input type="submit" class="login_button" value="Login">

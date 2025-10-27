@@ -77,10 +77,10 @@ $conn->close();
             }
         ?>
         <form method="POST" class="login-form">
-            <label for="username">Username:</label>
+            <label for="username" class="login-text-title">Username:</label>
             <input type="text" class="login-textbox" id="username" name="username" placeholder="Enter username" required>
             <br>
-            <label for="password">Password:</label>
+            <label for="password" class="login-text-title">Password:</label>
             <input type="password" class="login-textbox" id="password" name="password" placeholder="Enter password" required>
             <br>
             <input type="submit" value="Register" class="login_button">
