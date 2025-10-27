@@ -39,9 +39,9 @@
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
 
-    // this prevents direct access to process_eoi.php without going through apply.php 
+    // this prevents direct access to process_eoi.php without going through index.php 
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header("Location: apply.php");
+        header("Location: index.php");
         exit();
         }
    
@@ -246,8 +246,9 @@
 
                     echo "<h2>Your form is submmitted successfully</h2>";
                     echo "<p>You will recieve an email confirmation shortly.</p>";
+                    echo "<p>Your Application ID: $apply_num</p>";
                     echo "Press Here to return to the <a href='index.php'>Home Page</a>.";
-                    // echo "<p>Table: $apply_num</p>";
+                    
                                 
                     // echo "<p>Job Reference Number: $reference_number</p>";
                     // echo "<p>First Name: $firstname</p>";

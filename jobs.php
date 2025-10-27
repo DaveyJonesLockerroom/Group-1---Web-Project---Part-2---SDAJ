@@ -114,6 +114,9 @@ W3Schools. (n.d.). PHP Connect to MySQL. W3Schools.com. https://www.w3schools.co
         <div class="application">
             <p><a href="apply.php" target="_blank">Apply Here</a></p>
         </div>
+        <div class="application">
+            <p><a href="apply2.php" target="_blank">Apply2 Here(No sanitisation)</a></p>
+        </div>
     </main>
 
     <!-- Footer -->

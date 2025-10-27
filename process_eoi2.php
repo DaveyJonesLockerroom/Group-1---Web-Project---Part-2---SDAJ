@@ -18,7 +18,7 @@
         postcode INT(4) NOT NULL,
         email VARCHAR(100) NOT NULL,
         phonenumber BIGINT(15) NOT NULL,
-        otherskill VARCHAR(100),
+        otherskills VARCHAR(100),
         value ENUM('New', 'Current', 'Final') DEFAULT 'New'
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
@@ -27,62 +27,124 @@
     $create_table_skill = "CREATE TABLE IF NOT EXISTS skills (
         skill_id INT AUTO_INCREMENT PRIMARY KEY,
         apply_num INT NOT NULL,
-        cpp TINYINT(1) DEFAULT 0,
-        java TINYINT(1) DEFAULT 0,
-        python TINYINT(1) DEFAULT 0,
-        three_d TINYINT(1) DEFAULT 0,
-        two_d TINYINT(1) DEFAULT 0,
-        roadmap TINYINT(1) DEFAULT 0,
+        cpp TINYINT(1) NOT NULL,
+        java TINYINT(1) NOT NULL,
+        python TINYINT(1) NOT NULL,
+        three_d TINYINT(1) NOT NULL,
+        two_d TINYINT(1) NOT NULL,
+        roadmap TINYINT(1) NOT NULL,
         FOREIGN KEY (apply_num) REFERENCES eoi(apply_num)
             ON DELETE CASCADE
             ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
 
-    // this prevents direct access to process_eoi.php without going through apply.php
-    $redirect = "index.php";
-    $required_fields = ["reference_number", "firstname", "lastname", "dateofbirth", "gender", "address", "suburb", "state", "postcode", "email", "phonenumber"];
-    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header("Location: $redirect");
+    if($_SESSION['username'] == 'admin' && $_SESSION['password'] == 'admin') {
+        //only allow admin to access this page
+    }
+    else {
+        header("Location: login.php");
         exit();
-        }
-    foreach ($required_fields as $field) {
-        if (empty($_POST[$field])) {
-            header("Location: $redirect");
-            exit();
-        }
     }
 
-    function sanitise_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+    // this prevents direct access to process_eoi.php without going through index.php 
+    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+        header("Location: index.php");
+        exit();
+        }
+   
+
+    echo '<DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <title>Apply Now</title >
+                        <meta charset="UTF-8">
+                        <meta name="eoipage" content="eoi page">
+                        <style>
+                            
+                            body {
+                                font-family: Courier New, Courier, monospace;
+                                text-align: center;
+                                justofy-content: center;
+                                margin: 10%;
+                                padding: 0;
+                                background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+                                color: #ffcccc;
+                                font-size: 1.2em;     
+                            }
+                            h2 {
+                                color:#ff4d4d;
+                            }
+                            p {
+                                font-size: 20px;
+                                color: #ffcccc;
+                            }
+                            a {
+                                color: red;
+                                text-decoration: none;
+                            }
+                            a:hover {
+                                color: white;
+                            }
+                            .back_button {
+                                font-family: Courier New, Courier, monospace;
+                                background-color: red;
+                                color: white;
+                                padding: 10px 20px;
+                                border: solid 1px gold;
+                                border-radius: 2px;
+                                cursor: pointer;
+                            }
+                            .back_button:hover {
+                                background-color: #ffcccc;
+                                color: black;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                    <div class="container">';
 
     $dbcon = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$dbcon) {
         echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
     }  
-    else if($_SERVER["REQUEST_METHOD"] == "POST") {
+    else {
+        if(mysqli_query($dbcon, $create_table_sql)) {
+            //Created EOI table successfully
+        }
+        else {
+            echo "<p>Error creating EOI table: " . mysqli_error($dbcon) . "</p>";
+        }
+        if(mysqli_query($dbcon, $create_table_skill)) {
+            //Created Skills table successfully
+        }
+        else {
+            echo "<p>Error creating Skills table: " . mysqli_error($dbcon) . "</p>";
 
-        $reference_number = $_POST["reference_number"];     
-        $firstname = $_POST["firstname"];
-        $lastname = $_POST["lastname"];
-        $dateofbirth = $_POST["dateofbirth"];  
+        }
+    }
 
-        $gender = $_POST["gender"];
 
-        $address = $_POST["address"];   
-        $suburb = $_POST["suburb"];    
-        $state = $_POST["state"];
-        $postcode = $_POST["postcode"];
-        $email = $_POST["email"];
-        $phonenumber = $_POST["phonenumber"]; 
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $reference_number = ($_POST["reference_number"]);     
+        $firstname = ($_POST["firstname"]);
+        $lastname = ($_POST["lastname"]);
+        $dateofbirth = ($_POST["dateofbirth"]);  
+
+        //$gender = sanitise_input($_POST["gender"]);
+        $gender = isset($_POST["gender"]) ? ($_POST["gender"]) : '';
+
+        $address = ($_POST["address"]);   
+        $suburb = ($_POST["suburb"]);    
+        $state = ($_POST["state"]);
+        $postcode = ($_POST["postcode"]);
+        $email = ($_POST["email"]);
+        $phonenumber = ($_POST["phonenumber"]); 
 
         $skills = isset($_POST["skills"]) ? $_POST["skills"] : []; // if more than one it will be an array else empty (is used for check boxes)
         
-        $otherskills = isset($_POST["otherskills"]) ? $_POST["otherskills"] : ''; //if the fiekd is not set assign empty string
+        $otherskills = isset($_POST["otherskills"]) ? ($_POST["otherskills"]) : ''; //if the fiekd is not set assign empty string
 
         
 
@@ -98,12 +160,19 @@
         if(empty($lastname)) $errors[] =  "Please enter your Last Name.";
 
         // ensure that this is the right format dd/mm/yyyy else error message
-        if(!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $dateofbirth)) $errors[] = "Please enter your Date of Birth in the correct format (dd/mm/yyyy).";
+        if(!preg_match("/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/", $dateofbirth)) {
+            $errors[] = "Please enter your Date of Birth in the correct format (dd-mm-yyyy).";
+        }
+         else {
+            // Converts dd-mm-yyyy to yyyy-mm-dd for MySQL as SQL uses yyyy-mm-dd format
+            $date_parts = explode('-', $dateofbirth); //splits this string into an array and sepreates by "-" thus date_parts[0] is dd, date_parts[1] is mm, date_parts[2] is yyyy
+            $dateofbirth = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0];
+            }
 
         if(empty($gender)) $errors[] =  "Please select your Gender.";
 
-        if(!preg_match("/[A-Za-z0-9]+/", $address)) $errors[] =  "Please enter your Street Address."; 
-        if(!preg_match("/[A-Za-z0-9]+/", $suburb)) $errors[] =  "Please enter your Suburb."; 
+        if(!preg_match("/^[^'\"]+$/", $address)) $errors[] =  "Please enter your Street Address."; 
+        if(!preg_match("/^[^'\"]+$/", $suburb)) $errors[] =  "Please enter your Suburb."; 
         
 
         if(empty($state)) $errors[] =  "Please select your State.";
@@ -117,15 +186,20 @@
         if(empty($skills)) {
                     $skills = []; // Ensure it's an array even if no skills are selected
                 }
-        //if(empty($skills)) $errors[] =  "Please select at least one Skill";
-        // $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
+        
+        
+        if(empty($skills)) $errors[] =  "Please select at least one Skill";
+        //$skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
         if(!empty($errors)) {
             foreach($errors as $error) {//loop through errors array and display each error
                 echo "<p>" . htmlspecialchars($error) . "</p>";
             }
-                echo "<p>Please go back and correct the errors.</p>";
+                echo "<p style='color:red;'>Please go back and correct the errors.</p>";
+                // https://www.w3schools.com/jsref/met_his_back.asp
+                echo '<button type="button" class="back_button" onclick="history.back()">Go Back</button>'; //goesback to the previous page without deleting everything
                 }
+        
         else {
             
         
@@ -136,7 +210,9 @@
 
             if(mysqli_query($dbcon, $insert_sql)) {
                 $apply_num = mysqli_insert_id($dbcon) ; // Get foreign key returns the auto generated apply_num by inserting or updating a table
-                $stmt = $dbcon->prepare("INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                 $stmt = $dbcon->prepare("INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                 
+                
                 
 
                 if(!is_array($skills)) {
@@ -147,7 +223,8 @@
                 //in_array to check if skill is in the array of skills selected
                 
 
-                //skill1 is the value searching for and $skills is the array to search in                
+                //skill1 is the value searching for and $skills is the array to search in   
+                //https://www.w3schools.com/php/func_array_in_array.asp             
                 $cpp = in_array("cpp", $skills) ? 1 : 0;
                 $java = in_array("java", $skills) ? 1 : 0;
                 $python = in_array("python", $skills) ? 1 : 0;
@@ -162,28 +239,36 @@
 
                 if(mysqli_query($dbcon, $insert_skills_sql)) { //executes an sql query on the database
                     //$apply_num = mysqli_insert_id($dbcon); // Gets the foreign key
+                    
 
-                    echo "<h2>Your submitted details are as follows:</h2>";
-                    echo "<p>Table: $apply_num</p>";
+                    
+
+
+
+                    echo "<h2>Your form is submmitted successfully</h2>";
+                    echo "<p>You will recieve an email confirmation shortly.</p>";
+                    echo "<p>Your Application ID: $apply_num</p>";
+                    echo "Press Here to return to the <a href='index.php'>Home Page</a>.";
+                    // echo "<p>Table: $apply_num</p>";
                                 
-                    echo "<p>Job Reference Number: $reference_number</p>";
-                    echo "<p>First Name: $firstname</p>";
-                    echo "<p>Last Name: $lastname</p>";
-                    echo "<p>Date of Birth: $dateofbirth</p>";
-                    echo "<p>Gender: $gender</p>";
-                    echo "<p>Address: $address</p>";
-                    echo "<p>Suburb: $suburb</p>";
-                    echo "<p>State: $state</p>";
-                    echo "<p>Postcode: $postcode</p>";
-                    echo "<p>Email: $email</p>";
-                    echo "<p>Phone Number: $phonenumber</p>";
+                    // echo "<p>Job Reference Number: $reference_number</p>";
+                    // echo "<p>First Name: $firstname</p>";
+                    // echo "<p>Last Name: $lastname</p>";
+                    // echo "<p>Date of Birth: $dateofbirth</p>";
+                    // echo "<p>Gender: $gender</p>";
+                    // echo "<p>Address: $address</p>";
+                    // echo "<p>Suburb: $suburb</p>";
+                    // echo "<p>State: $state</p>";
+                    // echo "<p>Postcode: $postcode</p>";
+                    // echo "<p>Email: $email</p>";
+                    // echo "<p>Phone Number: $phonenumber</p>";
                     
                    
-                    echo "<p><strong>Your Skill Selections:</strong></p>";
+                    // echo "<p><strong>Your Skill Selections:</strong></p>";
                     $skill_list = [];
                     if($cpp) {
                         $skill_list[] = "C++";
-                        echo "<p>C++</p>";
+                       // echo "<p>C++</p>";
                     }
                     else {
                         $skill_list[] = "";
@@ -191,7 +276,7 @@
 
                     if($java) {
                         $skill_list[] = "Java";
-                        echo "<p>Java</p>";
+                       // echo "<p>Java</p>";
                     }
                     else {
                         $skill_list[] = "";
@@ -199,7 +284,7 @@
                     
                     if($python) {
                         $skill_list[] = "Python";
-                        echo "<p>Python</p>";
+                        //echo "<p>Python</p>";
                     }
                     else {
                         $skill_list[] = "";
@@ -207,7 +292,7 @@
                     
                     if($three_d) {
                         $skill_list[] = "3D Modeling";
-                        echo "<p>3D Modeling</p>";
+                       // echo "<p>3D Modeling</p>";
                     }
                     else {
                         $skill_list[] = "";
@@ -215,7 +300,7 @@
                    
                     if($two_d) {
                         $skill_list[] = "2D Modeling";
-                        echo "<p>2D Modeling</p>";
+                       // echo "<p>2D Modeling</p>";
                     }
                     else {
                         $skill_list[] = "";
@@ -223,14 +308,14 @@
                     
                     if($roadmap) {
                         $skill_list[] = "Roadmap";
-                        echo "<p>Roadmap</p>";
+                        //echo "<p>Roadmap</p>";
                         
                     }
                     else {
                         $skill_list[] = "";
                     }
                     
-                    echo "<p>Other Skills: $otherskills</p>";
+                    // echo "<p>Other Skills: $otherskills</p>";
                 }
                 
             } 

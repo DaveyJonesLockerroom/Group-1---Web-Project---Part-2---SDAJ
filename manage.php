@@ -95,12 +95,12 @@ include_once 'conn.php';
                     echo '<div class="manage-table-container">';
                     echo '<table class="manage-table">';
                     echo '<tr>
-                        <th>Application Number</th>
+                        <th class="app-num-col">App Num</th>
                         <th>Reference Number</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Date of Birth</th>
-                        <th>Gender</th>
+                        <th class="gender-col">Gender</th>
                         <th>Address</th>
                         <th>Suburb</th>
                         <th>State</th>
@@ -182,14 +182,15 @@ include_once 'conn.php';
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
-                    echo '<table>';
+                    echo '<div class="manage-table-container">';
+                    echo '<table class="manage-table">';
                     echo '<tr>
-                        <th>Application Number</th>
+                        <th class="app-num-col">App Num</th>
                         <th>Reference Number</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Date of Birth</th>
-                        <th>Gender</th>
+                        <th class="gender-col">Gender</th>
                         <th>Address</th>
                         <th>Suburb</th>
                         <th>State</th>
@@ -218,6 +219,7 @@ include_once 'conn.php';
                         echo '</tr>';
                     }
                     echo '</table>';
+                    echo '</div>';
                 } else {
                     echo '<p>No entries found.</p>';
                 }
@@ -271,14 +273,15 @@ include_once 'conn.php';
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
-                    echo '<table>';
+                    echo '<div class="manage-table-container">';
+                    echo '<table class="manage-table">';
                     echo '<tr>
-                        <th>Application Number</th>
+                        <th class="app-num-col">App Num</th>
                         <th>Reference Number</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Date of Birth</th>
-                        <th>Gender</th>
+                        <th class="gender-col">Gender</th>
                         <th>Address</th>
                         <th>Suburb</th>
                         <th>State</th>
@@ -307,6 +310,7 @@ include_once 'conn.php';
                         echo '</tr>';
                     }
                     echo '</table>';
+                    echo '</div>';
                 } else {
                     echo '<p>No entries found.</p>';
                 }
@@ -359,14 +363,15 @@ include_once 'conn.php';
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
-                    echo '<table>';
+                    echo '<div class="manage-table-container">';
+                    echo '<table class="manage-table">';
                     echo '<tr>
-                        <th>Application Number</th>
+                        <th class="app-num-col">App Num</th>
                         <th>Reference Number</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Date of Birth</th>
-                        <th>Gender</th>
+                        <th class="gender-col">Gender</th>
                         <th>Address</th>
                         <th>Suburb</th>
                         <th>State</th>
@@ -395,6 +400,7 @@ include_once 'conn.php';
                         echo '</tr>';
                     }
                     echo '</table>';
+                    echo '</div>';
                 } else {
                     echo '<p>No entries found.</p>';
                 }
@@ -447,14 +453,15 @@ include_once 'conn.php';
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
-                    echo '<table>';
+                    echo '<div class="manage-table-container">';
+                    echo '<table class="manage-table">';
                     echo '<tr>
-                        <th>Application Number</th>
+                        <th class="app-num-col">App Num</th>
                         <th>Reference Number</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Date of Birth</th>
-                        <th>Gender</th>
+                        <th class="gender-col">Gender</th>
                         <th>Address</th>
                         <th>Suburb</th>
                         <th>State</th>
@@ -483,6 +490,7 @@ include_once 'conn.php';
                         echo '</tr>';
                     }
                     echo '</table>';
+                    echo '</div>';
                 } else {
                     echo '<p>No entries found.</p>';
                 }
@@ -520,9 +528,16 @@ include_once 'conn.php';
 
             <form action="manage.php" method="POST" class="admin-form">
                 <label for="status_ref">Enter Reference Number:</label>
-                <input type="text" id="status_ref" name="status_ref" required class="admin-textbox" placeholder="EG... LP032">
+                <input type="text" id="status_ref" name="status_ref" required class="admin-textbox" placeholder="EG... 1">
+
                 <label for="new_status">New Status:</label>
-                <input type="text" id="new_status" name="new_status" required class="admin-textbox" placeholder="EG... Current">
+                <select id="new_status" name="new_status" required class="admin-textbox">
+                    <option value="">Select Status</option>
+                    <option value="New">New</option>
+                    <option value="Current">Current</option>
+                    <option value="Final">Final</option>
+                </select>
+
                 <input type="submit" name="change_status" value="Change Status" class="update_button">
             </form>
 
@@ -530,18 +545,130 @@ include_once 'conn.php';
             if (isset($_POST['change_status'])) {
                 $status_ref = trim($_POST['status_ref']);
                 $new_status = trim($_POST['new_status']);
-                $stmt = $conn->prepare("UPDATE eoi SET value = ? WHERE reference_number = ?");
+                $stmt = $conn->prepare("UPDATE eoi SET value = ? WHERE apply_num = ?");
                 $stmt->bind_param("ss", $new_status, $status_ref);
                 if ($stmt->execute()) {
-                    echo '<p>Status of EOI with Reference Number ' . htmlspecialchars($status_ref, ENT_QUOTES, 'UTF-8') . ' changed to ' . htmlspecialchars($new_status, ENT_QUOTES, 'UTF-8') . ' successfully.</p>';
+                    echo '<p>Status of EOI with Application Number ' . htmlspecialchars($status_ref, ENT_QUOTES, 'UTF-8') . ' changed to ' . htmlspecialchars($new_status, ENT_QUOTES, 'UTF-8') . ' successfully.</p>';
                 } else {
                     echo '<p>Error changing status.</p>';
                 }
             }
             ?>
 
-                    
 
+
+                    <!-- Custom Sort EOI's -->
+
+
+            <form action="manage.php" method="POST" class="admin-form">
+                <label for="sort-field">Enter a field to sort by</label>
+                <select id="sort-field" name="sort-field" required class="admin-textbox">
+                    <option value="">Select Field</option>
+                    <option value="apply_num">Application Number</option>
+                    <option value="reference_number">Reference Number</option>
+                    <option value="firstname">First Name</option>
+                    <option value="lastname">Last Name</option>
+                    <option value="dateofbirth">Date of Birth</option>
+                    <option value="gender">Gender</option>
+                    <option value="suburb">Suburb</option>
+                    <option value="state">State</option>
+                    <option value="postcode">Postcode</option>
+                    <option value="email">Email</option>
+                    <option value="phonenumber">Phone Number</option>
+                    <option value="value">Status/Value</option>
+                </select>
+                <input type="submit" name="sort-by-field" value="Sort EOI's" class="show_button">
+            </form>
+            
+            <?php 
+            if (isset($_POST['sort-by-field'])) {
+                // Specific fields that are allowed in the textbox
+                $allowed_fields = [
+                    'apply_num','reference_number','firstname','lastname','dateofbirth','gender','address','suburb','state','postcode','email','phonenumber','value'
+                ];
+
+                $field = trim($_POST['sort-field']);
+
+                if (!in_array($field,$allowed_fields)) {
+                    echo '<p>Invalid field name. Please enter a valid column name.</p>';
+                } else {
+                    $stmt = $conn->prepare(
+                    "SELECT 
+                    e.apply_num,
+                    e.reference_number,
+                    e.firstname,
+                    e.lastname,
+                    e.dateofbirth,
+                    e.gender,
+                    e.address,
+                    e.suburb,
+                    e.state,
+                    e.postcode,
+                    e.email,
+                    e.phonenumber,
+                    e.otherskills,
+                    e.value,
+                    CONCAT_WS(', ',
+                        CASE WHEN s.cpp = 1 THEN 'C++' END,
+                        CASE WHEN s.java = 1 THEN 'Java' END,
+                        CASE WHEN s.python = 1 THEN 'Python' END,
+                        CASE WHEN s.three_d = 1 THEN '3D Modelling' END,
+                        CASE WHEN s.two_d = 1 THEN '2D Design' END,
+                        CASE WHEN s.roadmap = 1 THEN 'Roadmap Planning' END,
+                        e.otherskills
+                    ) AS skills_list
+                    FROM eoi e
+                    LEFT JOIN skills s ON e.apply_num = s.apply_num
+                    ORDER BY $field Asc
+                    ");
+
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        echo '<div class="manage-table-container">';
+                        echo '<table class="manage-table">';
+                        echo '<tr>
+                            <th class="app-num-col">App Num</th>
+                            <th>Reference Number</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Date of Birth</th>
+                            <th class="gender-col">Gender</th>
+                            <th>Address</th>
+                            <th>Suburb</th>
+                            <th>State</th>
+                            <th>Postcode</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Other Skills</th>
+                            <th>Value</th>
+                            </tr>';
+                    }
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<tr>';
+                            echo '<td>' . htmlspecialchars($row['apply_num'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['reference_number'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['firstname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['lastname'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['dateofbirth'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['gender'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['address'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['suburb'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['phonenumber'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['skills_list'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($row['value'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '</tr>';
+                        } {
+                        echo '</table>';
+                        echo '</div>';
+                    }
+                }
+            }
+            ?>
     </section>
 
     <?php include 'inc_files/footer.inc'; ?>
