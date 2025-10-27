@@ -36,7 +36,7 @@ USE `group1_db`;                           /* making sure we are using the right
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2025 at 10:05 AM
+-- Generation Time: Oct 27, 2025 at 10:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -53,6 +53,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `group1_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about`
+--
+
+CREATE TABLE `about` (
+  `user_id` int(11) NOT NULL,
+  `member_name` varchar(100) NOT NULL,
+  `project_1_contributions` text NOT NULL,
+  `project_2_contributions` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`user_id`, `member_name`, `project_1_contributions`, `project_2_contributions`) VALUES
+(1, 'Ari Stein', 'Designed Jobs page (jobs.html)\nValidating website code', 'Pages created:\r\n- login.php\r\n- manage.php\r\n- process_eoi.php\r\n- process_login.php\r\n- jobs.php\r\n- signout.php\r\n- register.php\r\n\r\nOther contributions:\r\n- Created user login table that authenticates username and password\r\n- Developed user manage page\r\n- Implemented database-driven table for jobs.php\r\n- Styling for jobs page\r\n- Table layouts used across pages.'),
+(2, 'David Shi', 'Designed Home page (index.html)\nSubmitting team assignment', 'Pages created:\r\n- settings.php\r\n- env_loader.php\r\n- conn.php\r\n- Shared HTML \".inc\" files\r\n\r\nOther contributions:\r\n- Moved shared HTML into \".inc\" files and converted to PHP\r\n- Created database connection (env_loader.php, conn.php)\r\n- Implemented session handling\r\n- Styled responsive index page'),
+(3, 'Silang Song', 'Designed Apply page (apply.html)\nTime keeping and organising weekly team meetings', 'Apply page (apply.php)\r\nOrganising weekly meetings\r\nExpression of interest table (process_eoi.php)\r\nDatabase table for EOI and skills section\r\nSanitised pages'),
+(4, 'Jack Rosewarne', 'Designed About Page (about.html)\nOrganised and managed Jira checkpoints', '');
 
 -- --------------------------------------------------------
 
@@ -161,6 +184,12 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `user_status`) VALUES
 --
 
 --
+-- Indexes for table `about`
+--
+ALTER TABLE `about`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- Indexes for table `eoi`
 --
 ALTER TABLE `eoi`
@@ -188,6 +217,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `about`
+--
+ALTER TABLE `about`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `eoi`
