@@ -923,7 +923,7 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
 --------------------------------------------------------------------------------------  */
 
 #manage-main {
-  max-width: 80%;
+  max-width: 90%;
   margin: 6rem auto 2rem; /* top margin to clear fixed navbar */
   background-color: #1a1a1a;
   border: 2px solid #ff0000;
@@ -1023,7 +1023,7 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
 }
 
 .manage-table-container {
-  width: 95%;
+  width: 97.5%;
   overflow-x: auto;
   margin: 2rem auto;
   border-radius: 6px;
@@ -1039,7 +1039,7 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
  background-color: #111;
  color: #ffcccc;
  font-family: 'Courier New', monospace;
- font-size: 0.5rem;
+ font-size: 0.75rem;
  table-layout: fixed;
  border: 2px solid #ff0000;
  box-shadow: 0 0 20px rgba(255,0,0,0.3);
@@ -1063,10 +1063,13 @@ h3 { text-align: center; color: #fff; font-size: 1.25rem; }
   vertical-align: top;
 }
 
-.manage-table tr:nth-child(even) {
-  background-color: #0d0d0d;
+.app-num-col {
+  width: 2.5%;
 }
 
+.gender-col {
+  width: 3%;
+}
 
 /* MANAGE PAGE END ----------------------------------------------------------------
 --------------------------------------------------------------------------------------  */
