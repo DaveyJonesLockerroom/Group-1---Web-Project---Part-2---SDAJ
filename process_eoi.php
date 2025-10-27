@@ -53,6 +53,7 @@
         return $data;
     }
 
+    //styling 
     echo '<DOCTYPE html>
                     <html lang="en">
                     <head>
@@ -203,8 +204,7 @@
         else {
             
         
-            // $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber)
-            //    VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber')";        
+            //insert data into eoi table        
             $insert_sql = "INSERT INTO eoi (reference_number, firstname, lastname, dateofbirth, gender, address, suburb, state, postcode, email, phonenumber, otherskills)
                 VALUES ('$reference_number', '$firstname', '$lastname', '$dateofbirth', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phonenumber', '$otherskills')";
 
@@ -223,7 +223,7 @@
                 //in_array to check if skill is in the array of skills selected
                 
 
-                //skill1 is the value searching for and $skills is the array to search in   
+                //cpp is the value searching for and $skills is the array to search in   
                 //https://www.w3schools.com/php/func_array_in_array.asp             
                 $cpp = in_array("cpp", $skills) ? 1 : 0;
                 $java = in_array("java", $skills) ? 1 : 0;
@@ -237,85 +237,14 @@
                 $insert_skills_sql = "INSERT INTO skills (apply_num, cpp, java, python, three_d, two_d, roadmap)
                                     VALUES ('$apply_num', '$cpp', '$java', '$python', '$three_d', '$two_d', '$roadmap')";
 
-                if(mysqli_query($dbcon, $insert_skills_sql)) { //executes an sql query on the database
-                    //$apply_num = mysqli_insert_id($dbcon); // Gets the foreign key
-                    
+                if(mysqli_query($dbcon, $insert_skills_sql)) { //executes an sql query on the database           
 
-                    
-
-
-
+                    //displays the success message
                     echo "<h2>Your form is submmitted successfully</h2>";
                     echo "<p>You will recieve an email confirmation shortly.</p>";
                     echo "<p>Your Application ID: $apply_num</p>";
                     echo "Press Here to return to the <a href='index.php'>Home Page</a>.";
                     
-                                
-                    // echo "<p>Job Reference Number: $reference_number</p>";
-                    // echo "<p>First Name: $firstname</p>";
-                    // echo "<p>Last Name: $lastname</p>";
-                    // echo "<p>Date of Birth: $dateofbirth</p>";
-                    // echo "<p>Gender: $gender</p>";
-                    // echo "<p>Address: $address</p>";
-                    // echo "<p>Suburb: $suburb</p>";
-                    // echo "<p>State: $state</p>";
-                    // echo "<p>Postcode: $postcode</p>";
-                    // echo "<p>Email: $email</p>";
-                    // echo "<p>Phone Number: $phonenumber</p>";
-                    
-                   
-                    // echo "<p><strong>Your Skill Selections:</strong></p>";
-                    $skill_list = [];
-                    if($cpp) {
-                        $skill_list[] = "C++";
-                       // echo "<p>C++</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-
-                    if($java) {
-                        $skill_list[] = "Java";
-                       // echo "<p>Java</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                    
-                    if($python) {
-                        $skill_list[] = "Python";
-                        //echo "<p>Python</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                    
-                    if($three_d) {
-                        $skill_list[] = "3D Modeling";
-                       // echo "<p>3D Modeling</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                   
-                    if($two_d) {
-                        $skill_list[] = "2D Modeling";
-                       // echo "<p>2D Modeling</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                    
-                    if($roadmap) {
-                        $skill_list[] = "Roadmap";
-                        //echo "<p>Roadmap</p>";
-                        
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                    
-                    // echo "<p>Other Skills: $otherskills</p>";
                 }
                 
             } 
