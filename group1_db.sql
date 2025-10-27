@@ -274,7 +274,7 @@ CREATE TABLE IF NOT EXISTS`about` (
 INSERT INTO `about` (`user_id`, `member_name`, `project_1_contributions`, `project_2_contributions`) VALUES
 (0, 'Ari Stein', 'Designed Jobs page (jobs.html)\nValidating website code', 'Pages created:\r\n- login.php\r\n- manage.php\r\n- process_eoi.php\r\n- process_login.php\r\n- jobs.php\r\n\r\nOther contributions:\r\n- Created user login table that authenticates username and password\r\n- Developed user manage page\r\n- Implemented database-driven table for jobs.php\r\n- Styling for jobs page\r\n- Table layouts used across pages.'),
 (0, 'David Shi', 'Designed Home page (index.html)\nSubmitting team assignment', 'Pages created:\r\n- settings.php\r\n- env_loader.php\r\n- conn.php\r\n- Shared HTML \".inc\" files\r\n\r\nOther contributions:\r\n- Moved shared HTML into \".inc\" files and converted to PHP\r\n- Created database connection (env_loader.php, conn.php)\r\n- Implemented session handling\r\n- Styled responsive index page'),
-(0, 'Silong Song', 'Designed Apply page (apply.html)\nTime keeping and organising weekly team meetings', ''),
+(0, 'Silong Song', 'Designed Apply page (apply.html)\nTime keeping and organising weekly team meetings', 'Pages created:\r\n'),
 (0, 'Jack Rosewarne', 'Designed About Page (about.html)\nOrganised and managed Jira checkpoints', '');
 COMMIT;
 
