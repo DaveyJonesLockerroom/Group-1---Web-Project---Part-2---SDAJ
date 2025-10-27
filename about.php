@@ -120,7 +120,7 @@ if (!$conn) {
       <section class="figure_card">
         <h2 class="sub_head2">Our Team Photo</h2>
         <figure>
-          <img src="images/Group_photo_cropped.jpg" alt="The team at work">
+          <img src="images/Group_photo_cropped(new).jpg" alt="The team at work">
           <figcaption>The team at work</figcaption>
         </figure>
       </section>
