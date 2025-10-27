@@ -5,9 +5,6 @@ include_once 'env_loader.php';
 include_once 'conn.php';
 ?>
 
-<!-------------------------------------------------------------------------------------
-------------------   ADD LOTS OF COMMENTS SO YOU CAN EXPLAIN THE CODE   ---------------
--------------------------------------------------------------------------------------->
 
 <!DOCTYPE html>
         <?php
@@ -29,13 +26,8 @@ include_once 'conn.php';
 <html lang="en">
 <head>
     <?php include 'inc_files/header.inc'; ?>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Management Page">
     <meta name="keywords" content="manage, admin, control">
     <meta name="author" content="Ari Stein">
-    <title>SDAJ Management Page</title>
-    <link rel="stylesheet" href="styles/layout.css">
 </head>
 
 <body>
@@ -60,7 +52,7 @@ include_once 'conn.php';
             </form>
               <?php
                if(isset($_POST['show_eois'])) {
-                  $stmt = $conn->prepare(
+                  $stmt = $conn->prepare( // preparing SQL statement to display.
                 "SELECT 
                 e.apply_num,
                 e.reference_number,
@@ -76,6 +68,7 @@ include_once 'conn.php';
                 e.phonenumber,
                 e.otherskills,
                 e.value,
+                -- CONCAT_WS joins strings together and then seperates them so that they can all be displayed at the same time --
                 CONCAT_WS(', ',
                     CASE WHEN s.cpp = 1 THEN 'C++' END,
                     CASE WHEN s.java = 1 THEN 'Java' END,
@@ -500,7 +493,7 @@ include_once 'conn.php';
                     <!-- Delete EOI by Reference -->
 
             <form action="manage.php" method="POST" class="admin-form">
-                <label for="delete_ref">Enter Reference Number to Delete:</label>
+                <label for="delete_ref" class="login-text-title">Enter Reference Number to Delete:</label>
                 <input type="text" id="delete_ref" name="delete_ref" required class="admin-textbox" placeholder="EG... LP032">
                 <input type="submit" name="delete_eoi" value="Delete EOI" class="delete_button">
             </form>
@@ -527,10 +520,10 @@ include_once 'conn.php';
                     <!-- Change EOI Status -->
 
             <form action="manage.php" method="POST" class="admin-form">
-                <label for="status_ref">Enter Reference Number:</label>
+                <label for="status_ref" class="login-text-title">Enter Reference Number:</label>
                 <input type="text" id="status_ref" name="status_ref" required class="admin-textbox" placeholder="EG... 1">
 
-                <label for="new_status">New Status:</label>
+                <label for="new_status" class="login-text-title" >New Status:</label>
                 <select id="new_status" name="new_status" required class="admin-textbox">
                     <option value="">Select Status</option>
                     <option value="New">New</option>
@@ -561,7 +554,7 @@ include_once 'conn.php';
 
 
             <form action="manage.php" method="POST" class="admin-form">
-                <label for="sort-field">Enter a field to sort by</label>
+                <label for="sort-field" class="login-text-title">Enter a field to sort by</label>
                 <select id="sort-field" name="sort-field" required class="admin-textbox">
                     <option value="">Select Field</option>
                     <option value="apply_num">Application Number</option>
