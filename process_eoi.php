@@ -39,9 +39,9 @@
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ";
 
-    // this prevents direct access to process_eoi.php without going through apply.php 
+    // this prevents direct access to process_eoi.php without going through index.php 
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header("Location: apply.php");
+        header("Location: index.php");
         exit();
         }
    

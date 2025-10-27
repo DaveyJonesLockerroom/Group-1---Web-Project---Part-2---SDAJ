@@ -12,12 +12,11 @@ if (!$conn) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php include 'inc_files\header.inc'; ?>
+    <?php include 'inc_files/header.inc'; ?>
         <style>
             .top_page { 
                 /* reference https://deepai.org/machine-learning-model/text2img */
@@ -88,7 +87,7 @@ if (!$conn) {
         <!--Birthday-->
         <div class="form-textinput">
             <label for="dateofbirth">Date of Birth</label>
-            <input type="text" name= "dateofbirth" id="dateofbirth" pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}" placeholder="dd/mm/yyyy" required>
+            <input type="text" name= "dateofbirth" id="dateofbirth" pattern="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-\d{4}" placeholder="dd-mm-yyyy" required>
         </div>
 
         <!--Gender-->
@@ -106,10 +105,10 @@ if (!$conn) {
         <!--Address-->
         <div class="form-textinput">
             <label for="address">Street Address</label>
-            <input type="text" pattern="[A-Za-z0-9]+" id="address" name="address" maxlength="40" size="40" required>
+            <input type="text" pattern="[^'\x22]+" id="address" name="address" maxlength="40" size="40" required>
             <br>
             <label for="suburb">Suburb</label>
-            <input type="text" pattern="[A-Za-z0-9]+" id="suburb" name="suburb" maxlength="40" size="40" required>
+            <input type="text" pattern="[^'\x22]+" id="suburb" name="suburb" maxlength="40" size="40" required>
             <br>
             <label for="state">State</label>
             <select name="state" id="state" required>
