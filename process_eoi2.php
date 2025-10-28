@@ -251,73 +251,10 @@
                     echo "<p>You will recieve an email confirmation shortly.</p>";
                     echo "<p>Your Application ID: $apply_num</p>";
                     echo "Press Here to return to the <a href='index.php'>Home Page</a>.";
-                    // echo "<p>Table: $apply_num</p>";
-                                
-                    // echo "<p>Job Reference Number: $reference_number</p>";
-                    // echo "<p>First Name: $firstname</p>";
-                    // echo "<p>Last Name: $lastname</p>";
-                    // echo "<p>Date of Birth: $dateofbirth</p>";
-                    // echo "<p>Gender: $gender</p>";
-                    // echo "<p>Address: $address</p>";
-                    // echo "<p>Suburb: $suburb</p>";
-                    // echo "<p>State: $state</p>";
-                    // echo "<p>Postcode: $postcode</p>";
-                    // echo "<p>Email: $email</p>";
-                    // echo "<p>Phone Number: $phonenumber</p>";
+           
                     
                    
-                    // echo "<p><strong>Your Skill Selections:</strong></p>";
-                    $skill_list = [];
-                    if($cpp) {
-                        $skill_list[] = "C++";
-                       // echo "<p>C++</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-
-                    if($java) {
-                        $skill_list[] = "Java";
-                       // echo "<p>Java</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
                     
-                    if($python) {
-                        $skill_list[] = "Python";
-                        //echo "<p>Python</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                    
-                    if($three_d) {
-                        $skill_list[] = "3D Modeling";
-                       // echo "<p>3D Modeling</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                   
-                    if($two_d) {
-                        $skill_list[] = "2D Modeling";
-                       // echo "<p>2D Modeling</p>";
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                    
-                    if($roadmap) {
-                        $skill_list[] = "Roadmap";
-                        //echo "<p>Roadmap</p>";
-                        
-                    }
-                    else {
-                        $skill_list[] = "";
-                    }
-                    
-                    // echo "<p>Other Skills: $otherskills</p>";
                 }
                 
             } 
@@ -327,8 +264,6 @@
         }
 
 
-        session_unset();
-        session_destroy();
-        mysqli_close($dbcon);
+
 
     }
