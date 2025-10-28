@@ -40,13 +40,13 @@
     ";
 
      // Redirect if not an admin
-    if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-                 $_SESSION['error'] = "Access denied. Admins only.";
-                 header("Location: jobs.php");
-                 exit();
+    if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] == 'Admin') {
+            //only Admin can access
         }
     else {
-        header("Location: login.php");
+         $_SESSION['error'] = "Access denied. Admins only.";
+                 header("Location: jobs.php");
+                 exit();
         exit();
     }
 
