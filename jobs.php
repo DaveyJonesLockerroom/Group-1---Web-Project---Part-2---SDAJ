@@ -3,6 +3,8 @@ session_start();
 
 include_once 'env_loader.php';
 include_once 'conn.php';
+include 'inc_files/error_alert.inc'; 
+include 'inc_files/alert.inc';
 
 
 if (!$conn) {

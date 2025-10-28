@@ -41,7 +41,7 @@
 
      // Redirect if not an admin
     if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-         $_SESSION['error'] = "Access denied. Admins only.";
+         $_SESSION['error'] = "Admins only. Try the other apply link.";
                  header("Location: jobs.php");
                  exit();
     }
