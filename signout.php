@@ -7,6 +7,8 @@ session_unset();
 
 session_destroy();
 
+mysqli_close($dbcon);
+
 session_start();
 $_SESSION['alert'] = $alertMessage;
 
