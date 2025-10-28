@@ -47,7 +47,6 @@
          $_SESSION['error'] = "Access denied. Admins only.";
                  header("Location: jobs.php");
                  exit();
-        exit();
     }
 
     // this prevents direct access to process_eoi.php without going through index.php 
